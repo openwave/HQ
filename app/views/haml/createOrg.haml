@@ -1,0 +1,80 @@
+!!! Strict
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+    %title
+      Local Search Made Wonderful
+    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery-1.3.2.min.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corner.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corners.inner_outer.js" }
+
+  %body
+    .container_12
+  
+      / BOF HEADER
+        
+      .superHeader
+        = render :partial => 'login'
+      .clear
+
+      .logoHeader
+        %img{ :src => "/images/hqLogo.jpg", :height => "200" }
+
+      .search
+        %form{ :action => "#"}
+          %input{ :class => "text", :type => "text", :onclick =>"this.value=''", :value => "Local Search Made Wonderful" }
+          %input{ :name => "searchbg", :type => "hidden" }
+          %input{ :name => "template", :type => "hidden" }
+          %input.search_button{ :type => "image", :src => "/images/searchTab.jpg", :value => "Search", :height => "35" }
+    
+      = render :partial => 'mainNav'
+      = image_tag('/images/dropShadow.jpg', :style => "display:inline;")
+      
+     
+      %div{ :style => "margin: 0 auto; width: 700px; text-align:left;"}
+        .grid_4
+          %h3
+            Create an HQ Page
+          %br
+          %br
+          Organization Name
+          %br
+          %textarea{ :rows => "1", :cols => "30", :style => "height: 20px; width: 260px;" }
+          %br
+          Street
+          %br
+          %textarea{ :rows => "1", :cols => "30", :style => "height: 20px; width: 260px;" }
+          %br
+          City
+          %br
+          %textarea{ :rows => "1", :cols => "30", :style => "height: 20px; width: 260px;" }
+          %br
+          State
+          %br
+          %textarea{ :rows => "1", :cols => "30", :style => "height: 20px; width: 260px;" }
+          %br
+          Zip Code
+          %br
+          %textarea{ :rows => "1", :cols => "30", :style => "height: 20px; width: 260px;" }
+          %br
+          HQ Channel URL: &nbsp; hqchannel.com/
+          %br
+          %textarea{ :rows => "1", :cols => "30", :style => "height: 20px; width: 260px;" }
+          %br
+          %span{ :style => "color: #666"}
+            ex : hqchannel.com/joepizza
+          %br
+          %input{ :name => "", :type => "checkbox", :value => "", :style => "float:left;" }
+          .grid_3
+            I am an authorized representative of this organization.
+          %div{ :style => "width: 265px; text-align: right;"}
+            = image_tag('/images/submit.jpg', :height => "25")
+          
+          
+          
+          
+          

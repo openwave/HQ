@@ -1,0 +1,12 @@
+%br 
+  = rating_links(org)
+  - if org.rating_avg == 1
+    Not Recommended
+  - elsif org.rating_avg == 2
+    Poor
+  - elsif org.rating_avg == 3
+    Average
+  - elsif org.rating_avg == 4
+    Recommended
+  - elsif org.rating_avg == 5
+    Highly Recommended

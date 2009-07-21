@@ -1,0 +1,42 @@
+<tr>
+	<script type = "text/javascript">
+		function showTheDiv(quick_id){
+			document.getElementById(quick_id).style.display = 'inline' ;
+		}
+		function hideTheDiv(quick_id){
+			document.getElementById(quick_id).style.display = 'none' ;
+		}
+
+
+	</script>
+  <tr>
+	<script type = "text/javascript">
+		function sTheDiv(quick_id_video){
+			document.getElementById(quick_id_video).style.display = 'inline' ;
+		}
+		function hTheDiv(quick_id_video){
+			document.getElementById(quick_id_video).style.display = 'none' ;
+		}
+
+
+	</script>
+
+<% for @video in @org.videos %>
+<li style="width:73px;">
+
+
+	<div class = "frame" onmouseover = "sTheDiv('<%= "video_"+ (@video.id).to_s  %>')" onmouseout = "hTheDiv('<%= "video_"+ (@video.id).to_s  %>')" style = "width:110px;" >
+
+        <%=  link_to_remote(image_tag("/system/videos/#{@video.id}/original/#{@video.id}.jpg", :height => "60",:width => "70"),:update =>"viewer",:url => {:controller => "haml",:action => "show_video",:org_id => @org.id,:id => @video.id}) %>
+
+
+	    <div id = <%= "video_"+ (@video.id).to_s %>  class = "quickview_rollover" style="color: #000000 ;float: left; width: 62px; text-align: center; padding-top: 8px; height: 33px; margin-top: 10px;">
+	    	<%= @video.content %>
+	    </div>
+	    <div style="clear: both"></div>
+	</div>
+
+</li>
+</td>
+<%end%>
+</tr>

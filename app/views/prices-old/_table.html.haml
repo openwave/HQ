@@ -1,0 +1,7 @@
+%table
+  %tr
+    %th Name
+  - @prices.each do |price|
+    %tr
+      %td
+        = link_to price.name, price

@@ -1,0 +1,15 @@
+%ul#tabs
+  %table
+  - @tabs.each do |tab|
+    - content_tag_for :li, tab do
+      %tr
+        %td
+          %span.handle
+            [drag]
+          = tab.name 
+          = link_to 'Show', tab
+          = link_to 'Edit', edit_tab_path(tab)
+          = link_to 'Destroy', tab, :confirm => 'Are you sure?', :method => :delete
+          %br 
+        
+  = sortable_element("tabs", :url => sort_tabs_path, :handle => "handle")

@@ -1,0 +1,8 @@
+<% unless @org.prices.empty? %>
+  Prices
+  <ul>
+  <% @org.prices.each do |price| %>
+    <li><%= link_to price.group, org_price_path(@org, price) %>
+  <% end %>
+  </ul>
+<% end %>

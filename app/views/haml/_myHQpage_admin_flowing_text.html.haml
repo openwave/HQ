@@ -1,0 +1,24 @@
+%script{:type=>"text/javascript"}
+  function a() {
+  document.getElementById('profile_content').style.backgroundColor ="#FFFFFF";
+  if (document.getElementById('profile_content').value == "Use this profile to write about your background, what makes you unique, your position in the market place, and what you want people to imagine when they see your company for the first time.")
+  {
+  document.getElementById('profile_content').value= "";
+  }
+  }
+  function a1() {
+  document.getElementById('profile_content').style.backgroundColor ="#FFFFFF";
+  document.getElementById('profile_content').value= "Use this profile to write about your background, what makes you unique, your position in the market place, and what you want people to imagine when they see your company for the first time.";
+  }
+
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    Your Profile
+%br
+%br
+= render :partial => 'haml/motion_scroll_bar'
+#searchWindow{ :style => "height: 430px; overflow: hidden;"}
+  #searchContent
+    - form_for :profile,:url=>{:controller => :haml, :action => 'create_profile',:id => @org.id} do |f|
+      = render :partial => 'haml/profile_form',:locals => {:f => f}
+      = image_submit_tag "/images/submit.jpg", :height => "30", :style => "margin-right: 36px;" 

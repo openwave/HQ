@@ -1,0 +1,9 @@
+#player{:style => "margin-top:0px;height => 235px;width => 418px;"}
+  :javascript
+    var so = new SWFObject('/player.swf','mpl','418','235','9');
+    so.addParam('allowscriptaccess','always');
+    so.addParam('allowfullscreen','true');
+    so.addParam('wmode','transparent');
+    so.addVariable('file', '/vidgirlBox2.flv&skin=/bekle.swf&frontcolor=CCFFFF&controlbar=over&repeat=always&autostart=true&icons=false');
+    so.addVariable('overstretch', 'true')
+    so.write('player');

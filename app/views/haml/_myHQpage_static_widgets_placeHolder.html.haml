@@ -1,0 +1,19 @@
+%span{ :style => "color:#666;" }
+  .blueText
+    Photo Galleries
+  #gallery
+    #thumbwrapper
+      .innerThumb
+        #thumbarea
+          %ul#thumbs
+            = render :partial => '/haml/photo_rollover'
+  %br
+  .blueText
+    Video Galleries
+  #gallery
+    #thumbwrapper
+      .innerThumb
+        #thumbarea
+          %ul#thumbs
+            = render :partial => '/haml/video_rollover'
+  %br

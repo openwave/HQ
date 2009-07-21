@@ -1,0 +1,29 @@
+ - form_for([@org, @highlight]) do |f|
+  = f.error_messages
+  %p
+  = f.label :name, "Name"
+  %br
+  = f.text_field :title
+  
+%p
+  = f.label :street, "Body"
+  %br
+  = f.text_area :content, :cols => '3'
+  = f.submit "Create"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%

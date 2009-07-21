@@ -1,0 +1,14 @@
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    User Reviews
+%br
+%br
+= render :partial => '/haml/motion_scroll_bar'
+
+#searchWindow{ :style => "width: 495px; height: 450px;"}
+  #searchContent
+    
+    /  Please Note that the div id #reportThis should be hidden, and can be revealed via jQuery for each one. This means that each #reportThis needs to have some sort of dynamic naming convention to allow only the selected one be released.
+    = for @review in @reviews
+      = render :partial => '/haml/myHQpage_admin_user_reviews_example',:locals => {:org => @org,:review => @review}
+    

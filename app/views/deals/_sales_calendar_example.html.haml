@@ -1,0 +1,18 @@
+- @events.each do |event|
+  %li
+    .grid_4{ :style => "width:270px; margin: 0; height: 20px; padding-top: 10px;"}
+      .head9{ :style => "font-size: 15px;"}
+   
+     
+    .grid_1{ :style => "width: 40px;"}
+      5/09
+      =link_to "edit"
+    .grid_4{ :style => "margin: 0;"}
+      Clothing is 
+    .grid_2{ :style => "float:left; margin: 0; padding-top: 30px"}
+      =link_to "Read More"
+    .grid_2{ :style => "margin: 0; text-align: right; float:right;"}
+      .grid_1{ :style => "font-size: 10px; color: #ccc; padding-top: 6px; text-align: center; width: 37px; float: right;"}
+        USERS LIKE THIS
+      .head13
+        =event.rank

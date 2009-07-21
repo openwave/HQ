@@ -1,0 +1,18 @@
+<div id="viewer" class="grid_7" style="margin-left: 0px;">
+<div class="grid_8" style = "border: 3px solid #DEF2FA; width: 533px; height: 307px; text-align: left; overflow: hidden;">
+  <div class="grid_1" style = "text-align: right; float: right;">
+  <%=  link_to image_tag("/images/exitBtn.jpg", :height => "35"),:controller => :haml,:action => :close,:id =>@org.id %>
+</div>
+   <h2 style = "margin: 10px 26px 15px 10px;">
+       2 Choose a thumbnail
+   </h2>
+
+  <table align="center" style="margin-left: 161px;margin-top: 29px"><tr><td colspan="2">
+  <%= link_to image_tag("/system/videos/#{@video.id}/original/#{@video.id}.jpg", :height => "60",:width => "107"),:controller => "haml",:action => "update_video_thumb",:org_id => @org.id,:id => @video.id,:file_name =>"#{@video.id}.jpg"%>
+  <%= link_to image_tag("/system/videos/#{@video.id}/original/test.jpg", :height => "60",:width => "107"),:controller => "haml",:action => "update_video_thumb",:org_id => @org.id,:id => @video.id,:file_name =>"test.jpg"%></td></tr>
+  <tr><td colspan="2"><%= link_to image_tag("/system/videos/#{@video.id}/original/test-1.jpg", :height => "60",:width => "107"),:controller => "haml",:action => "update_video_thumb",:org_id => @org.id,:id => @video.id,:file_name =>"test-1.jpg"%>
+  <%= link_to image_tag("/system/videos/#{@video.id}/original/test-2.jpg", :height => "60",:width => "107"),:controller => "haml",:action => "update_video_thumb",:org_id => @org.id,:id => @video.id,:file_name =>"test-2.jpg"%></td></tr>
+  </table>
+</div>
+
+</div>

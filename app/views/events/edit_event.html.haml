@@ -1,0 +1,4 @@
+- form_for([@org, @event]) do |f|
+  = f.error_messages
+  = render :partial => 'update', :locals => { :f => f }
+  

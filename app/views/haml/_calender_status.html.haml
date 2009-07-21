@@ -1,0 +1,4 @@
+- if calender_status == true
+  = link_to_remote image_tag("/images/addWhite.jpg",:width => "30",:style => "margin-left: 44px; margin-top: 6px;"),:update => 'calender_update',:url => {:controller => :haml,:action => :sales_show, :id => @org.id}           
+- else 
+  = link_to_remote image_tag("/images/removeBtnGreen.jpg",:width => "30",:style => "margin-left: 44px; margin-top: 6px;"),:update => 'calender_update',:url => {:controller => :haml,:action => :sales_show, :id => @org.id}           

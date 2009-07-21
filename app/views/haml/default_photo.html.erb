@@ -1,0 +1,19 @@
+<div class="grid_8" style = "border: 3px solid rgb(222, 242, 250); overflow: hidden; width: 533px; height: 293px; text-align: left; margin-top: 5px;">
+<br>
+<br>
+<div class="grid_1" style = "text-align: right; float: right;">
+  <%=  link_to image_tag("/images/exitBtn.jpg", :height => "35", :style => "margin-top: -39px;"),:controller => :haml,:action => :close,:id =>@org.id %>
+</div>
+<% form_tag url_for(:controller => :haml,:action => :set_default,:id =>@org.id),:multipart => true  do |t| %>
+<table style ="margin-left:20px;" >
+<% fields_for @photo do |f| %>
+  <tr><td><font style="color:#1B75BC;">Choose your search result photo :</font></td> </tr>
+	 <tr>   <td><%= f.file_field :image %></td></tr>
+<tr><td> &nbsp </td></tr>
+<tr> <td> <%end%>
+<%= image_submit_tag "/images/submit.jpg", :style => "width : 141px; height: 29px;" %>
+<%end%>
+</td>
+</tr>
+</table>
+</div>

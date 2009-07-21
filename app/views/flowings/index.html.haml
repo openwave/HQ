@@ -1,0 +1,15 @@
+%table
+  %tr
+    %th Name
+    %th Action
+  - @flowings.each do |flowing|
+    %tr
+      %td
+        = flowing.title
+      %td
+        = link_to 'Show', flowing
+        = link_to 'Edit', edit_flowing_path(flowing)
+        = link_to 'Destroy', flowing, :confirm => 'Are you sure?', :method => :delete 
+%br     
+= link_to 'Create', new_flowing_path
+

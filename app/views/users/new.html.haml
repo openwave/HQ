@@ -1,0 +1,62 @@
+
+
+.search
+  - form_tag orgs_path, :method => :get do
+
+    = text_field_tag :search, params[:search],:class => 'text'
+    = image_submit_tag '/images/searchTab.jpg',:class => 'search_button'
+- if @deal == true
+  = render :partial => '/welcome/mainNav_card'
+- else
+  = render :partial => '/welcome/mainNav'
+
+%br
+.grid_12{ :style => "margin: 0; padding: 0;"}
+  %img{ :src => "/images/dropShadow.jpg", :width => "700", :alt => ""}
+      
+     
+%div{ :style => "margin: 0 auto; width: 700px;"}
+  %h1
+    Sign Up 
+  %br
+
+  .grid_4{:style => "float:left; text-align: left;"}
+    .inner
+      
+      %br
+      - form_for @user, :url => account_path do |f|
+        - if @usr
+          - unless @usr.errors.empty?
+            %ul
+            - @usr.errors.each do |attr, msg|
+              %li
+                %h2
+                  = attr+" "+msg
+
+ 
+        = render :partial => "form", :object => f
+        = image_submit_tag('/images/signupBtn.jpg', :height => "25")
+    
+      
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

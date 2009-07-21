@@ -1,0 +1,56 @@
+%p
+  = f.label :title, "Title"
+  %br
+  = f.text_field :title
+  
+%p
+  = f.label :starting_on, "Start"
+  %br
+  = f.datetime_select :starting_on
+
+%p
+  = f.label :ending_on, "End"
+  %br
+  = f.datetime_select :ending_on 
+  
+%p
+  = f.label :description, "Description"
+  %br
+  = f.text_area :description,:rows=>3,:column=>5
+
+%p 
+  = f.label :image, "photo(max. .5 megs)"
+  %br
+  = f.file_field :image
+
+%p
+  = f.label :age_requirement, "Age requirement"
+  = f.select :age_requirement, Event::AGE_TYPES, :prompt => "Select a age type"
+  
+%p
+  = f.label :street, "Street"
+  %br
+  = f.text_field :street
+  
+%p
+  = f.label :locality, "City"
+  %br
+  = f.text_field :locality
+  
+%p
+  = f.label :region, "State"
+  %br
+  = f.text_field :region
+
+%p
+  = f.label :postal_code, "Zip"
+  %br
+  = f.text_field :postal_code
+
+%p
+  = f.label :country, "Country"
+  %br
+  = f.text_field :country
+%p
+  = submit_to_remote '/images/submit.jpg','Update',  :url => {:controller =>'events' ,:action => 'update' },:update=>'calendarContent'
+

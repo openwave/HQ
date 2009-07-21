@@ -1,0 +1,16 @@
+<h1>Editing org</h1>
+
+<% form_for(@org) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @org %> |
+<%= link_to 'Back', orgs_path %>

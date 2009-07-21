@@ -1,0 +1,29 @@
+-@deals.each do |deal|
+  .myHQpage_HQCard_result
+    .grid_2{ :style => "width:105px; float: left;"}
+      .innerGrey
+        .deal{ :style => "font-size: 45px;"}
+          = deal.deal_type
+          = deal.deal_value
+    %h3{ :style => "margin-bottom: 0;"}
+      = deal.title
+    .blueText
+      = deal.description
+    .clear
+    .grid_2{ :style => "float:left; margin: 0; padding-top: 5px; padding-left: 15px;"}
+      %h6
+        = deal.disclaimers_text_flat
+        %br
+        
+    .grid_3{ :style => "margin: 0; text-align: right; float:right; width: 175px;"}
+      .head13{ :style => "float: right;"}
+        =deal.rank
+      %img{ :src => "/images/cardRank.jpg", :height => "40", :style => "float: right; padding-top: 8px;"}
+      - if  current_user
+        = link_to_remote image_tag( "/images/voteUp.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),:url=>{:controller=>'haml',:action=>'deal_voteup',:vote_status=>deal.vote_status,:id=>deal.id,:org_id=>@org.id},:update=>'hqCardContent'
+        = link_to_remote image_tag( "/images/voteDown.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),:url=>{:controller=>'haml',:action=>'deal_votedown',:vote_status=>deal.vote_status,:id=>deal.id,:org_id=>@org.id},:update=>'hqCardContent'
+      - else
+        = link_to image_tag( "/images/voteUp.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),{:controller=>'haml',:action=>'deal_voteup'},{:title =>'Login required to perform this action'}
+        = link_to image_tag( "/images/voteDown.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),{:controller=>'haml',:action=>'deal_votedown'},{:title =>'Login required to perform this action'}
+
+

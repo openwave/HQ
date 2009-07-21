@@ -1,0 +1,26 @@
+#roundedcornr_content_977237
+- form_for([@org, @highlight],  :url => {:action=>'create_bullet'}) do |f|
+  = f.error_messages
+ 
+  = f.label :name, "Name"
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  = f.text_field :title
+  %br
+  = f.label :street, "Description"
+  
+  = f.text_area :content, :rows => '3'
+  = image_submit_tag('/images/add.jpg',:width=>'66')
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+  

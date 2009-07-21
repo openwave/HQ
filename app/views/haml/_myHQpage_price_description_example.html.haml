@@ -1,0 +1,18 @@
+-@prices.each do |price|
+  :javascript
+    function showThisImg(imgURL) {
+    //alert(imgURL);
+    document.getElementById('viewer').innerHTML="<img id='imageContainerImg' width='545' height='307' src='"+imgURL+"' alt='' />";
+    document.getElementById('imageContainerImg').style.display='inline';
+    }
+
+  %li{:onmouseover => "showThisImg('#{price.photo.url}')", :onmouseout => "showThisImg('/images/viewer.jpg')",:style => "list-style: none; margin-left: 5px; width: 440px;"}
+    .grid_7{ :style => "margin-left: 0;"}
+      .grid_5{ :style => "float: left; margin-left: 0; width: 345px"}
+        %h5
+          = price.item
+      .grid_2{ :style => "text-align:right; float: left;"}
+        %h5
+          = price.price
+    %span{ :style => "font-style: italic;"}
+      = price.description

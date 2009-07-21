@@ -1,0 +1,15 @@
+%div{ :style => "margin: 0 auto; width: 700px; text-align:left;"}
+  .grid_4
+    %br
+      = @user.first_name
+      = @user.last_name
+
+    %br
+      = @user.email
+
+    %br
+      = render :partial => '/users/orgs'  
+    %br
+      = link_to 'Create New Org', new_user_org_path(current_user)
+    
+      = render :partial => 'notifications'  

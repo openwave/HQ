@@ -1,0 +1,58 @@
+<tr>
+	<script type = "text/javascript">
+		function sTheDiv(quick_id_video){
+			document.getElementById(quick_id_video).style.display = 'inline' ;
+		}
+		function hTheDiv(quick_id_video){
+			document.getElementById(quick_id_video).style.display = 'none' ;
+		}
+
+
+	</script>
+
+<% for @video in org.videos %>
+<li style="width:73px;">
+
+
+	<div class = "frame" onmouseover = "sTheDiv('<%= "video_"+ (@video.id).to_s  %>')" onmouseout = "hTheDiv('<%= "video_"+ (@video.id).to_s  %>')" style = "width:110px;" >
+		
+        <%=  link_to_remote(image_tag("/system/videos/#{@video.id}/original/#{@video.id}.jpg", :height => "60",:width => "70"),:update =>"viewer",:url => {:controller => "haml",:action => "show_video",:org_id => @org.id,:id => @video.id}) %>
+	
+		
+	    <div id = <%= "video_"+ (@video.id).to_s %>  class = "quickview_rollover" style="float: left; width: 62px; text-align: center; padding-top: 8px;font-size:10px; height: 33px; margin-top: 39px;">
+	    	<%= link_to_remote "makedefault",:update => "thumbs1",:url => {:controller => :haml,:action => :make_default_video,:id => org.id,:video_id => @video.id} %>
+
+			<%= link_to_remote "delete",:update => "thumbs1",:url => {:controller => :haml,:action => :video_delete,:id => org.id,:video_id => @video.id}	 %>
+	    </div>
+	    <div style="clear: both"></div>
+	</div>
+
+</li>
+</td>
+<%end%>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

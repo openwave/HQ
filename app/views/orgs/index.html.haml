@@ -1,0 +1,66 @@
+.search
+  - form_tag orgs_path, :method => :get do 
+          
+    = text_field_tag :search, params[:search],:class => 'text' 
+    = image_submit_tag '/images/searchTab.jpg',:class => 'search_button'
+
+= render :partial => '/welcome/mainNav'
+
+= render :partial=>'/haml/banner_ads'
+.grid_12
+  .grid_8
+    %span{ :style => "color: #57B6DD"}
+      %p
+        = @orgs.size.to_s+ ' ' +'Search Results found!' 
+  .grid_2
+    %span{ :style => "color: #BED639"}
+      %p
+        Sort By:
+
+.grid_12
+  /  BOF LEFT SIDE
+  .searchLeftSide
+    #searchWindow
+      #searchContent
+        = render :partial => 'search_result'
+              
+              
+                                                                      
+  .grid_4{ :style => "float:right; text-align:right; margin-top: 10px; margin-bottom: 10px;"}
+        
+
+        
+  / BOF RIGHT SIDE
+  .searchRightSide
+
+    .inner{:style => "text-align:left;"}
+      .sortOptions
+        %ul
+          
+          %li
+            = link_to ("town",:controller => :orgs,:action=> :index,:search => params[:search],:sort => :postal_code)
+          %li
+            = link_to ("video",:controller => :orgs,:action=> :index,:search => params[:search],:sort => :video_count)
+          %li
+            %a{ :href => "#" }
+              user ranking
+            %br
+          %li
+            %a{ :href => "#" }
+              hq card deal
+            %br
+
+          
+          
+          
+    = render :partial => '/haml/motion_scroll_bar'
+
+  .clear
+  .grid_12
+    %img{ :src => "/images/dropShadow.jpg", :alt => ""}
+      
+      
+  /  maps for scroll images
+    
+
+

@@ -1,0 +1,8 @@
+<% unless @org.flowings.empty? %>
+  Flowings
+  <ul>
+  <% @org.flowings.each do |flowing| %>
+    <li><%= link_to flowing.title, org_flowing_path(@org, flowing) %>
+  <% end %>
+  </ul>
+<% end %>

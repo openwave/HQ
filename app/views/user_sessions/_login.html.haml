@@ -1,0 +1,11 @@
+%br
+%br
+- form_for @user_session, :url => user_session_path do |f| 
+  = f.error_messages
+  = render :partial => "user_sessions/form", :object => f
+  %p
+    Forgot your 
+    = link_to "password?", :controller => 'password_resets', :action => 'new'
+  %div{ :style => "width: 280px; text-align: right;"}
+    = image_submit_tag "/images/loginBtn.jpg", :height => "25"
+  

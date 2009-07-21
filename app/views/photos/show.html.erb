@@ -1,0 +1,11 @@
+<p>
+  <b>Name:</b>
+  <%=h @photo.title %>
+</p>
+
+<p>
+<%= image_tag @photo.image.url(:small) %>
+
+
+<%= link_to 'Edit', edit_photo_path(@photo) %> |
+<%= link_to 'Back', photos_path %>

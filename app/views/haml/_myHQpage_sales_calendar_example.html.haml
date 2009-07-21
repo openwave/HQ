@@ -1,0 +1,25 @@
+=javascript_include_tag :defaults
+- @events.each do |event|
+  %li
+    .grid_4{ :style => "width:270px; margin: 0; height: 20px; padding-top: 10px;"}
+      .head9{ :style => "font-size: 15px;"}
+        = event.title 
+    .grid_1{ :style => "width: 40px;"}
+      = event.ending_on.strftime('%d/%m')
+      
+    .grid_4{ :style => "margin: 0;"}
+      = event.description
+    .grid_2{ :style => "float:left; margin: 0; padding-top: 30px; width: 75px;"}
+      = link_to_remote "Read More",:url=>{:controller=>'haml',:action=>'myHQpage_Event',:id=>event.id,:org_id=>@org.id},:update=>'event_image'
+    .grid_3{ :style => "margin: 0; text-align: right; float:right;"}
+      .grid_1{ :style => "font-size: 10px; color: #ccc; padding-top: 6px; text-align: center; width: 37px; float: right;"}
+        USERS LIKE THIS
+      .head13{ :style => "float: right;"}
+        =event.rank
+      - if current_user
+        =link_to_remote image_tag( "/images/voteUp.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),:url=>{:controller=>'haml',:action=>'calendar_voteup',:id=>event.id,:org_id=>@org.id},:update=>'calendarContent'
+        =link_to_remote image_tag( "/images/voteDown.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),:url=>{:controller=>'haml',:action=>'calendar_votedown',:id=>event.id,:org_id=>@org.id},:update=>'calendarContent'
+      - else
+        = link_to image_tag( "/images/voteUp.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),{:controller=>'user_sessions',:action=>'new'},{:title => "Login required to perform this action"}
+        = link_to  image_tag( "/images/voteDown.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),{:controller=>'user_sessions',:action=>'new'},{:title => "Login required to perform this action"}
+      

@@ -1,0 +1,10 @@
+<% form_for([current_user, @org]) do |f| %>
+  <%= f.error_messages %>
+  <center>
+  <%= render :partial => @org, :locals => {:f => f} %>
+  </center>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+

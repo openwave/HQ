@@ -1,0 +1,199 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+.superHeader {
+	text-align: right;
+	float: right;
+}
+.logoHeader {
+	margin: 0 auto;
+	width: 220px;
+}
+
+.searchbg {
+background:url(images/searchBarNormal.jpg) no-repeat;
+width:500px;
+height:35px;
+display:block;
+border: 0;
+}
+
+.search_button {
+	position:absolute;
+	top:0px;
+	left:358px;
+	border: 0px;
+	margin: 0px 0px 0px 2px;
+}
+
+.search_field
+{
+	background-color:transparent;
+	border:0 none;
+	float:left;
+	font-size:18px;
+	height:35px;
+	padding:5px 0 0 8px;
+	width:500px;
+}
+
+.search_field:focus + .searchbg
+{
+background:url(images/searchBarFocused.jpg) no-repeat;
+}
+
+.searchbgIE {
+background:url(http://www.nimlok-louisiana.com/images/search-box.gif) no-repeat;
+width:101px;
+height:23px;
+display:block;
+border:0;
+}
+
+.search
+{
+height:35px;
+margin:20px auto;
+padding:0;
+position:relative;
+width:300px;
+}
+
+.mainNav {
+	margin:0 auto;
+	text-align:center;
+	width:945px;
+}
+
+.mainNav ul {
+	margin-bottom: 0px;
+}
+
+.mainNav li {
+	display:inline-table;
+	margin-left:0;
+	width:123px;
+}
+
+.mainNav a {
+	color:#000000;
+	font-family:Times,"Times New Roman",serif;
+	font-size:17px;
+	text-decoration:none;
+}
+
+.mainNav li:hover {
+	background-image: url(images/mainNavHighlight.jpg);
+	background-repeat: no-repeat;
+}
+
+.mainNav .selected {
+	background-image:url(images/mainNavSelected.jpg);
+	background-repeat:no-repeat;
+}
+
+.bannerAds {
+	margin:10px auto 0;
+	width:900px;
+}
+.bannerAds a {
+	margin-right: 2.5em;
+}
+
+h7 {
+	color: #1B75BC;
+	font-size: 12pt;
+	font-weight: normal;
+}
+h8 {
+	color:#999;
+	font-size: 10px;
+}
+
+.searchResult {
+	border-top:thin dashed #CCCCCC;
+	height:116px;
+	margin-left:35px;
+	padding-bottom:10px;
+	padding-top:10px;
+	width:645px;
+}
+
+.searchResult:hover {
+	background-color:#f3fbfe;
+}
+
+.cardRankNum {
+	color:#999999;
+	font-size:36px;
+	font-weight:bold;
+	letter-spacing:-2px;
+}
+
+.searchTitle {
+	float:left;
+	margin-right:55px;
+}
+
+.searchLeftSide {
+	float:left;
+}
+
+.sortOptions a {
+	color:#000000;
+	font-size:16px;
+	padding-left:4px;
+	text-decoration:none;
+	
+}
+
+.sortOptions li {
+	display:block;
+	height:26px;
+	margin-left:10px;
+}
+
+.sortOptions .sortSelected {
+	background-image:url(images/sortSelected.jpg);
+	background-repeat:no-repeat;
+}
+
+.sortOptions li:hover {
+	background-image:url(images/sortOver.jpg);
+	background-repeat:no-repeat;
+}
+
+
+/* *****************   BOF ROUNDED CORNER     ***************** */
+
+.roundedcornr_box_133951 {
+	background: url(images/roundedcornr_133951_tl.png) no-repeat top left;
+	width: 300px;
+}
+.roundedcornr_top_133951 {
+	background: url(images/roundedcornr_133951_tr.png) no-repeat top right;
+}
+.roundedcornr_bottom_133951 {
+	background: url(images/roundedcornr_133951_bl.png) no-repeat bottom left;
+}
+.roundedcornr_bottom_133951 div {
+	background: url(images/roundedcornr_133951_br.png) no-repeat bottom right;
+}
+.roundedcornr_content_133951 {
+	background: url(images/roundedcornr_133951_r.png) top right repeat-y;
+}
+
+.roundedcornr_top_133951 div,.roundedcornr_top_133951,
+.roundedcornr_bottom_133951 div, .roundedcornr_bottom_133951 {
+	width: 100%;
+	height: 15px;
+	font-size: 1px;
+}
+.roundedcornr_content_133951, .roundedcornr_bottom_133951 {
+	margin-bottom:-10px;
+}
+.roundedcornr_content_133951 { padding: 0 0px; }
+
+/* *****************   EOF ROUNDED CORNER     ***************** */
+

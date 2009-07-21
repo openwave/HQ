@@ -1,0 +1,7 @@
+#greenBorders.grid_12
+  .grid_8{ :style => "float:left; width: 680px"}
+    %h1{ :style => "font-weight:normal; color: #000; text-align: left;"}
+      = @org.title
+  .grid_3{ :style => "text-align:right;"}
+    = render :partial => 'orgs/org_title_rating',:locals => {:org => @org } 
+.clear

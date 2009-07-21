@@ -1,0 +1,3 @@
+<%= javascript_include_tag 'defaults'%>
+hai
+<%= image_tag (@photo.image.url),:height => '547',:width => '307')%>

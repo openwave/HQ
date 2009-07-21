@@ -1,0 +1,85 @@
+!!! Strict
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+    %title
+      Local Search Made Wonderful
+    %link{ :href => "/stylesheets/rating.css", :rel => "stylesheet", :media => "all", :type => "text/css" }  
+    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+    %script{ :src => "/javascripts/dw_activate.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/dw_event.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/dw_scroll.js", :type => "text/javascript" }
+    %script{ :src => "/javascripts/html_att_ev.js", :type => "text/javascript" }
+    %script{ :type => "text/javascript", :src => "/javascripts/validation.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery-1.3.2.min.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corner.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corners.inner_outer.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/manageNav.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/prototype.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/defaults.js"}
+    %script{ :type => "text/javascript", :src => "/javascripts/swfobject.js"}
+
+  %body{ :onload => "init_dw_Scroll()" }
+    .container_12
+      
+      / BOF Header Div
+      
+      .grid_3{ :style =>"width: 400px; margin:20px 0 0 0; padding:0 0 0 10px; flot:left; text-align:left;"}
+        = render :partial => '/welcome/nav', :locals => {:hq => false }
+      .grid_12{ :style => "text-align:right; margin: 10px 5px 0 0; padding:0 10px 0 0; width: 200px;float: right;"}
+        %img{ :src => "/images/logo.jpg", :alt => "HQ Logo", :height => "30"}
+
+      = render :partial => 'my_hq_page_title'
+
+      /  EOF HeaderDiv
+       
+      = render :partial => 'myHQpage_nav_default'
+
+      /
+        End Navbar Div
+ 
+      /  Top Section
+   
+      = render :partial => 'myHQpage_quick_facts',:locals => {:facts => @facts}
+ 
+      
+       
+      #event_image
+        - if ($map == 1)
+          = render :partial => 'map',:org => @org.id
+
+        - else
+          = render :partial => 'viewer'
+        .clear
+        .clear
+
+        .grid_7#left{:style =>"float:left; width: 538px; height: 500px; text-align: left;"}
+          - if $review == '1'
+            = render :partial => 'myHQpage_Write_a_Review',:locals => {:org => @org } 
+          - elsif $review == '2'
+            = render :partial => 'myHQpage_user_reviews'
+          - else         
+        
+            = render :partial => 'myHQpage_flowing_text'
+
+
+      
+
+
+      / Right Side
+      .grid_5{:style =>"float:left; zoom: 98%; text-align:left;"}
+       
+        = render :partial => 'myHQpage_static_widgets_placeHolder'
+
+
+        - if @org.calender_status == false
+          = render :partial => 'myHQpage_sales_calendar'
+        
+        .clear
+        
+        / HQ Card Widget
+        
+        = render :partial => 'myHQpage_HQCard_window'

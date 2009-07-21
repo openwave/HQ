@@ -1,0 +1,14 @@
+.box_wrp
+  .box_top
+  .box_mid
+    .inner{ :style => "height: 90px;"}
+      .grid_6{ :style => "text-align: left; margin-right: 0px; width: 400px;float:left"}
+        .disclaimerText
+          Image
+          - form_tag url_for(:controller => :prices,:action => :new_image,:item=>params[:item],:description=>params[:description],:price=>params[:price]),:multipart => true, :style => "width:80%;float:left" do |f|  
+            = file_field_tag :photo
+            = link_to_remote image_tag('/images/submit.jpg',:width=>'35',:height=>'40'),:url=>{:controller=>'prices',:action=>'new_image'},:update=>'searchContent'
+        .grid_1{ :style => "margin-left: 0px; float: right; text-align: right;"}
+          = link_to_remote image_tag('/images/exitBtn.jpg',:height=>'40'),:url => {:controller => 'prices',:action => 'close'},:update=>'title'
+    .box_bot     
+  

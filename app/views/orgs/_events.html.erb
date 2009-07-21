@@ -1,0 +1,9 @@
+<% unless @org.events.empty? %>
+  Events
+  <ul>
+  <% @org.events.each do |event| %>
+    <li><%= link_to event.title, org_event_path(@org, event) %>
+      <%= event.starting_on %>
+  <% end %>
+  </ul>
+<% end %>

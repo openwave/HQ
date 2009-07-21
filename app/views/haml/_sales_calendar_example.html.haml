@@ -1,0 +1,18 @@
+- @events.each do |event|
+  %li
+    .grid_4{ :style => "width:270px; margin: 0; height: 20px; padding-top: 10px;"}
+      .head9{ :style => "font-size: 15px;"}
+        =event.title 
+    .grid_1{ :style => "width: 40px;"}
+      = event.ending_on.strftime('%d/%m')
+      = link_to_remote "Delete",:url=>{:controller=>'events',:action=>'delete',:org_id => @org.id,:id=>event.id},:update=>'calendarContent'
+    .grid_4{ :style => "margin: 0;"}
+      = truncate(event.description ,200)
+    .grid_2{ :style => "float:left; margin: 0; padding-top: 30px"}
+      = link_to_remote "Read More",:url=>{:controller=>'haml',:action=>'myHQpage_Event',:org_id => @org.id,:id=>event.id},:update=>'sea'
+    .grid_2{ :style => "margin: 0; text-align: right; float:right;"}
+      .grid_1{ :style => "font-size: 10px; color: #ccc; padding-top: 6px; text-align: center; width: 37px; float: right;"}
+        USERS LIKE THIS
+      .head13
+        =event.rank
+		

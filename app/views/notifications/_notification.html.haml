@@ -1,0 +1,16 @@
+%p
+  = f.label :promotion, "Promotion"
+  %br
+  = f.check_box :promotion
+  
+%p
+  = f.label :deal, "Deal"
+  %br
+  = f.check_box :deal
+
+%p
+  = f.label :news, "News"
+  %br
+  = f.check_box :news
+    
+  = f.hidden_field :user_id, :value => current_user.id

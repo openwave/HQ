@@ -1,0 +1,23 @@
+1:
+  id: 1
+  name: one promotion per table
+
+2:
+  id: 2
+  name: limit 1 per customer
+
+3:
+  id: 3
+  name: new customers only
+  
+4:
+  id: 4
+  name: with entree or purchase of equal or greater value
+  
+5:
+  id: 5
+  name: not to be combined w/ other offers
+
+6:
+  id: 6
+  name: not valid on prior purchases

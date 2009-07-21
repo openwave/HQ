@@ -1,0 +1,21 @@
+<br>
+<br>
+photo 
+<%= f.file_field_tag 'photo'%>
+<br>
+<br>
+caption
+<%= f.text_field_tag 'caption'%>
+<br>
+<br>
+new gallery
+<%= f.text_field_tag 'gallery_name'%>
+<br>
+<br>
+Gallery
+<%= f.select_tag "gallery_id",
+ options_from_collection_for_select(@galleries, 'id', 'title')%>
+<br>
+<br>
+
+

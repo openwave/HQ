@@ -1,0 +1,130 @@
+body{font:13px/1.5 Arial, Helvetica,'Liberation Sans',FreeSans,sans-serif}
+body, html {
+	text-align: center;
+}
+a:focus{outline:1px dotted invert}
+a {color: #1B75BC;}
+hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}
+
+h1, h2, h3, h4, h5, h6 {
+	text-align: left;
+}
+
+h1 { 
+	color: #57B6DD;
+	font-size: 25px;
+}
+
+h2 {
+	/* Formerly H7 */
+	color: #1B75BC;
+	font-size: 16pt;
+	font-weight: normal;
+}
+h2 a {
+	color: #1B75BC;
+	font-size: 16pt;
+	font-weight: normal;
+	text-decoration:none;
+}
+
+
+h3 { /* Formerly H10 */
+	color:#BED639;
+	font-family:Helvetica,Arial serif MS;
+	font-weight: normal;
+	font-size:25px;
+	margin-bottom: -25px;
+}
+h3 a {
+	text-decoration: none;
+	color:#BED639;
+}
+h4{font-size:19px}
+h5{font-size:17px}
+h6{
+	font-size:10px;
+	font-weight: normal;
+	color: #999;
+}
+ol{list-style:decimal}
+ul{list-style:square}
+/* li{margin-left:30px} */
+
+.blueText {
+	color:#1B75BC;
+	font-size: 12px;
+}
+
+
+p {
+	text-align: left;
+}
+
+textarea {
+	font-family: Arial, Helvetica;
+	color: #aaaaaa;
+}
+input {
+	color: #aaaaaa;
+	font-family: Arial, Helvetica;
+	font-size: 16px;
+}
+#smallTextBoxes textarea {
+	height: 22px;
+}
+
+.disclaimerText { /* Formerly h12 */
+	color:#1B75BC;
+	font-size: 10px;
+}
+.disclaimerText2 { /* Formerly h12 */
+	color:#1B75BC;
+	font-size: 12px;
+}
+
+
+
+h6_OLD { /* changed from h6 to eventually something new */
+	color: #1B75BC;
+	margin-right: 20px;
+	font-weight: normal;
+}
+h8 { /* Now h6 */
+	color:#999;
+	font-size: 10px;
+}
+.head9 {
+	color:#57B6DD;
+}
+h10 { /* Now h3 */
+	color:#BED639;
+	font-family:Helvetica,Arial serif MS;
+	font-size:25px;
+}
+
+.head10 {
+	color:#BED639 !important;	
+}
+
+h10 a {
+	text-decoration: none;
+	color:#BED639;
+}
+
+h11 {
+	color:#BED639;
+}
+h12 {
+	color:#1B75BC;
+	font-size: 10px;
+}
+.head13 {
+	color: #ccc;
+	font-size: 40px;
+}
+h14 {
+	color: #ccc;
+	font-size: 8px;
+	width: 30px;
+}

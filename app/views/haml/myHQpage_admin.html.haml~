@@ -1,0 +1,144 @@
+!!! Strict
+
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+    %title
+      Local Search Made Wonderful
+    %script{:type => 'text/css'}
+      #txt
+        width: 480px;
+        background-color:#E1E1E1;
+        height: 10000px;
+        margin-left: 5px;
+	  
+	  
+    %link{ :href => "/stylesheets/rating.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+    %link{ :href => "http://yui.yahooapis.com/2.7.0/build/resize/assets/skins/sam/resize.css", :rel =>"stylesheet",:media =>"all",:type =>"text/css"}
+    %link{ :href =>"http://yui.yahooapis.com/2.7.0/build/fonts/fonts-min.css",:rel =>"stylesheet",:media =>"all",:type =>"text/css"}
+    %link{ :href => "http://yui.yahooapis.com/2.7.0/build/imagecropper/assets/skins/sam/imagecropper.css", :rel =>"stylesheet",:media =>"all",:type =>"text/css"}
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_activate.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_event.js" }
+   
+    %script{ :type => "text/javascript", :src => "/javascripts/html_att_ev.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery-1.3.2.min.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/curvycorners.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corner.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/manageNav.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corners.inner_outer.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_scroll.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/newEmptyJavaScript.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/scroll_controls.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/prototype.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/defaults.js"}
+    %script{ :type => "text/javascript", :src => "/javascripts/swfobject.js"}
+    %script{ :type => "text/javascript", :src => "/javascripts/new_gallery.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/more_facts.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/mouseOverOut.js" }
+    
+    %script{ :type => "text/javascript", :src => "/javascripts/html_att_ev.js" }
+
+    %script{ :type => "text/javascript", :src => "/javascripts/addTab.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_addNewTab.js" }
+    
+       
+  %body.yui-skin-sam{ :onload => "init_dw_Scroll(),a1()" }
+    .container_12
+      
+      
+      / BOF Header Div
+      .grid_3{ :style =>"width: 400px; margin:20px 0 0 0; padding:0 0 0 10px; flot:left; text-align:left;"}
+        = render :partial => '/welcome/nav', :locals => {:hq => false }
+      .grid_12{ :style => "text-align:right; margin: 10px 5px 0 0; padding:0 10px 0 0; width: 200px;float: right;"}
+        
+        %img{ :src => "/images/logo.jpg", :alt => "HQ Logo", :height => "30"}
+
+      = render :partial => 'haml/my_hq_page_title'
+      
+      /  EOF HeaderDiv
+       
+      = render :partial => 'haml/my_hq_page_admin_nav_default'
+        
+          
+      /  Top Section
+
+      = render :partial => 'haml/my_hq_page_admin_quick_facts_old'
+      
+      
+      - if ($flag == '1')
+        = render :partial => 'haml/change_logo_image_crop'
+      - elsif ($flag == '2')
+        = render :partial => 'haml/addNewTab',:locals => {:org => @org }
+      - elsif ($flag == '3')
+        = render :partial => 'haml/video_thumbnail_selection'
+      - elsif ($flag == '4')
+        = render :partial => 'haml/set_searchresult_image_crop'
+      - else
+        = render :partial => 'haml/viewer_placeHolder',:locals =>{:org_id=>@org.id}
+      .clear
+        
+      /  End TopSection
+       
+      .clear
+      .grid_7#admin_left{:style =>"float:left; width: 538px; height: 500px; text-align: left;"}
+        #sea
+          - if $review == '1'
+            = render :partial => '/haml/myHQpage_admin_user_reviews',:locals => {:org => @org }
+          - else
+            = render :partial => 'haml/myHQpage_admin_flowing_text'
+
+      / Right Side
+      .grid_5{:style =>"float:left; zoom: 98%; text-align:left;"}
+        
+        = render :partial => 'haml/myHQpage_static_widgets'
+        
+        #calendar
+          = render :partial => 'haml/myHQpage_admin_sales_calendar',:locals=>{:f=>"Sales Calendar",:id=>@org.id,:calender_status=>@org.calender_status}
+        :javascript
+          function transslide(highid) {
+          var high='high_'+highid;
+          Obcur=jQuery("#"+high)
+          alert(Obcur)
+          OPrev=jQuery("#"+high).prev()
+          OPrev.slideUp()
+          var temp;
+          temp = Obcur.html()
+          Obcur.html(OPrev.html())
+          OPrev.html(temp)
+          var sid;
+
+          sid= Obcur.attr("id")
+          Obcur.attr("id",OPrev.attr("id"));
+          OPrev.attr("id",sid);
+          OPrev.slideDown("slow")
+          Obcur.append();
+          OPrev.append();
+          }
+
+          function transslide1(highid) {
+          var high='high_'+highid;
+          if(jQuery("#"+high).next())
+          { 
+          Obcur=jQuery("#"+high)
+          OPrev=jQuery("#"+high).next()
+          Obcur.slideUp()
+          var temp;
+          temp = Obcur.html()
+          Obcur.html(OPrev.html())
+          OPrev.html(temp)
+          var sid;
+  				
+          sid= Obcur.attr("id")
+          Obcur.attr("id",OPrev.attr("id"));
+          OPrev.attr("id",sid);
+          Obcur.slideDown("slow")
+          Obcur.append();
+          OPrev.append();
+          }
+          }
+
+      / Footer      

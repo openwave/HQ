@@ -1,0 +1,17 @@
+.box_wrp
+  .box_top
+  .box_mid
+    .inner{ :style => "height: 55px;"}
+      .grid_6{ :style => "text-align: left; margin-right: 0px; width: 400px;float:left"}
+        .disclaimerText
+          title
+        - form_tag url_for(:controller => :prices,:action => :new_title,:item=>params[:item],:description=>params[:description],:price=>params[:price]),:style => "width:80%;float:left" do |f|  
+          = text_field_tag :title 
+        - if edt== false
+          = submit_to_remote image_tag('/images/add.jpg'),'Add',:url=>{:controller=>'prices',:action=>'new_title',:item=>params[:item],:tab_type=>'other_tab',:main_tab=>@tab.id,:tab_id=>params[:tab_id],:id=>@org.id,:description=>params[:description],:price=>params[:price]},:update=>'searchWindow'
+        - if edt == true
+          = submit_to_remote image_tag('/images/add.jpg'),'Add',:url=>{:controller=>'prices',:action=>'new_title',:item=>params[:item],:tab_type=>'tab_1',:main_tab=>@tab.id,:tab_id=>params[:tab_id],:id=>@org.id,:description=>params[:description],:price=>params[:price]},:update=>'searchWindow'     
+        .grid_1{ :style => "margin-left: 0px; float: right; text-align: right;"}
+          = link_to_remote image_tag('/images/exitBtn.jpg',:height=>'40'),:url => {:controller => 'prices',:action => 'close'},:update=>'title'
+    .box_bot  
+  

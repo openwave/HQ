@@ -1,0 +1,30 @@
+.grid_12{ :style => "background-image: url(/images/bgNav.jpg); background-repeat: no-repeat; margin-top: 4px;" }
+  .navbar
+    .grid_9
+      %ul#nav
+        .selected
+          %li
+            %a{ :href => "#" }
+              Profile
+        %li#userReviews
+         
+          = link_to 'User Reviews',:controller => :haml,:action => :admin_userReviews,:id => @org.id
+          - tabs.each do |tab|
+
+            %li[tab]
+              = link_to_remote tab.title,:url=>{:controller=>'haml',:action=>'find_templates',:id =>@org.id,:tab_id => tab.id},:update=>'admin_left'
+              .blueArrow
+                %img.manage_btn{ :src => "/images/blueArrow.jpg", :alt => "Options", :style => "cursor:pointer;", :width => "25" }
+              .manageNav
+                .grid_2#deleimg
+                  %img.moveLeft{ :src => "/images/leftArrow.jpg", :height => "25" }
+                  %img.moveRight{ :src => "/images/rightArrow.jpg", :height => "25" }
+                  = link_to image_tag("/images/removeBtnBlue.jpg", :height => "25",:style => "margin-bottom:-9px;"),:controller => :haml,:action => :delete_tab,:id => @org.id,:tab_id => tab.id
+                  %br
+                  move &nbsp;&nbsp;&nbsp; delete
+          
+    %script{ :type => "text/javascript", :src => "/javascripts/addTab.js" }
+    .grid_3{ :style => "text-align: right; width: 150px; float: right;"}
+    %li{:style => " margin-left: 67px;"}
+      =link_to  "Add a New Tab",:controller => :haml,:action => :addNewTab,:id => @org.id
+      %img{ :src => "/images/addBtnGradient.jpg", :alt => "Add", :height => "25", :style => "float: left;", :onclick => "", :style => "cursor: pointer;" }

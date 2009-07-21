@@ -1,0 +1,27 @@
+!!! Strict
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+    
+    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery-1.3.2.min.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_activate.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_event.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_scroll.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/html_att_ev.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corner.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corners.inner_outer.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/manageNav.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/move_up_down.js" }
+    =javascript_include_tag :defaults
+    
+
+.grid_7{:style =>"float:left; width: 538px;"}
+  - form_for([@org, @deal], :html => {:multipart => true}) do |f|
+    = f.error_messages
+    = render :partial => 'manage_hq_card',:locals => { :f => f }
+    = f.submit 
+     

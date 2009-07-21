@@ -1,0 +1,55 @@
+!!! Strict
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }
+    %title
+      myHQpage
+      
+    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+
+  %body
+    .container_12
+      
+      / BOF Header Div
+     
+      .grid_12{ :style => "text-align:right; margin: 10px 0 0;"}
+        %img{ :src => "/images/logo.jpg", :alt => "HQ Logo", :height => "30"}
+     
+      = render :partial => '/haml/my_hq_page_title'
+
+      /  EOF HeaderDiv
+       
+      = render :partial => '/haml/my_hq_page_admin_nav'
+ 
+      /  Top Section
+       
+      = render :partial => '/haml/my_hq_page_admin_quick_facts_old'
+
+      = render :partial => '/haml/viewer'
+
+      .clear
+        
+      /  End TopSection
+       
+      .clear
+      
+      / Text Area
+      .grid_7
+        = render :partial => 'myHQpage_admin_organization_info'
+
+          
+
+      / Right Side
+      .grid_5{:style =>"float:left; zoom: 98%; text-align:left;"}
+        
+        = render :partial => '/haml/my_hq_admin_static_widgets'
+
+        
+        = render :partial => '/haml/myHQpage_admin_sales_calendar'
+
+      / Footer
+        
+      = render :partial => '/haml/myHQpage_admin_footer'

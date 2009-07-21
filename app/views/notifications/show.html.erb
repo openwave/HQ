@@ -1,0 +1,33 @@
+<p>
+  <b>User:</b>
+  <%=h @notification.user_id %>
+</p>
+
+<p>
+  <b>Org:</b>
+  <%=h @notification.org_id %>
+</p>
+
+<p>
+  <b>Promotion:</b>
+  <%=h @notification.promotion %>
+</p>
+
+<p>
+  <b>Deal:</b>
+  <%=h @notification.deal %>
+</p>
+
+<p>
+  <b>News:</b>
+  <%=h @notification.news %>
+</p>
+
+<p>
+  <b>Similar org:</b>
+  <%=h @notification.similar_org %>
+</p>
+
+
+<%= link_to 'Edit', edit_notification_path(@notification) %> |
+<%= link_to 'Back', notifications_path %>

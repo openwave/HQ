@@ -1,0 +1,15 @@
+<% fields_for @video do |f| %>
+<table width="100%">
+    <tr><td style="color:#1B75BC; font-size: 15px;">video:</td> </tr>
+        <tr><td><%= f.file_field :video%></td></tr>
+<br>
+    <tr><td style="color:#1B75BC; font-size: 15px;">Caption:</td></tr>
+        <tr> <td><%= f.text_field :content,:size => 35, :style => "width: 260px; height: 15px;" %></td>
+		</tr>
+		<font color = "red"> 10 mb or 3 minutes max </font>
+<br>
+<p>
+<%= image_submit_tag "/images/submit.jpg", :height => "30", :style => "margin-left: 300px; width: 141px; height: 29px;" %>
+</td>
+</p></table>
+<%end%>

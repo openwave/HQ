@@ -1,0 +1,13 @@
+.box_wrp
+  .box_top
+  .box_mid
+    .inner{ :style => "height: 80px;"}
+      .grid_6{ :style => "text-align: left; margin-right: 0px; width: 400px;float:left"}
+        .disclaimerText
+          new tab
+        - form_tag '/prices/create_tab' do |f|
+          = text_field_tag 'tab_name','',:style => "height: 20px; width: 250px;"
+          = submit_to_remote 'add',"Add",:url=>{:controller=>'prices',:action=>'create_tab',:id=>@org.id,:main_tab=>@tab.id,:tab_name=>params[:tab_name]},:update=>'key',:style => "vertical-align: middle;"
+        .grid_1{ :style => "margin-left: 0px; float: right; text-align: left;margin-top:15px;"}
+          = link_to_remote image_tag( "/images/exitBtn.jpg",:height => "30"),:url=>{:controller=>'prices',:action=>'close'},:update=>'title'
+    .box_bot  

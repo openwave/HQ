@@ -1,0 +1,30 @@
+
+%h3{ :style => "font-style: italic; font-size: 16px;"}
+  New members      
+%br
+%br
+%p
+  = form.label :email, "Email Address"
+  %br
+  = form.text_field :email, :size => 35,:style => "width :254px;"
+
+%p
+  = form.label :password, form.object.new_record? ? nil : "Change password" 
+  %br
+  = form.password_field :password, :size => 35,:style => "width :254px;"
+  
+%p
+  = form.label :password_confirmation, "Confirm Password"
+  %br
+  = form.password_field :password_confirmation, :size => 35,:style => "width :254px;"
+  
+%p
+  = form.label :first_name, "First Name"
+  %br
+  = form.text_field :first_name, :size => 35,:style => "width :254px;"
+  
+%p
+  = form.label :last_name, "Last Name"
+  %br
+  = form.text_field :last_name, :size => 35,:style => "width :254px;"
+  %br

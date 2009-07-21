@@ -1,0 +1,13 @@
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    Create A Video
+%br
+%br
+.grid_6{ :style => "text-align: left;" } 
+  Nothing explains you better than you. And our HQ video team can make your video production process easy, enjoyable and surprisingly quick; in most cases our videos are completed in less than a week.
+  %br
+  %br
+  Tell us a little about the story you have to tell. We promise that we can deliver that message in a light that nobody else could.
+- form_for :video_request,:url => {:controller => :haml, :action => :submit_video,:id => @org.id} do |f| 
+  = f.text_area :content, :style => "width: 480px; height: 200px;float: left; margin-left: 5px;" 
+  = image_submit_tag '/images/submit.jpg',:style => "height:28px;margin-left : 10px;float: left;"  

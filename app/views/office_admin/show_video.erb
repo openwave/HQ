@@ -1,0 +1,28 @@
+<%= javascript_include_tag 'defaults' %>
+<%= javascript_include_tag 'swfobject' %>
+
+<center>
+<script type="text/javascript" src="swfobject.js"></script>
+<div id="player">This text will be replaced</div>
+<script type="text/javascript">
+var so = new SWFObject('/player-viral.swf','mpl','470','320','9');
+so.addParam('allowscriptaccess','always');
+so.addParam('allowfullscreen','true');
+so.addVariable('image','<%= @video.video.url(:thumb) %>');
+so.addVariable('file', '<%= @video.video.url %>');
+so.write('player');
+</script>
+
+
+<br>
+
+  
+    <%= link_to 'Accept',:controller => :office_admin,:action => :accept,:id => @video.id %>
+      &nbsp  &nbsp   &nbsp   &nbsp   &nbsp
+        <%= link_to 'Decline',:controller => :office_admin,:action => :decline,:id => @video.id %>
+<br>
+  <br>
+    <br>
+      <br>
+
+</center>

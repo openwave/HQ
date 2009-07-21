@@ -1,0 +1,25 @@
+
+<% fields_for @photo do |f| %>
+<table >
+	<tr><td>photo</td> 
+        <td><%= f.file_field :image%></td></tr>
+<br>
+<br>
+    <tr><td>caption</td>
+        <td><%= f.text_field :title%></td></tr>
+<%end%>
+<br>
+<br>
+    <tr><td>new gallery</td>
+         <td><%= text_field_tag 'gallery_name'%></td></tr>
+<br>
+<br>
+     <tr><td>Gallery</td>
+<td><%= select_tag "gallery_id",options_for_select({'New Gallery' => "0"},"0") +
+ options_from_collection_for_select(@galleries, 'id', 'title')%></td></tr>
+ <br> <br>
+ <tr> <td> &nbsp </td></tr>
+<tr> <td> &nbsp </td><td>
+<%= image_submit_tag "/images/submit.jpg", :height => "30", :style => "margin-right: 36px;" %>
+</td>
+</tr></table>

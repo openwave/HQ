@@ -1,0 +1,6 @@
+%br
+%br
+- form_for @user_session, :url => user_session_path do |f| 
+  = f.error_messages
+  = render :partial => "form", :object => f
+  = f.submit "Register"

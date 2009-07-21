@@ -1,0 +1,16 @@
+.grid_7{ :style => "margin: 0;"}
+  %h2
+    -@tab.title
+%br
+%br
+.grid_7#key{ :style => "background-image: url(/images/bgNav.jpg); background-repeat: no-repeat; height: 25px; margin: 0;" }
+  =render :partial =>'prices/add_tab_prices',:locals=>{:main_tab=>@tab.id,:id=>@org.id}
+
+%br
+%br
+#abs
+  =render :partial=>'prices/list_prices',:locals=> {:edt => false,:main_tab=>@tab.id,:id=>@org.id}
+= render :partial => 'haml/motion_scroll_bar'
+#searchWindow{ :style => "width: 495px; float: left;"}
+  #searchContent{ :style => "text-align: left; margin-left: 15px;position:relative"}
+    = render :partial => 'myHQadmin_price_description_example'

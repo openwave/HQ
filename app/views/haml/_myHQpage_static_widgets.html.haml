@@ -1,0 +1,37 @@
+
+
+
+%span{ :style => "color:#666;" }
+  = link_to_remote "Add Photos",:update => 'viewer',:url =>{:controller => :haml,:action => :addPhotos,:id => @org.id}
+  %span{ :style => "margin-left:160px;" }
+    %a{ :href => "#" }
+      = link_to_remote "Set Search Result Image",:update => 'viewer',:url =>{:controller => :haml,:action => :default_photo,:id => @org.id}
+  %br
+  #gallery
+    #thumbwrapper
+      .innerThumb
+        #thumbarea
+          %ul#thumbs
+            = render :partial => '/haml/photo_widget',:locals => {:org => @org }
+  %br
+  = link_to_remote( "Submit a Video",:update =>"viewer",:url =>{:controller => :haml,:action => :addVideos,:id => @org.id} )
+  %span{ :style => "margin-left:185px;" }
+    = link_to_remote "Create a Video",:update => 'admin_left',:url => {:controller => :haml,:action => :create_video,:id => @org.id}         
+    
+  %br
+  #gallery
+    #thumbwrapper
+      .innerThumb
+        #thumbarea
+          %ul#thumbs1
+            = render :partial => '/haml/video_widget',:locals => {:org => @org }
+            / = for @video in @org.videos
+            /  %li
+            /    .frame
+            /      = link_to_remote(image_tag("/system/videos/#{@video.id}/original/#{@video.id}.jpg", :height => "60",:width => "60"),:update =>"viewer",:url => {:controller => "haml",:action => "show_video",:org_id => @org.id,:id => @video.id})
+  %br
+.myHQadminWidget
+  %a{ :href => "#" }
+    = link_to_remote 'Manage My HQ Card Deals',:url=>{:controller=>'haml',:action=>'manageHQCard',:id => @org.id},:update=>'sea'
+  
+

@@ -1,0 +1,28 @@
+.salesCalendar
+  .grid_4{ :style => "color:#FFFFFF; font-size:18px; font-weight:bold; text-align: right; padding-top: 10px; width: 250px;"}
+    Sales Calendar
+  %br 
+  %br
+    
+.grid_5{ :style => "border: 2px solid #BED639; margin: 0; height: 200px; width: 376px; text-align:left; padding: 0;"}
+  #motion_scrollbarSmall.grid_1{ :style => "margin-left: 0; margin-top: 0;"}
+    %img{ :src => "/images/motionScrollBarTopSmall.jpg", :class => "up", :width => "27", :height => "100", :alt => "", :usemap => "#uparoSmall"}
+    %img{ :src => "/images/motionScrollBarBottomSmall.jpg", :class=> "down", :width => "27", :height => "100", :alt => "", :usemap => "#dnaroSmall"}
+
+  :javascript
+    jQuery(document).ready(function(){
+    init_dw_CalendarScroll();
+    });
+
+  = render :partial => 'haml/motion_speed_controls'
+  #calendarWindow
+    #calendarContent
+      %ul
+        = render :partial => 'haml/myHQpage_sales_calendar_example'
+       
+
+.grid_5{ :style => "margin: 0; background-image: url(/images/widgetFooter.jpg); height: 40px; width: 384px; background-repeat: no-repeat; text-align: center;"}
+  
+    
+
+            

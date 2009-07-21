@@ -1,0 +1,20 @@
+/
+  Navbar Div
+.grid_12{ :style => "background-image: url(/images/bgNav.jpg); background-repeat: no-repeat; margin-top: 4px;" }
+  .navbar
+    .grid_9
+      %ul
+        
+        %li
+          %a{ :href => "#" }
+            Profile
+        %li
+          = link_to 'User Reviews',:controller => :haml,:action => :userReviews,:id => @org.id
+        - @tabs.each do |tab|
+
+          %li[tab]
+            = link_to_remote tab.title,:url=>{:controller=>'haml',:action=>'choose_tab',:id=>tab.id,:org_id=>@org.id},:update=>'left'
+
+
+.clear
+  \&nbsp;

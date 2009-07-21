@@ -1,0 +1,17 @@
+<div style = "border: 1px solid blue; width: 545px;margin-left: 9px;height: 200px; text-align: justify;; overflow: hidden;">
+<br>
+<br>
+
+<% form_tag url_for(:controller => :haml,:action => :set_default,:id =>@org.id),:multipart => true  do |t| %>
+<table style ="margin-left:20px;" >
+<% fields_for @photo do |f| %>
+	<tr><td><font color = "blue">Choose your search result photo</font></td> </tr>
+     <tr>   <td><%= f.file_field :image %></td></tr>
+<tr><td> &nbsp </td></tr>
+<tr> <td> <%end%>
+<%= image_submit_tag "/images/submit.jpg", :height => "30", :style => "float:left;margin-left:10px;" %>
+<%end%>
+</td>
+</tr>
+</table>
+</div>

@@ -1,0 +1,59 @@
+!!! Strict
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+    %title
+      Local Search Made Wonderful
+    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery-1.3.2.min.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_activate.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_event.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_scroll.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/html_att_ev.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corner.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corners.inner_outer.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/manageNav.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/move_up_down.js" }
+    =javascript_include_tag :defaults
+
+
+- @deals.each do |deal|
+  -high = "high_"<<(deal.id).to_s
+  %div{:class => "grid_7",:id=>high,  :style => "margin: 0; text-align: left;"}
+
+    .grid_2{ :style => "width: 100px; height: " }
+      .innerGrey
+        .deal2
+          
+                   
+          =  deal.deal_value
+          =  deal.deal_type 
+              
+         
+    .grid_3{ :style => "margin: 0;"}
+      %h3
+        = deal.title
+      %br
+      %span{ :style => "color:#57B6DD;"}
+        = deal.description
+      %br
+      %h6
+        = deal.disclaimers_text_flat
+        %br
+        
+        
+    .grid_2{ :style =>"text-align:right;"}
+      %img{ :src => "/images/cardRank.jpg", :height => "40" }         
+      .cardRankNum{ :style => "display: inline;"}
+        = deal.rank
+      %br
+        
+      = link_to_remote image_tag('/images/voteUp.jpg', :onclick => "transslide(#{deal.id})")
+
+      = link_to_remote image_tag('/images/voteDown.jpg',:onclick => "transslide1(#{deal.id})")
+      = link_to_remote image_tag('/images/removeWhite.jpg',:width=> 35),:url=>{:controller=>'haml',:action=>'delete_deal',:id=>deal.id,:org_id => @org.id},:update=>'searchWindow'
+
+ 

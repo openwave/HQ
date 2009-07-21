@@ -1,0 +1,31 @@
+.myHQpage_HQCard_window
+  .grid_4{ :style => "color:#FFFFFF; font-size:18px; font-weight:bold; text-align: center; padding-top: 10px; width: 360px; margin-bottom: 5px;"}
+    HQ Card Deals
+  %br
+  Don't have one?
+  %a{ :href => "#"}
+    It's free
+  %br 
+  %br
+
+.grid_5{ :style => "border: 2px solid #BED639; margin: 0; height: 205px; width: 376px; text-align:left; padding: 0;"}
+  #motion_scrollbarSmall.grid_1{ :style => "margin-left: 0; margin-top: 0;"}
+    %img{ :src => "/images/motionScrollBarTopSmall.jpg", :class => "up", :width => "27", :height => "100", :alt => "", :usemap => "#uparoHQSmall"}
+    %img{ :src => "/images/motionScrollBarBottomSmall.jpg", :class=> "down", :width => "27", :height => "100", :alt => "", :usemap => "#dnaroHQSmall"}
+
+  :javascript
+    jQuery(document).ready(function(){
+    init_dw_hqCardScroll();
+    });
+
+  = render :partial => 'haml/motion_speed_controls'
+  #hqCardWindow
+    #hqCardContent
+
+      = render :partial => 'haml/myHQpage_HQCard_example'
+                                                            
+
+  
+.grid_5{ :style => "margin: 0; background-image: url(/images/widgetFooter.jpg); height: 40px; width: 384px; background-repeat: no-repeat; text-align: center;"}
+  %a{ :href => "#"}
+    Learn More

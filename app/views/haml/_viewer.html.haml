@@ -1,0 +1,10 @@
+.grid_7#viewer{ :style => "margin-left: 5px; margin-right: 0px;"}
+  - if @default_gallery 
+    = render :partial =>'haml/myHQpage_default_gallery'
+  - elsif @default_video 
+    = render :partial =>'haml/myHQpage_default_video'
+  - else
+    .grid_8{:style => "border: 3px solid #DEF2FA; width: 533px; height: 307px; text-align: left; overflow: hidden;"}
+    
+    
+

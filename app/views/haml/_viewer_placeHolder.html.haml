@@ -1,0 +1,10 @@
+.grid_7#viewer{ :style => "margin-left: 0px;"}
+  %script {type="text/javascript" src="swfobject.js"}
+  #player
+  :javascript
+    var so = new SWFObject('/player.swf','mpl','545','306','9');
+    so.addParam('allowscriptaccess','always');
+    so.addParam('allowfullscreen','true');
+    so.addParam('wmode','transparent');
+    so.addVariable('file', '/vidgirlNObox.flv&skin=/bekle.swf&frontcolor=CCFFFF&controlbar=over&repeat=always&autostart=true&icons=false');
+    so.write('player');

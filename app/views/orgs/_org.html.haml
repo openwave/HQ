@@ -1,0 +1,33 @@
+%p
+  = f.label :name, "Organization Name"
+  %br
+  = f.text_field :title 
+
+%p
+  = f.label :street, "Street"
+  %br
+  = f.text_field :street
+
+%p
+  = f.label :locality, "City"
+  %br
+  = f.text_field :locality
+
+%p
+  = f.label :region, "State"
+  %br
+  = f.select :region, Org::STATES, :prompt => "Select a state" 
+  
+%p
+  = f.label :postal_code, "Zip"
+  %br
+  = f.text_field :postal_code
+  
+%p
+  = f.label :hq_url, "URL"
+  %br
+  = f.text_field :hq_url
+
+%p
+  = f.check_box :is_authorized
+  = f.label :is_authorized, "I am an authorized representative of this organization."

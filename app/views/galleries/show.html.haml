@@ -1,0 +1,11 @@
+= render :partial => 'photos' 
+
+%p
+  %b
+    = h @gallery.title
+
+%p
+  = @gallery.content
+    
+= link_to 'New Photo', new_gallery_photo_path(@gallery) 
+= link_to 'Edit Gallery', edit_org_gallery_path(@org, @gallery) 

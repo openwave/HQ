@@ -1,0 +1,13 @@
+%h3{ :style => "font-style: italic; font-size: 16px;"}
+  Existing members      
+%br
+%br
+%p
+  = form.label :email, "Email address"
+  %br
+  = form.text_field :email, :style => "height:20px; width:260px;"
+
+%p
+  = form.label :password, "Password"
+  %br
+  = form.password_field :password, :style => "height:20px; width:260px;"

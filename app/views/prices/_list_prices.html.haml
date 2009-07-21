@@ -1,0 +1,27 @@
+- if edt == false
+  - form_tag url_for(:controller => :prices,:action => :create_price,:tab_type => 'tab_1'),:multipart=>true do |f|
+    = render :partial => 'myHQpage_admin_price_description_default', :locals => { :f => f ,:pricetab => @pricetab,:main_tab=>@tab.id,:edt=>false}
+    #title
+    = render :partial => 'haml/motion_scroll_bar'
+    #searchWindow{ :style => "width: 495px; height: 350px; float: left;"}
+      #searchContent{ :style => "text-align: left; margin-left: 15px;"}
+
+        = render :partial => 'prices/myHQadmin_price_description_example',:locals=>{:edt => false}
+  
+    
+   
+   
+        
+- else
+  - form_tag url_for(:controller => :prices,:action => :create_price,:tab_type => 'other_tab'),:multipart=>true do |f|
+    = render :partial => 'myHQpage_admin_price_description_default', :locals => { :f => f ,:pricetab => @pricetab,:main_tab=>@tab.id,:edt=>true}
+    #title
+    = render :partial => 'haml/motion_scroll_bar'
+    #searchWindow{ :style => "width: 495px; height: 350px; float: left;"}
+      #searchContent{ :style => "text-align: left; margin-left: 15px;"}
+
+        = render :partial => 'prices/myHQadmin_price_description_example',:locals=>{:edt => true}
+   
+
+
+        

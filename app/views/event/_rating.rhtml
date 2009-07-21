@@ -1,0 +1,50 @@
+<%= javascript_include_tag :defaults %>
+
+<div id="star-ratings-block_<%=event.id%>"> 
+
+<ul class='star-rating'>
+    <li class='current-rating' style='width:<%= (event.rating * 20).to_i -%>px;'>
+          Currently <%= number_with_precision(event.rating, 1) %>/5 Stars.
+        </li>
+
+    <li>
+        <%= link_to_remote( "1", {:url => { :controller => "event", 
+            :action => "rate", :id => event.id, :rating => 1, :type=>event.class}},
+            :class => 'one-star', :name => '1 star out of 5') %>
+    </li>
+    
+    <li>
+        <%= link_to_remote( "2", {:url => { :controller => "event", 
+            :action => "rate", :id => event.id,:rating => 2, :type=>event.class}},
+            :class => 'two-stars', :name => '2 stars out of 5') %>    
+    </li>
+    
+    <li>
+        <%= link_to_remote( "3", {:url => { :controller => "event", 
+            :action => "rate", :id => event.id, :rating => 3, :type=>event.class}},
+            :class => 'three-stars', :name => '3 stars out of 5') %>
+            
+    </li>
+<li>
+        <%= link_to_remote( "4", {:url => { :controller => "event", :update=>"star-rating-block",
+                :action => "rate", :id => event.id, :rating => 4, :type=>event.class}},
+                :class => 'four-stars', :name => '4 stars out of 5') %>    
+  </li>
+    <li>
+        <%= link_to_remote( "5", {:url => { :controller => "event", 
+              :action => "rate", :id => event.id, :rating => 5, :type=>event.class}},
+              :class => 'five-stars', :name => '5 stars out of 5') %></li>
+
+
+</ul>
+
+<div id="txt"><%= number_with_precision(event.rating, 1) %>/5 Stars,
+
+<% if !@rat.nil? %>
+
+by <%= @rat.size %> Users
+
+<%end%>
+
+</div>
+

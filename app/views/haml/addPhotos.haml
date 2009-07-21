@@ -1,0 +1,38 @@
+!!! Strict
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+    %title
+      Local Search Made Wonderful
+    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery-1.3.2.min.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.select.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/new_gallery.js" }
+    
+  %body
+    .container_12
+      .grid_8{ :style => "border: 3px solid rgb(222, 242, 250); overflow: hidden; width: 533px; height: 293px; text-align: left; margin-top: 5px;" }
+        .grid_4
+          %h2{ :style => "margin: 10px 26px 15px 10px;"}
+            Add Image
+        .grid_1{ :style => "text-align: right; float: right;"}
+          
+          = link_to image_tag("/images/exitBtn.jpg", :height => "35"),:controller => :haml,:action => :close,:id =>@org.id
+      
+        .grid_4{ :style => "margin-left: 20px; float: left; "}
+          - form_tag url_for(:action => 'save_photos', :id => @org.id),:multipart => true do |f|
+            = render :partial => 'sample.html.erb'
+            
+
+          
+
+              
+        
+          
+          
+          
+          
+          

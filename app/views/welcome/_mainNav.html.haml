@@ -1,0 +1,34 @@
+.mainNav
+  %ul
+    - if $business == 1
+      %li
+        =link_to "home",:controller => :welcome,:action => :index
+      /  \|
+      %li.selected
+        =link_to "business search",:controller => :welcome,:action => :index,:business => 'true'
+      / \|
+    - else
+      %li.selected
+        =link_to "home",:controller => :welcome,:action => :index
+      /  \|
+      %li
+        =link_to "business search",:controller => :welcome,:action => :index,:business => 'true'
+      / \|
+    %li
+      =link_to "hq card search" ,:controller => 'deals',:action=>'index',:deal=>true
+    / \|
+    %li#greyLI
+      = "classifieds"
+    / \|
+    %li#greyLI
+      = "calendars"
+    / \|
+    %li#greyLI
+      = "jackpot"
+    / \|
+    %li#greyLI
+      = "generosity"
+
+
+
+    .clear

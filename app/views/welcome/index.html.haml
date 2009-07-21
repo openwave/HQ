@@ -1,0 +1,39 @@
+.search
+  - form_tag orgs_path, :method => :get do 
+          
+    = text_field_tag :search, params[:search],:class => 'text' 
+    = image_submit_tag '/images/searchTab.jpg',:class => 'search_button'
+- if @deal == true
+  = render :partial => '/welcome/mainNav_card'
+- else      
+  = render :partial => '/welcome/mainNav'
+
+%br
+.grid_12{ :style => "margin: 0; padding: 0;"}
+  %img{ :src => "/images/dropShadow.jpg", :width => "700", :alt => ""}
+       
+%div{ :style => "margin: 0 auto; width: 960px; text-align: left;"}
+  .grid_3{ :style => "text-align: left; margin-top: 46px; float: left; margin-left: 0; margin-right: 15px; width: 250px;"}
+    %img{ :src => "/images/w1.jpg", :width => "250", :alt => "", :oversrc => "/images/w1b.jpg"}
+    %img{ :src => "/images/w2.jpg", :width => "260", :alt => "", :oversrc => "/images/w2b.jpg"}
+    %img{ :src => "/images/w3.jpg", :width => "250", :alt => "", :oversrc => "/images/w3b.jpg"}
+    #div{ :style => "width: 250px; height: 30px; text-align: right; padding-top: 5px;"}
+      =link_to "Advertising Opportunities"
+        
+  .grid_5{ :style => "text-align: left; margin-left:1px; margin-right: 0px; float: left;"}
+        
+    %div
+
+          
+    = render :partial=>'video_girl'
+    %img{ :src => "/images/w4.jpg", :width => "418", :alt => "", :oversrc => "/images/w4b.jpg", :style => "margin-bottom: 5px;"}
+    %img{ :src => "/images/w5.jpg", :width => "418", :alt => "", :oversrc => "/images/w5b.jpg"}
+
+        
+  .grid_2{ :style => "text-align: left; margin-top: 35px; text-align: right; float: left; margin-right: 0px; margin-left: 45px; width: 195px;"}
+    %img{ :src => "/images/w7.jpg", :width => "195", :alt => "", :oversrc => "/images/w7b.jpg"}
+    %img{ :src => "/images/w8.jpg", :width => "184", :alt => "", :oversrc => "/images/w8b.jpg", :style => "margin-right: 8px;"}
+         
+  %img{ :src => "/images/w6.jpg", :width => "617", :alt => "", :oversrc => "/images/w6b.jpg",:style => "margin-top:-4px;"}
+
+        

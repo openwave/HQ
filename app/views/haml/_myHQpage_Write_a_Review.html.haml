@@ -1,0 +1,29 @@
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    Write A Review
+%br
+%br
+- form_tag url_for(:controller => 'haml',:action => 'submit_review',:id => org.id) do |f| 
+  .disclaimerText2
+    Name
+  = text_field_tag 'name','',:style => "width: 300px;"
+  .disclaimerText2
+    Town
+  = text_field_tag 'town','',:style => "width: 300px;"
+  %br
+  .disclaimerText2
+    Rate It
+    %span{:id => "org_rating_#{org.id}"} 
+      = render :partial => "orgs/org_rating", :locals => {:org => org } 
+    
+  .clear
+  .disclaimerText2
+    Review It:
+  = text_area_tag 'content',nil,:style => "width: 500px;height: 300px;"
+  
+  .grid_6{ :style => "text-align: right;"}
+    %span{ :style => "color: #CC0000"}
+      2000
+    characters remaining. (100 character minimum)
+  .clear
+  = image_submit_tag "/images/submit.jpg"

@@ -1,0 +1,85 @@
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/element/element-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/dragdrop/dragdrop-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/resize/resize-min.js"></script>
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/imagecropper/imagecropper-min.js"></script>
+<% form_for :orgs, :url => {:controller => 'haml',:action => 'update_logo_upload',:id =>@org.id} do |f| %>
+<div id="viewer" class="grid_7" style="margin-left: 0px;">
+<div class="grid_8" style = "border: 3px solid #DEF2FA; width: 533px; height: 307px; text-align: left; overflow: hidden;">
+
+<div class="grid_1" style = "text-align: right; float: right;">
+  <%= link_to image_tag("/images/exitBtn.jpg", :height => "35"),:controller => :haml,:action => :close,:id =>@org.id %>
+</div>
+
+
+<table style ="margin-left:20px; margin-top: 20px" align="center">
+       <tr><td><font style="color:#1B75BC;"><h1>2 click and drag to crop your image</h1></font></td> </tr>
+       <!-- % str="http://hq_project_development_bucket.s3.amazonaws.com/orgs/images/#{@org.id}/original.jpg?AWSAccessKeyId=1MEBBKABEPBMZ4GZCSR2&Expires=1248157147&Signature=UFnyozOXDccsGVU4MOVy7u8pQcE%3D" %> -->
+     <tr><td><%= image_tag @org.image.url.gsub(/\?.*/,'') , :id => 'yui_img',:height =>"200",:width=>"280"%> </td> </tr>
+<script type="text/javascript">
+(function() {
+    var Dom = YAHOO.util.Dom,
+        Event = YAHOO.util.Event,
+        results = null;
+
+    Event.onDOMReady(function() {
+            results = Dom.get('results');
+            var crop = new YAHOO.widget.ImageCropper('yui_img', {
+                initialXY: [20, 20],
+                keyTick: 5,
+                shiftKeyTick: 50
+            });
+            crop.on('moveEvent', function() {
+
+                var region = crop.getCropCoords();
+                // alert(region.top);
+                // alert(region.left);
+                // alert(region.height);
+                // alert(region.width);
+              document.getElementById( 'orgs_x1' ).value = region.top;
+              document.getElementById( 'orgs_y1' ).value = region.left;
+              document.getElementById( 'orgs_width' ).value = region.height;
+              document.getElementById( 'orgs_height' ).value = region.width;
+              //  results.firstChild.style.top = '-' + region.top + 'px';
+
+               // results.firstChild.style.left = '-' + region.left + 'px';
+               // results.style.height = region.height + 'px';
+               // results.style.width = region.width + 'px';
+
+
+                //Dom.get('orgs_x1').innerHTML = region.top;
+                //Dom.get('orgs_y1').innerHTML = region.left;
+                //Dom.get('orgs_height').innerHTML = region.height;
+                //Dom.get('orgs_width').innerHTML = region.width;
+                //alert(region.top);
+
+            });
+    });
+})();
+    //var crop = new YAHOO.widget.ImageCropper('yui_img');
+</script>
+
+    <tr><td><%= hidden_field_tag "orgs","x1" ,:id =>"orgs_x1"  %></td></tr>
+
+<tr><td><%= hidden_field_tag 'orgs','y1',:id=>"orgs_y1" %></td></tr>
+
+
+    <tr><td> <%= hidden_field_tag 'orgs','height',:id=>"orgs_height" %></td></tr>
+
+    <tr><td> <%= hidden_field_tag 'orgs', 'width',:id=>"orgs_width" %></td></tr>
+
+<tr><td> &nbsp </td></tr>
+<tr><td>
+  <%=  link_to_remote image_tag("/images/submit.jpg", :height => "30"),:update =>'viewer',:url =>{:controller => 'haml',:action => 'update_logo_upload',:id =>@org.id},:with => "'orgs[x1]=' +encodeURIComponent( $('orgs_x1').value) + '&orgs[y1]=' +encodeURIComponent( $('orgs_y1').value) + '&orgs[height]=' +encodeURIComponent( $('orgs_height').value) + '&orgs[width]=' +encodeURIComponent( $('orgs_width').value) " %>
+
+ </td>
+</tr>
+</table>
+<%end%>
+
+
+
+
+
+</div>
+</div>

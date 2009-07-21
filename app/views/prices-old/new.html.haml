@@ -1,0 +1,5 @@
+%h1 Create
+- form_for([@org, @price]) do |f|
+  = f.error_messages
+  = render :partial => @price, :locals => { :f => f }
+  = f.submit "Create"

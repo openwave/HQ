@@ -1,0 +1,11 @@
+
+	Hello <%=  @user.first_name %>,
+
+<%="\n"%>
+<%= 'Your email has been sent to'+ ' ' + @admin.first_name + ' ' + 'at' + ' '  + Time.now.to_s %>
+<%="\n"%>
+<%="\n"%>
+Please allow up to 24 hours to hear a response. If you do not hear back by (time +24 hours of a work day (monday-friday)) then click the link below.
+<%="\n"%>
+
+<%= @url %>

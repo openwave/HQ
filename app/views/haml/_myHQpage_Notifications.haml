@@ -1,0 +1,66 @@
+
+
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    Notifications
+%br
+%br
+.grid_1{ :style => "float: left;"}
+  Name:
+  %br
+  Email:
+  %br
+  Address:
+.grid_4
+  .head10
+    = @user.first_name + ' ' + @user.last_name
+    %br
+    = @user.email
+    %br
+    - if (!@user.street == nil) && (!@user.locality == nil) && (!@user.region == nil)
+      = @user.street + ',' + @user.locality+ ',' + @user.region
+.disclaimerText
+  = link_to "Not You?",user_session_path, :method => :delete, :confirm => "Are you sure you want to logout from this user account?"
+
+.clear
+%br
+%br
+- form_tag  url_for(:controller => :haml,:action => :submit_notifications,:id => @org.id,:user_id => @user.id) do |f|
+  = check_box_tag 'promotions'
+  Promotions
+  .grid_5{ :style => "font-style:italic;"}
+    Stay posted on any promotions coming from this company.
+  .clear
+  %br
+  = check_box_tag 'Deals'
+  HQ Card Deals
+  
+  .grid_5{ :style => "font-style:italic;"}
+    Stay posted on any HQ Card Deals from this company.
+  .clear
+  %br
+  = check_box_tag 'products'
+  New Products/Services
+  
+  .grid_5{ :style => "font-style:italic;"}
+    Stay posted on any new products or services offered by this company.
+  .clear
+  %br
+  = check_box_tag 'Similar'
+  Similar Companies
+  
+  .grid_5{ :style => "font-style:italic;"}
+    If you like this company, tell me more about similar companies.
+          
+  .clear
+  %br
+        
+  = image_submit_tag "/images/submit.jpg",:height => "30"
+  
+          
+          
+
+      
+
+
+      

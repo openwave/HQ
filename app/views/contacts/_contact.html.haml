@@ -1,0 +1,11 @@
+%p
+  = f.label :title, "title"
+  %br
+  = f.text_field :title, :size => 20
+
+%p
+  = f.label :content, "body"
+  %br
+  = f.text_area :content
+  
+= f.hidden_field :user_id, :value => current_user.id

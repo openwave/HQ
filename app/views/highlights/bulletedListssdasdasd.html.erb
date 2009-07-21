@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>myHQpage</title>
+<link rel="stylesheet" type="text/css" media="all" href="/code/css/reset.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/code/css/960.css" />
+<link rel="stylesheet" type="text/css" media="all" href="/960.css" />
+<!-- this is some comment Stuff!!! -->
+</head>
+<body>	
+<%=stylesheet_link_tag 'reset'%>
+<%=stylesheet_link_tag '960' %>
+<div class="container_12">
+<!--Header Div -->
+<div id="login">
+  <a href="#">Login / Sign Up</a>
+  </div>
+
+<SCRIPT type = "text/JavaScript">
+
+var DHTML = (document.getElementById || document.all || document.layers);
+
+function getObj()
+{
+
+}
+
+var SwitchD = 100;
+
+function move(amount)
+{
+if (!DHTML) return;
+var x = new getObj();
+x.obj = document.getElementById('highlightsBullet');
+x.style = document.getElementById('highlightsBullet').style;
+SwitchD += amount;
+x.style.top = SwitchD;
+}
+
+//-->
+</SCRIPT>
+
+
+ 
+
+  <table width="700" border="1" align="right">
+    <tr>
+        <td><span style="float:right">Logo</span></td>
+    </tr>
+  </table>
+
+  	
+    <div class="grid_12">
+    <div id="greenBorders">
+    <div id="title">
+	  <div id="name">The Monkey Bar</div>
+      </div>
+	  <table width="700" border="1" align="right">
+	    <tr>
+	      <td><img src="/images/stars-big.gif" width="163" height="31" alt="stars" align="right" style="padding-top: 9px" /></td>
+        </tr>
+      </table>
+  </div>
+<div class="clear">
+</div>
+</div>
+	<!-- END HeaderDiv -->
+	
+	<!-- Navbar Div -->
+	<div class="grid_12" id="navbar">
+    <div id="navbarLinks">
+		<ul>
+			<div class="selected"><li><a href="#">Profile</a></li></div>
+			<li><a href="#">Highlights</a></li>
+			<li><a href="#">User Reviews</a></li>
+			<li><a href="#">Critics Reviews</a><div id="blueArrow"><img src="/images/blueArrow.jpg" width="25" /></div></li>
+			<li><a href="#">Menu</a><div id="blueArrow"><img src="/images/blueArrow.jpg" width="25" /></div></li>
+		</ul>
+    </div>
+	</div>
+    <div id="addnewTab">
+    <a href="#">
+    <div id="text">Add a New Tab &nbsp;</div><img src="/images/addBtn.jpg" width="25"/></a>
+    </div>
+    
+	<div class="clear">&nbsp;</div>
+    <div class="grid_12">
+    <div id="myURL">My URL: <a href="#">hqchannel.com/monkeybar</a></div>
+    <div id="previewSubmitBtns">
+    <a href="#"><img src="/images/colorWheelBtn.jpg" /></a>
+    <a href="#"><img src="/images/previewBtn.jpg" /></a>
+    <a href="#"><img src="/images/submit.jpg" /></a>
+    </div>
+    </div>
+	
+    
+    <!-- End Navbar Div-->
+    
+	<!--Top Section-->
+	<div class="grid_5 topSection">
+	  <div id="infoBox">
+      	<div id="logoBoxandQuickNav">
+        <div id="logoBox">
+        <img src="/images/monkey.JPG" alt="" width="135" height="136"/>
+        </div>
+      
+      <script type="text/javascript">
+	 function getAnotherImage(getVal)
+	 {
+	 	
+                if(getVal == 'plus')
+                {
+                 document.getElementById('mainIdVal').src="/images/removeClear.png";
+                 document.getElementById('mainIdVal').title = "minus";
+                }
+                else
+                {
+                  document.getElementById('mainIdVal').src="/images/addBtn.jpg";
+                  document.getElementById('mainIdVal').title = "plus";
+                }
+	 }
+</script> 
+        <div id="quickFactsNav">
+        <a href="#"><img src="/images/changeLogoBtn.jpg" width="170" height="35" alt="Change Logo" /></a><br />
+		<a href="#"><img src="/images/updateInfo.jpg" width="170" height="35" alt="Contact" /></a><br />
+		<a href="#"><img src="/images/mapitBtn.jpg" width="170" height="35" alt="Map It" /></a><a href="#"><img src="/images/addBtn.jpg" width="25" /></a><br />
+		<a href="#"><img src="/images/contact.jpg" width="170" height="35" alt="24 Hour Contact" /><img src="/images/addBtn.jpg" width="25" title="plus"  id="mainIdVal" onClick="getAnotherImage(this.title);" /></a><br />
+	  	</div>
+</div>
+        <div id="quickInfo">
+        <form action="">
+        <select name="QuickFact" style="width:160px">
+        <option value="QuickFact">Hours</option>
+        <option value="QuickFact">Serving</option>
+        <option value="QuickFact">Insurances</option>
+        <option value="QuickFact">Price</option>
+        <option value="QuickFact">Time</option>
+        <option value="QuickFact" selected="selected">Address</option>
+        <option value="QuickFact">Features</option>
+        <option value="QuickFact">Custom</option>
+        </select>
+        </form>
+        <textarea rows="5" cols="18"> The Cat was eating my tulips </textarea> 
+        
+            <form action="">
+        <select name="QuickFact" style="width:160px">
+        <option value="QuickFact">Hours</option>
+        <option value="QuickFact">Serving</option>
+        <option value="QuickFact">Insurances</option>
+        <option value="QuickFact">Price</option>
+        <option value="QuickFact">Time</option>
+        <option value="QuickFact">Address</option>
+        <option value="QuickFact">Features</option>
+        <option value="QuickFact">Custom</option>
+        <option value="QuickFact" selected="selected">Add Quick Fact</option>
+        </select>
+        </form>
+        
+        </div>
+      </div>
+	</div>
+	
+<div id="viewer">
+		<img src="/images/viewer.jpg" width="539" height="300" alt="viewer" />
+</div>
+
+  <div class="clear">&nbsp;</div>
+	<div class="clear">&nbsp;</div>
+	    <div id="leftColumn">
+    <div class="grid_9">
+    <div id="pageTitle">
+    <div id="pageTitleText">
+		<h5>Your Highlights<span style="color:#C00" >*</span></h5>
+     </div>
+       <a href="#"><img src="/images/saveBtn.jpg" height="35" /></a>
+       </div>
+                <div class="roundedcornr_box_977237">
+           <div class="roundedcornr_top_977237"><div></div></div>  
+           <div class="roundedcornr_content_977237">
+           <div id="test"> <%= render :partial => 'new'%> </div></div>
+           <div class="roundedcornr_bottom_977237"><div></div></div>
+        </div>
+       
+       <img src="/images/scrollBar.jpg" width="26" height="400" alt="scrollbar" class="scrollbar" />
+       <div id="bodyText">
+            	  <% unless @highlights.empty? %>
+                 <% @highlights.each do |highlight| %>
+         <h4>highlight:</h4>
+         <div id="highlightsBullet" >
+         <textarea rows="1" cols="30"><%= highlight.title %></textarea>
+               <A href="javascript:move(20);"><img src="/images/voteup.jpg" /></a>     
+        
+       <a href="javascript:move(-20);"><img src="/images/voteDown.jpg" /></a>
+       <%= link_to 'Destroy',highlight, :confirm => 'Are you sure?', :method => :delete %>
+                 <h4>description:</h4>
+         <textarea row="4" cols="55"><%= highlight.content%></textarea>
+       	 <!-- eof example -->
+         </div>
+    <% end %><% end %>
+        <div id="required">*This is required.</div>
+         <div id="seeMore">
+        Reviews 1-20 of 30: 
+        <span class="currentPage">
+        1
+        </span>
+        <span class="alternatePages">
+        <a href="#">2</a></span>
+        <span class="alternatePages">
+        <a href="#">Next</a>
+        </span>
+        </div>
+        </div>
+	</div>
+    </div>
+    
+    <div id="rightColumn">
+    <span style="color:#666">
+    <a href="#">Add Photos </a><br />
+    <img src="/images/gallery.jpg" /> <br />
+    <a href="#">Create a Video</a> 
+    <span style="margin-left:180px;">
+    <a href="#">Submit a Video</a></span>
+    <br />
+    <img src="/images/gallery.jpg" /> <br />
+    </span>
+    
+    <a href="#"><div id="moreWidgets">My Analytics</div></a>
+	<a href="#"><div id="moreWidgets">More Widgets</div></a>
+
+     <div id="calendarTitle">
+         <div id="calendarName"> Sales Calendar</div>
+          <div id="removeBtn"><a href="#"><img src="/images/removeBtn.jpg" width="25" /></a></div>
+         
+    </div>
+    <div class="roundedcornr_box_824138">
+       <div class="roundedcornr_top_824138">
+       <div id="subWidgetNav"><a href="#">Add Event</a></div>
+       <div></div></div>
+          <div class="roundedcornr_content_824138">
+          
+            <div class="roundedcornr_box_502323">
+               <div class="roundedcornr_top_502323"><div></div></div>
+                  <div class="roundedcornr_content_502323">
+                     <p>
+                     <div id="eventTitle">Spring Break Sale</div>
+                     <div id="eventDate">5/09</div>
+                     <div id="editDate"><a href="#">edit</a></div>
+                     <div id="eventDescription">
+                     	Clothing is half off everything and better yet, we are selling the country
+                        of Lithuania to any of our first shoppers. And not to worry, this petite little
+                        country has an amazing waffle industry established only for guaranteed success.
+                     </div>
+                     <div id="eventReadMore"><a href="#">Read More</a></div>
+                     <div id="eventuserslikethis">USERS LIKE THIS</div>
+                     <div id="eventVotes">8</div>
+                     </p>
+                  </div>
+               <div class="roundedcornr_bottom_502323"><div></div></div>
+            </div>
+            
+            <div class="roundedcornr_box_886995">
+               <div class="roundedcornr_top_886995"><div></div></div>
+                  <div class="roundedcornr_content_886995">
+                     <p>
+                     <div id="eventTitle">Spring Break Sale</div>
+                     <div id="eventDate">5/09</div>
+                     <div id="editDate"><a href="#">edit</a></div>
+                     <div id="eventDescription">
+                     	Clothing is half off everything and better yet, we are selling the country
+                        of Lithuania to any of our first shoppers. And not to worry, this petite little
+                        country has an amazing waffle industry established only for guaranteed success.
+                     </div>
+                     <div id="eventReadMore"><a href="#">Read More</a></div>
+                     <div id="eventuserslikethis">USERS LIKE THIS</div>
+                     <div id="eventVotes">8</div>
+                     </p>
+                  </div>
+               <div class="roundedcornr_bottom_886995"><div></div></div>
+            </div>
+            
+            <div class="roundedcornr_box_502323">
+               <div class="roundedcornr_top_502323"><div></div></div>
+                  <div class="roundedcornr_content_502323">
+                     <p>
+                     <div id="eventTitle">Spring Break Sale</div>
+                     <div id="eventDate">5/09</div>
+                     <div id="editDate"><a href="#">edit</a></div>
+                     <div id="eventDescription">
+                     	Clothing is half off everything and better yet, we are selling the country
+                        of Lithuania to any of our first shoppers. And not to worry, this petite little
+                        country has an amazing waffle industry established only for guaranteed success.
+                     </div>
+                     <div id="eventReadMore"><a href="#">Read More</a></div>
+                     <div id="eventuserslikethis">USERS LIKE THIS</div>
+                     <div id="eventVotes">8</div>
+                     </p>
+                  </div>
+               <div class="roundedcornr_bottom_502323"><div></div></div>
+            </div>
+            
+            <div class="roundedcornr_box_886995">
+               <div class="roundedcornr_top_886995"><div></div></div>
+                  <div class="roundedcornr_content_886995">
+                     <p>
+                     <div id="eventTitle">Spring Break Sale</div>
+                     <div id="eventDate">5/09</div>
+                     <div id="editDate"><a href="#">edit</a></div>
+                     <div id="eventDescription">
+                     	Clothing is half off everything and better yet, we are selling the country
+                        of Lithuania to any of our first shoppers. And not to worry, this petite little
+                        country has an amazing waffle industry established only for guaranteed success.
+                     </div>
+                     <div id="eventReadMore"><a href="#">Read More</a></div>
+                     <div id="eventuserslikethis">USERS LIKE THIS</div>
+                     <div id="eventVotes">8</div>
+                     </p>
+                  </div>
+               <div class="roundedcornr_bottom_886995"><div></div></div>
+            </div>
+            
+            
+            
+          </div>
+       <div class="roundedcornr_bottom_824138"><div>
+       <div id="subWidgetNav"><a href="#">Change Calendar</a></div></div></div>
+    </div>
+   
+   
+   
+  
+    </div>
+    
+    <!-- eof RIGHT SIDE -->
+	
+	<div class="clear">&nbsp;</div>
+	<!--End Stories Area-->
+	
+	<!--Spacer-->
+	<div class="grid_12 spacer">
+	</div>
+	<div class="clear">&nbsp;</div>
+	<!--End Spacer-->
+	
+	<!-- Footer -->
+	<div id="footer">
+    <div id="dashboardOffers">
+    <div id="dashboardTitle">HQ Traffic Dashboard</div>
+    <div id="linksBlock">
+    	<li><a href="#">Manage HQ Card Deals</a></li>
+        <li><a href="#">Create a Banner</a></li>
+       
+    </div>
+    <div id="linksBlock">
+    	<li><a href="#">Video Girl Advertising</a></li>
+        <li><a href="#">Do Not Click Adverts</a></li>
+    </div>
+    <div id="linksBlock">
+    	<li><a href="#">Create a Video</a></li>
+        <li><a href="#">Direct Mail Marketing</a></li>
+    </div>
+    <div id="linksBlock">
+        <li><a href="#">HQ Magazine</a></li>
+        <li><a href="#">Ad Design</a></li>
+    </div>
+    <div id="linksBlock">
+    	 <li><a href="#">Email Marketing</a></li>
+        <li><a href="#">Magazine Inserts</a></li>
+    </div>
+         
+    </div>
+  	
+  </div>
+
+</div>
+
+</body>
+</html>
+
+

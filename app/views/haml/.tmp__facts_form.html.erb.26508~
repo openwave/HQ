@@ -1,0 +1,33 @@
+
+<%=form_tag url_for(:action => 'save_facts',:id=>@org.id) %> 
+<%= select("facts", "title",options_for_select({ "Hours"=>"Hours" ,
+    "Serving"=>"Serving" ,
+    "Insurance"=>"Insurance" ,
+    "Price"=> "Price" ,
+    "Address"=> "Address" ,
+    "Features"=> "Features" ,
+    "Custom"=> "Custom" }),:class => 'select')%>
+
+<%= text_area :facts,:content,:rows => 5,:cols => 9 %>
+
+
+<%= select("facts", "title",options_for_select({ "Hours"=>"Hours" ,
+    "Serving"=>"Serving" ,
+    "Insurance"=>"Insurance" ,
+    "Price"=> "Price" ,
+    "Address"=> "Address" ,
+    "Features"=> "Features" ,
+    "Custom"=> "Custom" }),:class => 'select')%>
+
+<%= text_area :facts,:content,:rows => 5,:cols => 9  %>
+
+<%= text_field :facts,:title %>
+
+<%= text_area :facts,:content,:rows => 5,:cols => 9  %>
+
+<p>
+  <%= submit_tag 'submit' %>
+ </p>
+ 
+
+

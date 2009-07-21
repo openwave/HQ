@@ -1,0 +1,15 @@
+%ul#prices
+  %table
+  - @prices.each do |price|
+    - content_tag_for :li, price do
+      %tr
+        %td
+          %span.handle
+            [drag]
+          = price.name 
+          = link_to 'Show', price
+          = link_to 'Edit', edit_price_path(price)
+          = link_to 'Destroy', price, :confirm => 'Are you sure?', :method => :delete
+          %br 
+        
+  = sortable_element("prices", :url => sort_prices_path, :handle => "handle")

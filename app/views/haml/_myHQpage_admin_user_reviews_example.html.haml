@@ -1,0 +1,35 @@
+/  Begin Example muthafucka yah!
+
+#userReviewResult
+  .grid_7{ :style => "height: 50px;"}
+    %div{ :style => "float: left;"}
+      = render :partial => "/orgs/org_rating",:locals => {:org => org}
+      
+    .grid_2{ :style => "margin: -8px 0 0 0; text-align: right; float:left; width: 90px;"}
+      .grid_1{ :style => "font-size: 10px; color: #ccc; padding-top: 6px; text-align: center; width: 37px; float: right;"}
+        USERS LIKE THIS
+      .head13{ :style => "margin: -1px 46px 0px 0px;"}
+        = review.rank
+    .head9
+      = review.created_at.strftime("%B %d,%Y")
+
+  .clear
+  
+  .grid_5
+    %h5
+      = "-" + review.name + "(" + review.town + ")"
+  
+  %a#flagThis{ :href => "#", :style =>"border-left-width: 0px; height: 12px; margin-left: 420px;"}
+    = link_to_remote "Flag This?",:update => 'reportThis'+'_review_'+ review.id.to_s,:url => {:controller => :haml,:action => :report_form,:review_id => review.id}
+  
+  .clear
+
+  #reportThis[review]
+    
+
+  .clear
+  .grid_6{ :style => "margin-bottom: 10px;"}
+    = review.content
+  .clear
+  
+  /  End Example Wow!!!

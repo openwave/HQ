@@ -1,0 +1,17 @@
+<center>
+<br>
+  <br>
+    <br>
+      <table cellpadding="20" cellspacing = "20">
+        <tr> <th align ="left"> Organisation Name </th>
+             <th align ="right"> No. of Videos  </th>
+        </tr>
+      <%  @orgs.each do |@org| %>
+        <tr> <td align ="left">
+        <%= @org.title %> </td> <td align ="right">
+        <%= link_to @org.videos.size,:controller => :office_admin,:action => :videos_list,:id => @org.id %> </td>
+        </tr>
+      
+      <%end%>
+</table>
+</center>

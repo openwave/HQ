@@ -1,0 +1,111 @@
+!!! Strict
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+    %title
+      Local Search Made Wonderful
+    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery-1.3.2.min.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corner.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corners.inner_outer.js" }
+
+  %body
+    .container_12
+  
+      / BOF HEADER
+        
+      .superHeader
+        = render :partial => 'login'
+      .clear
+
+      .logoHeader
+        %img{ :src => "/images/hqLogo.jpg", :height => "200" }
+
+      .search
+        %form{ :action => "#"}
+          %input{ :class => "text", :type => "text", :onclick =>"this.value=''", :value => "Local Search Made Wonderful" }
+          %input{ :name => "searchbg", :type => "hidden" }
+          %input{ :name => "template", :type => "hidden" }
+          %input.search_button{ :type => "image", :src => "/images/searchTab.jpg", :value => "Search", :height => "35" }
+    
+      = render :partial => 'mainNav'
+      = image_tag('/images/dropShadow.jpg', :style => "display:inline;")
+      
+     
+      %div{ :style => "margin: 0 auto; width: 700px;"}
+        %h1
+          Sign Up or Login
+        %br
+      
+        .grid_4{:style => "float:left; text-align: left;"}
+          .inner
+            %h3{ :style => "font-style: italic; font-size: 16px;"}
+              new members
+            %br
+            %br
+            Email Address
+            %br
+            %textarea{ :rows => "1", :cols => "30", :style => "height: 20px; width: 260px;" }
+            %br
+            New Password
+            %br
+            %textarea{ :rows => "1", :cols => "30", :style => "height: 20px; width: 260px;" }
+            %br
+            Confirm Password
+            %br
+            %textarea{ :rows => "1", :cols => "30", :style => "height: 20px; width: 260px;" }
+            %br
+            First Name
+            %br
+            %textarea{ :rows => "1", :cols => "30", :style => "height: 20px; width: 260px;" }
+            %br
+            Last Name
+            %br
+            %textarea{ :rows => "1", :cols => "30", :style => "height: 20px; width: 260px;" }
+            %br
+            #div{ :style => "text-align:right; width: 260px; margin-top: 10px;"}
+              = image_tag('/images/signupBtn.jpg', :height => "25")
+          
+        .grid_4{:style => "background-image: url(/images/BGgreen.jpg); background-repeat: no-repeat; height: 400px; width: 332px; float:left; text-align: left; padding: 12px 0 0 17px;"}
+          %h3{ :style => "font-style: italic; font-size: 16px;"}
+            existing members
+          %br
+          %br
+          %textarea{ :rows => "1", :cols => "30", :onclick =>"this.value=''", :style => "height: 20px; width: 260px;" }
+            Login
+          %br
+          %textarea{ :rows => "1", :cols => "30", :onclick =>"this.value=''", :style => "height: 20px; width: 260px;" }
+            Password
+          %p
+            Forgot your
+            %a{ :href => "#" }
+              password?
+          %br
+          %div{ :style => "width: 280px; text-align: right;"}
+            = image_tag('/images/loginBtn.jpg', :height => "25")
+          
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

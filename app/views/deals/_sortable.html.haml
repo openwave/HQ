@@ -1,0 +1,16 @@
+%ul#deals
+  %table
+  - @deals.each do |deal|
+    - content_tag_for :li, deal do
+      %tr
+        %td
+          %span.handle
+            [drag]
+          = deal.title 
+          = deal.description
+          = link_to 'Show', deal
+          = link_to 'Edit', edit_deal_path(deal)
+          = link_to 'Destroy', deal, :confirm => 'Are you sure?', :method => :delete
+          %br 
+        
+ 

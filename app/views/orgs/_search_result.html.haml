@@ -1,0 +1,21 @@
+- @orgs.each do |org|
+  #container1.thumbContainer
+    :javascript
+      function showThisImg(imgURL) {
+        //alert(imgURL);
+        document.getElementById('imageContainer').innerHTML="<img id='imageContainerImg' width='280' height='200' src='"+imgURL+"' alt='' />";
+        document.getElementById('imageContainerImg').style.display='inline';
+      }
+        
+    %div.searchResult{:onmouseover => "showThisImg('#{org.image.url}')", :onmouseout => "showThisImg('/images/STUB_01.jpg')"}
+      .grid_2{:style => "margin: 0;"}
+        - org.galleries.each do |gals|
+          - gals.photos.each do |photo|
+           
+            - if photo.default
+              = link_to image_tag(photo.image.url,:width =>135,:height =>120),:controller => :haml,:action => :myHQpage,:id => org.id
+            / - else
+            /   = link_to image_tag(org.image.url,:width =>135,:height =>120),nil  
+      
+      = render :partial => '/orgs/search_partial',:locals => {:org => org}
+= will_paginate @orgs 	   

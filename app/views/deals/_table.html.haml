@@ -1,0 +1,20 @@
+%table
+  %tr
+    %th Type
+    %th Name
+    %th Rank
+    %th Action
+  - @deals.each do |deal|
+    %tr
+      %td
+        = link_to deal.deal_type, org_deal_path(deal.org_id, deal)
+      %td
+        = image_tag deal.photo.url(:small)
+      %td
+        = deal.title
+        %br
+        = deal.description 
+        = deal.disclaimers_text_flat          
+      %td
+        = deal.rank
+     

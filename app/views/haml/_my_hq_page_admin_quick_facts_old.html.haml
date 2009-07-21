@@ -1,0 +1,58 @@
+.grid_6{ :style => "width: 390px; margin-right: 0px; margin-top: 5px;"}
+  .innerBlue{ :style => "height:275px;"}
+    .grid_3{ :style => "margin: 0; width: 180px; text-align: left;"}
+      .grid_2{ :style => "background-color: #fff; height: 140px; width: 145px; text-align: center;"}
+        - if @org.logo == true
+         
+          = image_tag @org.image.url.gsub(/\?.*/,''), :height => "140", :width => "136"
+        - else
+          %img{ :src => "/images/hqLogo.jpg", :height => "140", :alt => "Logo" }
+
+      %div{ :style => "margin-left: 10px;"}
+        %a{ :href => "#" }
+        = link_to_remote image_tag("/images/changeLogoBtn.jpg",:width => "136"),:update => 'viewer',:url => {:controller => :haml,:action => :change_logo,:id => @org.id}         
+        /= link_to image_tag("/images/changeLogoBtn.jpg",:width => "136"),:controller => :haml,:action => :logo_upload,:id => @org.id, :href=>"#"          
+        = link_to_remote image_tag("/images/updateinfoBtn.jpg",:width => "136"),:update => 'admin_left',:url => {:controller => :haml,:action => :myHQadmin_org_info,:id => @org.id}         
+
+        %a{ :href => "#" }
+          = link_to image_tag ("/images/mapitBtn.jpg", :width => "136"),:href=>"#",:controller=>'haml',:action=>'map_it',:id=>@org.id
+        %a{ :href => "#" }
+          - if @org.map_it == true
+            = link_to image_tag ("/images/removeWhite.jpg", :width => "25"),:href=>"#",:controller=>'haml',:action=>'map_it',:id=>@org.id,:style => "margin-right: 80px;"
+          - else
+            = link_to image_tag ("/images/addWhite.jpg", :width => "25"),:href=>"#",:controller=>'haml',:action=>'map_it',:id=>@org.id,:style => "margin-right: 80px;"
+        %a{ :href => "#" }
+          =link_to image_tag("/images/contactBtn.jpg", :width => "136", :alt => "24 Hour Contact"),:href=>"#",:controller=>'haml',:action=>'contact_button',:id=>@org.id
+        %a#deactivate{ :href => "#"}
+          - if @org.contact_24 == false
+            %img#addContactBtn{ :src => "/images/addWhite.jpg", :width => "25", :alt => "Add" }
+          - else
+            %img#addContactBtn{ :src => "/images/removeWhite.jpg", :width => "25", :alt => "Add" }
+
+    / Quick Facts' heights are measured as 20px drop downs, and three 70px text areas. That will fit inside the Quick Facts Box with 10 px padding.
+    = render :partial => "/haml/facts_form"
+    
+
+  #contactDisclaimer
+    
+    
+
+    .inner{ :style => "height: 300px; width: 400px"}
+
+      .grid_5
+        %img{ :src => "/images/24hrContact.jpg", :width => "50", :style => "float: left;"}
+        %h4{ :style => "text-align: center;"}
+          HQ Contact Button
+          %br
+          Guarenteed Response
+        %div{ :style => "border: 1px solid #ccc"}
+          When a user clicks the HQ Contact Button, an email will be sent to you with their information, and request.
+          %br
+            By clicking accept, you are agreeing to just a few important things to running a great organization or company. First, that you love lots of business. You love getting the word out, and being found out by the entire local community. Second, that you will keep in touch with the parade of people you will find through this website within twenty four hours of a business day. If you can't find the time to reply to your clientelle, we may have to step in, and ask why. Sometimes a contact button isn't for everyone.
+        .clear
+        %br
+        .grid_5{ :style => "text-align: center; margin-left: 0;"}
+          %a#acceptDisclaimer{:href => "#"}
+            = link_to image_tag ("/images/iacceptBtn.jpg", :height => "30"),:href=>"#",:controller=>'haml',:action=>'contact',:id=>@org.id,:style => "margin-right: 80px;"
+          %a#rejectDisclaimer{ :href => "#"}
+            = link_to image_tag("/images/nothanksBtn.jpg", :height => "30"),:controller=>'haml',:action=>'deactivate_contact',:id=>@org.id

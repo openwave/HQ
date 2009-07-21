@@ -1,0 +1,29 @@
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    Write A Review
+%br
+%br
+.disclaimerText2
+  Name
+%input{ :type => "text", :style => "width: 300px;", :value => "Bob Marley"}
+.disclaimerText2
+  Town
+%input{ :type => "text", :style => "width: 300px;", :value => "Kingston, JA"}
+%br
+.disclaimerText2
+  Rate It
+  %span{:id => "org_rating_#{org.id}"} 
+    = render :partial => "orgs/org_rating", :locals => {:org => org } 
+  Highly 
+  %br
+  Recommended
+.clear
+.disclaimerText2
+  Review It:
+%textarea{ :style => "width: 500px; height: 300px;"}
+.grid_6{ :style => "text-align: right;"}
+  %span{ :style => "color: #CC0000"}
+    2000
+  characters remaining. (100 character minimum)
+.clear
+%img{ :src => "/images/submit.jpg"}

@@ -1,0 +1,37 @@
+.grid_6{ :style => "width: 390px; margin-top: 5px; margin-right: 0px;"}
+
+  .innerBlue{ :style => "height: 275px;"}
+    .grid_3{ :style => "margin: 0; width: 180px"}  
+      .grid_2{ :style => "background-color: #fff; height: 140px; width: 145px;"}
+        - if @org.logo == true
+          = image_tag @org.image.url, :height => "140", :width => "136"
+        - else
+          %img{ :src => "/images/hqLogo.jpg", :height => "140", :alt => "Logo" }
+
+
+
+      %a{ :href => "#" }
+        = link_to image_tag("/images/writeareviewBtn.jpg",:width => 136),:controller => :haml,:action => :myHQpage_Write_a_Review,:id => @org.id 
+        
+        
+      - if current_user
+        = link_to_remote image_tag("/images/contactBtn.jpg",:width => 136),:update => 'left',:url => {:controller => :haml,:action => :myHQpage_contact,:id => @org.id }
+      - else
+        = link_to image_tag("/images/contactBtn.jpg",:width => 136),{:controller => 'user_sessions',:action => 'new'},{:title =>'Login required to perform this action'} 
+      
+      /= link_to_remote image_tag("/images/notifymeBtn.jpg",:width => 136),:update => 'left',:url => {:controller => :haml,:action => :myHQpage_notification,:id => @org.id }
+      = link_to image_tag("/images/mapitBtn.jpg",:width => 136),:controller => :haml,:action => :map,:id => @org.id
+        
+
+
+    / Quick Facts' heights are measured as 20px drop downs, and three 70px text areas. That will fit inside the Quick Facts Box with 10 px padding.
+    %p
+      
+      = for fact in facts
+        %b
+          = fact.title
+        %br
+        = fact.content
+        %br
+        %br
+      

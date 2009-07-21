@@ -1,0 +1,91 @@
+/ bof LEFT SIDE
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    Manage My HQ Card Deals
+%br
+%br
+.inner{ :style => "text-align: left;"}
+  .grid_2
+    .stepsMarker
+      1
+    %br
+    %h6{ :style => "margin-top: 6px; margin-bottom: 5px;" }
+      \&nbsp; deal:
+    = radio_button("deal", "deal_type", "free")
+    Free
+    %br
+      
+    = radio_button("deal", "deal_type", "dollar", options = {:onclick => "Element.show('pDollar'); Element.hide('pPercent');"})
+    = f.text_area :deal_type,{ :rows => "1", :cols => "3", :style => "height: 20px; width: 45px;"}
+    \$ Off
+    %br
+    = radio_button("deal", "deal_type", "percent", options = {:onclick => "Element.show('pPercent'); Element.hide('pDollar');"})
+    =f.text_area :deal_type,{ :rows => "1", :cols => "3", :style => "height: 20px; width: 45px;"}
+    \% Off
+  
+  .grid_4
+    .stepsMarker
+      2
+    %br
+    %h6{ :style => "margin-top: 6px; margin-bottom: 5px;" }
+      \&nbsp; what:
+    \&nbsp;&nbsp;&nbsp;
+    = f.text_field :title, :size => 20
+      
+    %br
+    %span{ :style => "color:#c00; float:right; margin-top:4px; font-size: 10px" }
+      max. 20 characters
+    %br
+    %br
+    %br    
+  
+  .grid_6
+    .stepsMarker{ :style => "height:50px" }
+      3
+    %br
+    %h6{ :style => "margin-top: 6px; margin-bottom: 5px;" }
+      \&nbsp; description:
+    \&nbsp;&nbsp;&nbsp;
+  = f.text_field :description, :size => 30
+
+  %span{ :style => "color:#c00; float:right; font-size: 10px" }
+  max. 150 characters
+  
+  .grid_7{ :style => "float:left; width: 495px;" }
+    .stepsMarker
+      4
+    %br
+    %h6{ :style => "margin-top: 6px; margin-bottom: 5px;" }
+      \&nbsp; disclaimers:
+    .disclaimerText
+      - for disclaimer in Disclaimer.all 
+        = check_box_tag 'deal[disclaimer_ids][]', disclaimer.id, @deal.disclaimers.include?(disclaimer)
+        = disclaimer.name
+        %br
+      = hidden_field_tag 'order[disclaimer_ids][]', ''
+      .clear
+    %br
+    .grid_2{ :style => "float:left"}
+      = f.file_field :photo
+      - unless @deal.new_record? || !@deal.photo? 
+        = image_tag @deal.photo.url(:small), :alt => 'Photo', :title => 'Current photo'
+    %br
+    %br
+    .grid_4{ :style => "float:left;align:right;"}
+      = submit_to_remote image_tag("/images/add.jpg"),"Add",:url=>{:controller=>'deals',:action=>'create'},:update=>'sea'
+  .clear
+
+  
+.clear
+
+%br
+%br
+= render :partial => 'motion_scroll_bar'
+
+#searchWindow{ :style => "width: 495px"}
+  #searchContent         
+    = render :partial => 'manage_hq_card_example'
+    
+.clear
+
+

@@ -1,0 +1,106 @@
+.grid_6{ :style => "width: 390px; margin-right: 0px; margin-top: 5px;"}
+  .innerBlue{ :style => "height:275px;"}  
+    .grid_3{ :style => "margin: 0; width: 180px; text-align: left;"}  
+      .grid_2{ :style => "background-color: #fff; height: 140px; width: 145px; text-align: center;"}
+        %img{ :src => "/images/monkey.JPG", :height => "140", :alt => "Logo" }
+        
+      %div{ :style => "margin-left: 10px;"}
+        %a{ :href => "#" }
+          %img{ :src => "/images/changeLogoBtn.jpg", :width => "136", :alt => "Change Logo" }
+        %a{ :href => "#" }
+          %img{ :src => "/images/updateinfoBtn.jpg", :width => "136", :alt => "Contact"}
+        %a{ :href => "#" }
+          %img{ :src => "/images/mapitBtn.jpg", :width => "136", :alt => "Map It" }
+        %a{ :href => "#" }
+          %img{ :src => "/images/addWhite.jpg", :width => "25", :alt => "Add" }
+        %a{ :href => "#" }
+          %img{ :src => "/images/contactBtn.jpg", :width => "136", :alt => "24 Hour Contact" }
+        %a#deactivate{ :href => "#"}
+          %img#addContactBtn{ :src => "/images/removeWhite.jpg", :width => "25", :alt => "Add" }
+
+    / Quick Facts' heights are measured as 20px drop downs, and three 70px text areas. That will fit inside the Quick Facts Box with 10 px padding.
+
+    %form{ :action => "" }
+      %select{ :name => "QuickFact", :style => "width:160px" }
+        %option{ :value => "QuickFact" }
+          Hours
+        %option{ :value => "QuickFact" }
+          Serving
+        %option{ :value => "QuickFact" }
+          Insurances
+        %option{ :value => "QuickFact" }
+          Price
+        %option{ :value => "QuickFact" }
+          Time
+        %option{ :selected => "selected", :value => "QuickFact" }
+          Address
+        %option{ :value => "QuickFact" }
+          Features
+        %option{ :value => "QuickFact" }
+          Custom
+      %textarea{ :rows => "5", :cols => "14", :style => "width: 155px; height: 70px" }
+        The Cat was eating my tulips
+      %form{ :action => "" }
+        %select{ :name => "QuickFact", :style => "width:160px" }
+          %option{ :value => "QuickFact" }
+            Hours
+          %option{ :value => "QuickFact" }
+            Serving
+          %option{ :value => "QuickFact" }
+            Insurances
+          %option{ :value => "QuickFact" }
+            Price
+          %option{ :value => "QuickFact" }
+            Time
+          %option{ :value => "QuickFact" }
+            Address
+          %option{ :value => "QuickFact" }
+            Features
+          %option{ :value => "QuickFact" }
+            Custom
+          %option{ :selected => "selected", :value => "QuickFact" }
+            Add Quick Fact
+        %textarea{ :rows => "5", :cols => "14", :style => "width: 155px; height: 70px" }
+      %form{ :action => "" }
+        %select{ :name => "QuickFact", :style => "width:160px" }
+          %option{ :value => "QuickFact" }
+            Hours
+          %option{ :value => "QuickFact" }
+            Serving
+          %option{ :value => "QuickFact" }
+            Insurances
+          %option{ :value => "QuickFact" }
+            Price
+          %option{ :value => "QuickFact" }
+            Time
+          %option{ :value => "QuickFact" }
+            Address
+          %option{ :value => "QuickFact" }
+            Features
+          %option{ :value => "QuickFact" }
+            Custom
+          %option{ :selected => "selected", :value => "QuickFact" }
+            Add Quick Fact
+  #contactDisclaimer
+    / This is the best IE hack for allowing a div to appear over a select item
+    %iframe{ :src => "BLOCKED SCRIPT'&lt;html&gt;&lt;/html&gt;';", :scrolling => "no", :frameborder =>"0", :style => "position: absolute; width: 400px; height: 300px; margin-left: -210px; left: 50%; border: none; display: block; z-index: 0;"}
+    
+    .inner{ :style => "height: 300px; width: 400px"}
+
+      .grid_5
+        %img{ :src => "/images/24hrContact.jpg", :width => "50", :style => "float: left;"}
+        %h4{ :style => "text-align: center;"}
+          HQ Contact Button
+          %br
+          Guarenteed Response
+        %div{ :style => "border: 1px solid #ccc"}
+          When a user clicks the HQ Contact Button, an email will be sent to you with their information, and request.
+          %br
+            By clicking accept, you are agreeing to just a few important things to running a great organization or company. First, that you love lots of business. You love getting the word out, and being found out by the entire local community. Second, that you will keep in touch with the parade of people you will find through this website within twenty four hours of a business day. If you can't find the time to reply to your clientelle, we may have to step in, and ask why. Sometimes a contact button isn't for everyone.
+        .clear
+        %br
+        .grid_5{ :style => "text-align: center; margin-left: 0;"}
+          %a#acceptDisclaimer{ :href => "#"}
+            %img{ :src => "/images/iacceptBtn.jpg", :height => "30", :style => "margin-right: 80px;"}
+          %a#rejectDisclaimer{ :href => "#"}
+            %img{ :src => "/images/nothanksBtn.jpg", :height => "30"}

@@ -1,0 +1,8 @@
+
+
+<%= f.text_area :content,:size => "63x18",:onclick => "a();"  %>
+
+<br>
+<br>
+
+<%= image_submit_tag "/images/submit.jpg", :height => "30", :style => "margin-right: 36px;" %>

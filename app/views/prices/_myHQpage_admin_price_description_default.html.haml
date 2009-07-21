@@ -1,0 +1,34 @@
+.box_wrp
+  .box_top
+  .box_mid
+    .inner{ :style => "text-align: left; height: 115px;"}
+      .grid_5{ :style => "float:left;"}
+        .disclaimerText
+          %span{ :style => "color: #BF1E2D; float:left; height: 4px;"}
+            *
+          item
+        = text_field_tag :item,nil,:style => "height: 20px; width: 350px;"
+        .disclaimerText
+          description
+      
+        = text_field_tag :description,nil,:style => "height: 40px; width: 350px;"
+        %br
+        %a{ :href => "#", :style => "margin-right: 220px;"}
+          = link_to_remote  "Attach Image",:url=>{:controller=>'prices',:action=>"add_image",:item=>params[:item],:description=>params[:description],:tab_id=>params[:tab_id],:id=>@org.id,:price=>params[:price]},:update=>'title',:style => "margin-right: 220px;"
+          
+          = link_to_remote  "Add Title",:url=>{:controller=>'prices',:action=>"add_title",:id=>@org.id,:item=>params[:item],:description=>params[:description],:price=>params[:price],:tab_id=>params[:tab_id],:main_tab=>@tab.id},:update=>'title',:style => "float:right;margin-right:2px;"
+      .grid_1{ :style => "float:right;width:42px;margin-right:30px"}
+        .disclaimerText
+          price
+          %span{ :style=>"height:20px; width: 20px; margin-bottom: 30px"}
+        = text_field_tag :price,nil, :style => "height:20px; width: 70px; margin-bottom: 30px;"
+        - if edt==false
+      
+          = submit_to_remote image_tag('/images/submit.jpg'),'Add',:url=>{:controller=>'prices',:action=>'create_price',:tab_type=>'tab_1',:id=>@org.id,:main_tab=>@tab.id},:update=>'searchWindow'
+        - if edt==true
+      
+          = submit_to_remote image_tag('/images/submit.jpg'),'Add',:url=>{:controller=>'prices',:action=>'create_price',:tab_type=>'other_tab',:tab_id=>params[:tab_id],:id=>@org.id,:main_tab=>@tab.id},:update=>'searchWindow'
+        .disclaimerText
+          %span{ :style => "color: #BF1E2D; float:right;"}
+            *required
+  .box_bot

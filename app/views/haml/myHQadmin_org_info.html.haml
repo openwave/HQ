@@ -1,0 +1,62 @@
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    My Organization Info
+%br
+%br
+- form_for @org,:url=>{:controller => :haml,:action => :org_update,:id=>@org.id} do |f|
+
+  #smallTextBoxes{ :style => "text-align:right;"}
+    organization:
+    = f.text_area :title,:rows => "1", :cols => "35"
+    %br
+    three word description:
+    = f.text_area :three_word_desc,:rows => "1", :cols => "35"
+
+    %br
+    %br
+    first name:
+    = f.text_area :contact_first_name,:rows => "1", :cols => "35"
+
+    %br
+    last name:
+    = f.text_area :contact_last_name,:rows => "1", :cols => "35"
+
+    %br
+    email:
+    = f.text_area :contact_email,:rows => "1", :cols => "35"
+
+    %br
+    %br
+    street address:
+    = f.text_area :street,:rows => "1", :cols => "35"
+
+    %br
+
+    zip code:
+    = f.text_area :postal_code,:rows => "1", :cols => "35"
+
+    %br
+    city:
+    = f.text_area :locality,:rows => "1", :cols => "35"
+
+    %br
+    #div{ :style => "height:25px;"}
+      state:
+
+      %select{ :name => "State", :style => "width:264px",:selected => @org.region}
+        
+        %option{ :value => "new jersey" }
+          New Jersey
+        
+    %br
+    %br
+    telephone:
+    = f.text_area :contact_phone_work,:rows => "1", :cols => "35"
+
+    %br
+    fax:
+    = f.text_area :contact_fax,:rows => "1", :cols => "35"
+
+    %br
+    %br
+    = image_submit_tag "/images/submit.jpg", :height => "30", :style => "margin-right: 36px;"

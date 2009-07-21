@@ -1,0 +1,26 @@
+.grid_6{:style => "width: 430px;"}
+  .grid_3{:style => "margin: 0; text-align: left;"}
+    %h2
+      %a{ :href => "#image1"}
+        = org.title
+    %br
+    = org.street
+    %br
+    %h6
+      = org.locality+ ',' +org.region
+  .titleAndTown
+    5 Reviews
+    = render :partial => "/orgs/org_rating",:locals => {:org => org}
+    %br
+    .cardRankNumBusinessSearch
+      %img{ :src => "/images/cardRank.jpg", :height => "30" }
+      54
+%br
+.businessSearchResultText
+  %p
+    = for flow in org.flowings
+      = link_to flow.content.first(100),:controller => :haml,:action => :myHQpage,:id => @org.id
+	          
+       
+	   
+          

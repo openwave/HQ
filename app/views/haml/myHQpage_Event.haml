@@ -1,0 +1,58 @@
+!!! Strict
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
+    %title
+    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery-1.3.2.min.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_activate.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_event.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_scroll.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/html_att_ev.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corner.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corners.inner_outer.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/manageNav.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/prototype.js" }
+   
+
+
+  %body{ :onload => "init_dw_Scroll()" }
+    .container_12
+   
+      .clear
+        
+      /  End TopSection
+       
+      .clear
+      / omit the width and possibly the height value var here in .grid_7
+      .grid_7{:style =>"float:left; width: 538px; height: 500px; text-align: left;"}
+        .grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+          %h2
+            = @event.title 
+        %br
+        %br
+        .disclaimerText2
+          = @event.starting_on.to_s + ' ' + '-' + ' ' + @event.ending_on.to_s
+        = @event.description
+        %br
+        %br
+        .disclaimerText2
+          Age Req.
+        =@event.age_requirement
+        %br
+        %br
+        .disclaimerText2
+          Address
+        = @event.street
+        %br
+        = @event.locality+','+@event.region + ' ' + '-' + ' ' + @event.postal_code
+        %br
+        %br
+        .grid_5{ :style => "margin-left: 0;"}
+          .inner
+            %img{ :src => "/images/mapitPlaceHolder.jpg", :width => "355"}
+          
+    

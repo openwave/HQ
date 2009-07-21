@@ -1,0 +1,15 @@
+
+  
+
+
+<% form_for :orgs, :html => { :multipart => true } do |f| %>
+<table >
+	<tr><td>Photo</td> 
+        <td><%= f.file_field :image%></td></tr>
+<%end%>
+<tr><td> &nbsp </td></tr>
+<tr> <td> &nbsp </td><td>
+<%= image_submit_tag "/images/submit.jpg", :height => "30", :style => "margin-right: 36px;" %>
+</td>
+</tr>
+</table>

@@ -1,0 +1,5 @@
+%h1 Deal
+- form_for([@org, @deal], :html => {:multipart => true}) do |f|
+  = f.error_messages
+  = render :partial => @deal, :locals => { :f => f }
+  = f.submit "Add"

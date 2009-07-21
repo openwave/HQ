@@ -1,0 +1,14 @@
+<script type="text/javascript" src="swfobject.js"></script>
+<div id="player">This text will be replaced</div>
+<script type="text/javascript">
+var so = new SWFObject('/player.swf','mpl','545','307','9');
+so.addParam('allowscriptaccess','always');
+so.addParam('allowfullscreen','true');
+so.addVariable('image','<%= @video.video.url(:thumb) %>');
+so.addVariable('file', '<%= @video.video.url.gsub(/\?.*/,'') %>&skin=/bekle.swf&frontcolor=CCFFFF&controlbar=over&autostart=true&icons=false');
+so.addVariable("width","545");
+so.addVariable("frontcolor","0xFFFFFF");
+so.addVariable("height","307");
+so.addVariable('overstretch', 'true')
+so.write('player');
+</script>

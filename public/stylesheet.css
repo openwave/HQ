@@ -1,0 +1,715 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* ******************** NAV & HEADER ******************** */
+.superHeader {
+	text-align: right;
+	float: right;
+}
+.logoHeader {
+	margin-top:15px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 220px;
+}
+
+
+
+/* ************* REBURBISHED MAIN NAV ************* */
+
+.mainNav {
+	width:100%; 
+	height:30px; 
+}
+.mainNav ul{
+	margin:0px; 
+	padding:0px;
+}
+
+.mainNav ul li{
+	display:inline; 
+	height:30px; 
+	float:left; 
+	list-style:none; 
+	margin-left: 0.5em;
+	width: 123px;
+}
+
+.mainNav li a{
+	color:#000;
+	font-family:Times,"Times New Roman",serif;
+	font-size: 17px; 
+	text-decoration:none;
+}
+
+.mainNav li a:hover{
+	color: #BED639;
+}
+
+.mainNav .selected {
+	background-image: url(/images/mainNavSelected.jpg);
+	background-repeat:no-repeat;
+}
+.mainNav .selected a {
+	color: #000 !important;
+}
+
+/* ************* EOF REBURBISHED MAIN NAV ************* */
+
+.bannerAds {
+	margin:10px auto 0;
+	width:960px;
+}
+.bannerAds a {
+	margin-right: 1em;
+}
+#greenBorders {
+	border-bottom:2px solid #BED639;
+	border-top:2px solid #BED639;
+	height:40px;
+	padding-top:10px;
+}
+
+/* ******************** EOF NAV & HEADER ******************** */
+
+/* ******************** My HQ Page Main NAV ***************** */
+.navbar {
+	margin: 0;
+	padding: 0;
+
+}
+.navbar li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+
+.navbar li a {
+	color:#000000;
+	float:left;
+	padding-left:1em;
+	padding-right:1em;
+	padding-top: 3px;
+	vertical-align:top;
+	text-decoration: none;
+	border-left: 4px solid white;
+	height: 22px;
+	font-size:14px;
+	display: block;
+}
+
+.navbar a:hover {
+	background-color: #88D9F2;
+	text-decoration: none;
+	height: 22px;
+}
+
+.navbar .selected a {
+	background-color: #88D9F2;
+	height: 22px;
+	
+}
+
+.navbar ul {
+	list-style: none;
+}
+.blueArrow {
+	float: left;
+}
+
+
+.manageNav {
+ 	display:none;  
+	position:fixed;  
+ 	_position:absolute; /* hack for internet explorer 6*/  
+	top:130px;
+	lef:0px;
+ 	background:#DEF2FA; 
+ 	z-index:2;
+}
+.manageNavPriceDescription {
+ 	display:none;  
+	position:fixed;  
+ 	_position:absolute; /* hack for internet explorer 6*/  
+	top:555px;
+	lef:0px;
+ 	background:#DEF2FA; 
+ 	z-index:2;
+}
+.priceDescriptionTitle {
+	border-bottom:2px solid #BED639;
+	float:left;
+	font-size:16px;
+	font-weight:bold;
+	margin-bottom:10px;
+	margin-left:5px;
+	margin-right:20px;
+	text-align:left;
+	width:340px;
+}
+#priceDescriptionItem {
+	border-bottom:2px dashed #CCCCCC;
+	margin-bottom:10px;
+	padding-bottom:5px;
+}
+/* **************** TEXT AREA ************** */
+
+.bulletedListHeader {
+	font-size: 17px;
+	text-align: left;
+	font-weight: bold;
+}
+#userReviewResult {
+	border-bottom: 1px solid #57B6DD;
+	margin-bottom: 5px;
+	text-align: left;
+}
+
+
+/* ******************** EOF My HQ Page Main NAV ***************** */
+/* ********************* myHQpage Admin ******************* */
+
+#contactDisclaimer {
+	position: absolute;
+	left: 50%;
+    margin-left: -210px;
+	width: 420px;
+	z-index: 1000;
+
+	
+    
+}
+
+/* ******************* BOF VIEWER *********************** */
+
+#addNewTabWindow {
+	height:175px;
+	overflow:hidden;
+	position:relative;
+}
+
+/* Image Gallery ********************* */
+
+#gallery {
+	position:relative;
+	width:370px;
+}
+#images {border:2px solid #9ac1c9; height:225px; background:#eef5f6; margin-bottom:20px}
+#image {position:relative; width:546px; height:307px; padding:2px; background:#FFF url(/images/loading.gif) center center no-repeat}
+#image img {position:absolute; top:5px; left:5px}
+#thumbwrapper {width:370px; height:64px; background:#FFF}
+#thumbarea {position:relative; overflow:hidden; height:67px; width:365px; }
+#thumbs {position:absolute; list-style:none; margin-left:5px; margin-top: 3px; height:100px; width:10000px; border-right:5px solid #FFF}
+#thumbs li {float:left; margin-right:5px; cursor:pointer}
+.imgnav {position:absolute; height:311px; width:20%; z-index:100; outline:none; cursor:pointer}
+#previmg {left:0; background:url(/images/left.gif) left center no-repeat; border-left:5px solid #FFF}
+#previmg:hover {opacity:1; filter:alpha(opacity=100)}
+#nextimg {right:0; background:url(/images/right.gif) right center no-repeat; border-right:5px solid #FFF}
+#nextimg:hover {opacity:1; filter:alpha(opacity=100)}
+
+.thumbPanel {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 900;
+	height: 20px;
+	width: 107px;
+	background-color: #FFF;
+	font-size: 14px;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+.thumbPanelBottom {
+	display: none;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 900;
+	height: 20px;
+	width: 107px;
+	font-size: 14px;
+}
+.mainPanel {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 900;
+	height: 30px;
+	width: 545px;
+	background-color: #FFF;
+	font-size: 14px;
+	margin: 7px;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+.mainFrame, .frame {
+	position: relative;
+	text-align: left;
+}
+
+
+/* ******************* EOF VIEWER *********************** */
+
+/* ********************* BOF myHQpage Admin Right Collumn ********** */
+
+.myHQadminWidget {
+	background-image:url(/images/greenBar.jpg);
+	background-repeat:no-repeat;
+	height:46px;
+	padding-top:10px;
+	text-align:center;
+	width:auto;
+}
+.myHQadminWidget a {
+	text-decoration: none;
+	color:#FFFFFF;
+	font-size:18px;
+	font-weight:bold;
+}
+
+/* ********************** BOF FOOTER ************************ */
+
+.linksBlock {
+	float:left;
+	font-size:10pt;
+	margin-bottom:5px;
+	margin-left:17px;
+	margin-top:5px;
+}
+.linksBlock a {
+	text-decoration: none;
+}
+
+/* ******************** EOF FOOTER *********************** */
+
+/* ********************* BOF myHQpage Admin Right Collumn ********** */
+
+/* ********************* MANAGE MY HQ CARD DEALS ************ */
+
+.stepsMarker {
+	color:#1B75BC;
+	float:left;
+	font-size:40px;
+	font-weight:bold;
+	height:120px;
+}
+.hqCardDeal {
+	font-size: 48px;
+	color: #8CC643;
+	font: Helvetica;
+	letter-spacing: -2px;
+	font-weight: bold;
+}
+
+/* ********************* EOF MANAGE MY HQ CARD DEALS ************ */
+
+
+/* **************** SEARCH BAR ******************* */
+.search input.text {
+	background:transparent url(/images/searchBarNormal.jpg) no-repeat scroll 0 0;
+	border:0 none;
+	display:block;
+	font-size:15px;
+	height:35px;
+	padding-left:8px;
+	padding-top:8px;
+	width:500px;
+}
+
+.search_button {
+	position:absolute;
+	top:0px;
+	left:358px;
+	border: 0px;
+	margin: 0px 0px 0px 2px;
+}
+
+.search {
+	height:35px;
+	margin:20px auto;
+	padding:0;
+	position:relative;
+	width:494px;
+	}
+
+/* ******************** EOF SEARCH BAR *************** */
+
+
+/* *********** TEXT **************** */
+
+
+
+/* *********** EOF TEXT **************** */
+
+/* ************* SEARCH PAGES ***************** */
+#imageContainer {
+	display: inline;
+}
+.searchResult {
+	border-top:thin dashed #CCCCCC;
+	height:116px;
+	padding-bottom:10px;
+	padding-top:10px;
+	width:auto;
+	overflow: hidden;
+}
+
+.searchResult:hover {
+	background-color:#f3fbfe;
+}
+
+.cardRankNum {
+	color:#999999;
+	font-size:52px;
+	font-weight:bold;
+	letter-spacing:-4px;
+}
+.cardRankNumBusinessSearch {
+	color:#999;
+	font-size: 36px;
+	font-weight:bold;
+	letter-spacing: -2px;
+}
+
+.searchTitle {
+	float:left;
+	margin-right:55px;
+}
+
+.searchLeftSide {
+	float:left;
+	width: 600px;
+	overflow: hidden;
+}
+.searchRightSide {
+	float:right;
+	width: 300px;
+	padding: 0;
+}
+
+#searchWindow {
+	position: relative;
+	height: 555px;
+	overflow: hidden;
+}
+
+.sortOptions a {
+	color:#000000;
+	font-size:16px;
+	padding-left:4px;
+	text-decoration:none;
+	
+}
+
+.sortOptions li {
+	display:block;
+	height:26px;
+	margin-left:10px;
+	list-style-image: none;
+	list-style-type: none;
+}
+
+.sortOptions .sortSelected {
+	background-image:url(/images/sortSelected.jpg);
+	background-repeat:no-repeat;
+}
+.sortOptions .sortSelected a:hover {
+	color: #000;
+}
+
+.sortOptions li a:hover {
+	color: #BED639;
+}
+
+.deal {
+	color: #BED639;
+	font-size: 57px;
+	font-family:Helvetica,Arial serif MS;
+	font-weight: bold;
+	letter-spacing: -4px;
+}
+.deal2 {
+	color: #BED639;
+	font-size: 35px;
+	font-family:Helvetica,Arial serif MS;
+	font-weight: bold;
+	letter-spacing: -2px;
+}
+.currentPage {
+	color:#666;
+	margin-left:6px;
+	margin-top:10px;
+	padding:2px 2px 0;
+}
+.alternatePages {
+	border:1px solid grey;
+	margin-top:8px;
+	margin-left:6px;
+	padding:3px 6px;
+}
+.alternatePages a {
+	color: #57B6DD;
+}
+.cardRankingandVote {
+	margin-top: -24px;
+	float: right;
+	width: auto;
+}
+.titleAndTown {
+	float:right;
+	text-align:right;
+	width:194px;
+}
+.businessSearchResultText {
+	font-size:12px;
+	width:430px;
+	display:inline;
+	float:left;
+	margin-left:10px;
+	margin-right:10px;
+}
+
+/* ***************** EOF SEARCH PAGES ******************** */
+
+/* ******************* Calendar ********************* */
+.salesCalendar{
+	background-image: url(/images/widgetHeader.jpg); 
+	height: 60px; 
+	width: 385px; 
+	background-repeat: no-repeat; 
+	margin: 0; 
+	text-align: center;	
+}
+#calendarWindow {
+	position: relative;
+	height: 190px;
+	overflow: hidden;
+}
+#calendarWindow ul li{
+	list-style: none;
+	margin-bottom: 3px;
+	height: 135px;
+	padding-left: 5px;
+	width: 330px;
+}
+
+#calendarWindow ul li.zebraStripes {
+	background-color: #DEF2FA;
+}
+
+
+
+/* ******************* EOF Calendar ********************* */
+
+/* ******************* BOF HQ CARD WIDGET ************** */
+
+#hqCardWindow {
+	position: relative;
+	height: 190px;
+	overflow: hidden;
+}
+.myHQpage_HQCard_result {
+	border-bottom: 2px solid #BED639;
+	padding-top: 10px;
+	padding-bottom: 2px;
+	height: 140px;
+	width: 335px;
+}
+.myHQpage_HQCard_window {
+	background-image: url(/images/widgetHeaderHQCard.jpg); 
+	height: 60px; 
+	width: 385px; 
+	background-repeat: no-repeat; 
+	margin: 0; 
+	text-align: center;
+}
+
+/* ******************* EOF HQ CARD WIDGET ************** */
+
+
+
+
+/* *************** MOTION SCROLL BAR ******************  */
+
+#motion_scrollbar {
+	position: relative;
+	width: 40px;
+	height: 300px;
+}
+#motion_scrollbarSmall {
+	position: relative;
+	width: 20px;
+	height: 200px;
+}
+	
+#motion_scrollbar_horizontal {
+	height:58px;
+	position:relative;
+	width:545px;
+	margin: 1px;
+}
+
+.grid_1 .up {
+	left: 0;
+	top: 0;
+	position: absolute;
+}
+
+.grid_1 .down {
+	bottom: 0;
+	left: 0;
+	position: absolute;
+}
+.left {
+	left: 0;
+	top: 0;
+	position: absolute;
+}
+.right {
+	right: 0;
+	top: 0;
+	position: absolute;
+}
+
+/* *****************   BOF ROUNDED CORNER     ***************** */
+
+/* ************** JQUERY ROUNDED CORNERS ***************** */
+
+/* Light Green */
+div.inner { margin: 0; background: #fff; padding: 10px; border:0;}
+div.outer { float: left; background: #BED639; padding: 8px; width: 100%;}
+
+/* Light Grey */
+div.innerGrey { margin: 0; background: #fff; padding: 10px; border:0; height: 60px;}
+div.outerGrey { float: left; background: #999; padding: 8px; width: 100%; }
+
+/* Light Green  for thumb Viewer in myHQpage Admin */
+div.innerThumb { margin: 0; background: #fff; padding: 0px; border:0;}
+div.outerThumb { float: left; background: #BED639; padding: 8px; width: 100%;}
+/* Light Blue */
+div.innerBlue { margin: 0; background: #fff; padding: 10px; border:0;}
+div.outerBlue { float: left; background: #DEF2FA; padding: 8px; width: 100%;}
+
+
+/* ************** EOF JQUERY ROUNDED CORNERS ***************** */
+
+
+
+/* ********************* BOF GREEN WIDGET ***************** */
+
+.roundedcornr_box_133951 {
+	background: url(/images/roundedcornr_133951_tl.png) no-repeat top left;
+}
+.roundedcornr_top_133951 {
+	background: url(/images/roundedcornr_133951_tr.png) no-repeat top right;
+}
+.roundedcornr_bottom_133951 {
+	background: url(/images/roundedcornr_133951_bl.png) no-repeat bottom left;
+}
+.roundedcornr_bottom_133951 div {
+	background: url(/images/roundedcornr_133951_br.png) no-repeat bottom right;
+}
+.roundedcornr_content_133951 {
+	background: url(/images/roundedcornr_133951_r.png) top right repeat-y;
+}
+
+.roundedcornr_top_133951 div,.roundedcornr_top_133951,
+.roundedcornr_bottom_133951 div, .roundedcornr_bottom_133951 {
+	width: 100%;
+	height: 15px;
+	font-size: 1px;
+}
+.roundedcornr_content_133951, .roundedcornr_bottom_133951 {
+/*	margin-bottom:-20px; */
+}
+.roundedcornr_content_133951 { padding: 0 0px; }
+
+/* ********************* EOF GREEN WIDGET ***************** */
+
+/* ********************** grey box #999 ********************** */
+
+.roundedcornr_box_668958 {
+	background: url(/images/roundedcornr_668958_tl.png) no-repeat top left;
+}
+.roundedcornr_top_668958 {
+	background: url(/images/roundedcornr_668958_tr.png) no-repeat top right;
+}
+.roundedcornr_bottom_668958 {
+	background: url(/images/roundedcornr_668958_bl.png) no-repeat bottom left;
+}
+.roundedcornr_bottom_668958 div {
+	background: url(/images/roundedcornr_668958_br.png) no-repeat bottom right;
+}
+.roundedcornr_content_668958 {
+	background: url(/images/roundedcornr_668958_r.png) top right repeat-y;
+}
+
+.roundedcornr_top_668958 div,.roundedcornr_top_668958,
+.roundedcornr_bottom_668958 div, .roundedcornr_bottom_668958 {
+	width: 100%;
+	height: 15px;
+	font-size: 1px;
+}
+.roundedcornr_content_668958, .roundedcornr_bottom_668958 {
+	margin-top: -10px;
+}
+.roundedcornr_content_668958 { padding: 12px 15px;}
+
+/* *****************  myHQpage Top Right Blue Box ************ */
+
+.roundedcornr_box_131704 {
+	background: url(/images/roundedcornr_131704_tl.png) no-repeat top left;
+}
+.roundedcornr_top_131704 {
+	background: url(/images/roundedcornr_131704_tr.png) no-repeat top right;
+}
+.roundedcornr_bottom_131704 {
+	background: url(/images/roundedcornr_131704_bl.png) no-repeat bottom left;
+}
+.roundedcornr_bottom_131704 div {
+	background: url(/images/roundedcornr_131704_br.png) no-repeat bottom right;
+}
+.roundedcornr_content_131704 {
+	background: url(/images/roundedcornr_131704_r.png) top right repeat-y;
+}
+
+.roundedcornr_top_131704 div,.roundedcornr_top_131704,
+.roundedcornr_bottom_131704 div, .roundedcornr_bottom_131704 {
+	width: 100%;
+	height: 15px;
+	font-size: 1px;
+}
+.roundedcornr_content_131704, .roundedcornr_bottom_131704 {
+	margin-top: -5px;
+}
+.roundedcornr_content_131704 { padding: 0px 15px; }
+
+/* *****************   EOF ROUNDED CORNER     ***************** */
+
+/* ***************** HQ CARD LAUNCH TEMP CSS ********************* */
+
+.mainNav ul li#greyLI {
+	color: #bbb;
+	font-family:Times,"Times New Roman",serif;
+	font-size: 17px; 
+	text-decoration:none;
+}
+
+/* ***************** eof HQ CARD LAUNCH TEMP CSS ********************* */
+
+/* ***************** bof Office Admin ********************* */
+
+#videoSubmission{
+	border-bottom: 2px dashed #eee;
+	width: 500px;
+}
+#vidSubWindow {
+	position: relative;
+	height: 190px;
+	overflow: hidden;
+}
+
+/* ***************** eof Office Admin ********************* */

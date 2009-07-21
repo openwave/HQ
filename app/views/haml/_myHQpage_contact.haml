@@ -1,0 +1,46 @@
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    Contact
+%br
+%br
+.inner{ :style => "height: 403px;"}
+  .grid_1
+    %ul{ :style => "list-style: none;"}
+      %li
+        To:
+      %li  
+        From:
+      %li  
+        Email:
+      %li  
+        Address:
+  .grid_4
+    %ul{ :style => "list-style: none; color: #BED639"}
+      %li
+        = @org.title
+      %li
+        = @user.first_name + ' ' + @user.last_name
+      %li
+        = @user.email
+      %li
+        - if (!@user.street == nil) && (!@user.locality == nil) && (!@user.region == nil)
+          = @user.street + ',' + @user.locality+ ',' + @user.region
+  .grid_1
+    = link_to "Not You?",user_session_path, :method => :delete, :confirm => "Are you sure you want to logout from this user account?"
+  .clear
+  %br
+  .grid_7{:style =>"width: 490px; margin-right: 0px;"}
+    .grid_1{ :style => "margin-left: 0px;"}
+      Request:
+    .grid_5{ :style => "text-align: right; margin-left: 30px"}
+      Time of Request: 
+      %span{ :style => "color: #BED639"}
+        = Time.now.strftime("%I:%M%p %m/%d/%y")
+    %br
+    - form_for :contact,:url => {:controller => :haml, :action => :contact_mail,:user_id => @user.id,:id => @org.id} do |f|
+      = f.text_area :content, :style => "height: 275px; width: 495px;"
+      = "Write any request. ie: reservation, appointment, place an order, a quote, or make a customer complain for this company and be responded to within 24 hours of a business day guaranteed. A receipt for this request will be emailed to you."
+
+      = image_submit_tag '/images/submit.jpg',:style => "height:28px;margin-left : 10px;float: left;"
+              
+      

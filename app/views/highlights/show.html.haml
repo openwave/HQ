@@ -1,0 +1,9 @@
+%p
+  %b
+    = h @highlight.title
+  
+%p
+  = @highlight.content
+  
+= link_to 'Edit', edit_org_highlight_path(@org, @highlight) 
+

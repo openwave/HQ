@@ -1,0 +1,8 @@
+<% unless @org.deals.empty? %>
+  Deals
+  <ul>
+  <% @org.deals.each do |deal| %>
+    <li><%= link_to deal.title, org_deal_path(@org, deal) %>
+  <% end %>
+  </ul>
+<% end %>

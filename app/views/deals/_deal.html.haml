@@ -1,0 +1,44 @@
+%p
+  Free
+  = radio_button("deal", "deal_type", "free")
+  
+  Dollar  
+  = radio_button("deal", "deal_type", "dollar", options = {:onclick => "Element.show('pDollar'); Element.hide('pPercent');"})
+
+  Percent  
+  = radio_button("deal", "deal_type", "percent", options = {:onclick => "Element.show('pPercent'); Element.hide('pDollar');"})
+    
+%p
+  = f.label :name, "value"
+  %br
+  = f.text_field :deal_value, :size => 20
+  #pDollar{ :style => "display:none" }
+    dollar
+  #pPercent{ :style => "display:none" }
+    percent
+    
+%p
+  = f.label :name, "what (max. 20 characters)"
+  %br
+  = f.text_field :title, :size => 20
+  
+%p
+  = f.label :description, "description (max. 150 characters)"
+  %br
+  = f.text_field :description, :size => 50
+  
+%p 
+  = f.label :photo, "photo(max. .5 megs)"
+  %br
+  = f.file_field :photo
+  - unless @deal.new_record? || !@deal.photo? 
+    %br
+    = image_tag @deal.photo.url(:small), :alt => 'Photo', :title => 'Current photo'
+  
+%p  
+  - for disclaimer in Disclaimer.all 
+    = check_box_tag 'deal[disclaimer_ids][]', disclaimer.id, @deal.disclaimers.include?(disclaimer)
+    = disclaimer.name
+    %br
+  = hidden_field_tag 'order[disclaimer_ids][]', ''
+    

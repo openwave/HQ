@@ -1,0 +1,58 @@
+class Org < ActiveRecord::Base
+  belongs_to :user
+  acts_as_geocodable
+  acts_as_rated
+  has_many :flowings
+  has_many :facts
+  has_many :prices
+  has_many :tabs
+  has_many :highlights
+  has_many :galleries
+  has_many :deals
+  has_many :events
+  has_many :notifications
+  has_many :contacts
+  has_many :videos
+  has_one  :profile
+  has_many :video_requests
+  has_many :reviews   
+  
+  # Paperclip
+  has_attached_file :image,
+  :styles => {
+    :thumb   => "107x60#",
+    :full    => "545x307>" },
+  :storage => :s3,
+  :s3_credentials => "#{RAILS_ROOT}/config/s3.yml",
+  :path => "orgs/:attachment/:id/:style.:extension",
+  :bucket => 'hq_project_development_bucket'  
+  
+  validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/gif', 'image/png', 'image/pjpeg', 'image/x-png']
+  
+  # using typical SLR camera aspect ratio of 2:3 (I.e. 4" x 6")
+  #:styles => { :original => "700x466", :cover => "150x100!", :thumb => "68x50!" },
+  
+  
+  STATES = [[ "New Jersey", "NJ" ]]
+
+  CALENDAR_TYPES = [[ "Sales Calendar", "Sales Calendar" ],
+    [ "Event Calendar", "Event Calendar" ],
+    [ "Open House Calendar", "Open House Calendar" ],[ "Nightlife Calendar", " Nightlife Calendar" ]]
+  
+  define_index do
+    indexes title, :sortable => true
+    indexes id, :sortable => true
+    indexes postal_code, :sortable => true
+    indexes video_count, :sortable => true
+    indexes locality, region, postal_code, country, :facet => true    
+    indexes flowings.content, :as => :flowings_contents
+    has geocoding.geocode(:id), :as => :geocode_id,:sortable => true
+    has 'RADIANS(geocodes.latitude)', :as => :latitude, :type => :float,:sortable => true
+    has 'RADIANS(geocodes.longitude)', :as => :longitude, :type => :float,:sortable => true
+    has postal_code,:as => :postal_code_sort,:sortable => true
+    has video_count,:as => :video_count_sort,:sortable => true
+    set_property :delta => true
+    
+  end  
+  
+end

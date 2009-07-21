@@ -1,0 +1,8 @@
+%p
+  %b
+    = h @fact.title
+  
+%p
+  = @fact.content
+  
+= link_to 'Edit', edit_org_fact_path(@org, @fact) 

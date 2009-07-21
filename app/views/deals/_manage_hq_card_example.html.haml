@@ -1,0 +1,32 @@
+- @deals.each do |deal|
+
+  .grid_7#key{ :style => "margin: 0; text-align: left;"}
+    .grid_2{ :style => "width: 100px; height: " }
+      .innerGrey
+        .deal2
+        = link_to deal.deal_type, org_deal_path(deal.org_id, deal)  
+      %br
+    .grid_3{ :style => "margin: 0;"}
+      %h3
+        = deal.title
+      %br
+      %span{ :style => "color:#57B6DD;"}
+        = deal.description
+      %br
+      %h6
+        = deal.disclaimers_text_flat
+        %br
+        
+        
+    .grid_2{ :style =>"text-align:right;"}
+      %img{ :src => "/images/cardRank.jpg", :height => "40" }         
+      .cardRankNum{ :style => "display: inline;"}
+        = deal.rank
+      %br
+        
+      = link_to_remote image_tag('/images/voteUp.jpg'),:url=>{:controller=>'deals',:action=>'vote_up',:id=>deal.id},:update=>'searchWindow'
+
+      = link_to_remote image_tag('/images/voteDown.jpg'),:url=>{:controller=>'deals',:action=>'vote_down',:id=>deal.id},:update=>'searchWindow'
+      = link_to_remote image_tag('/images/removeWhite.jpg',:width=> 35),:url=>{:controller=>'deals',:action=>'delete',:id=>deal.id},:update=>'searchWindow'
+
+

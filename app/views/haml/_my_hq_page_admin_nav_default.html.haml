@@ -1,0 +1,16 @@
+/
+  Navbar Div
+#admin_nav
+  = render :partial => '/haml/nav_admin',:locals => {:tabs => @tabs}
+.clear
+  \&nbsp;
+
+.grid_12
+  .grid_4{ :style => "padding-top: 4px; font-size: 16px; text-align:left;"}
+    My URL:
+    %a{ :href => "#" }
+      hqchannel.com/monkeybar
+  .grid_7{ :style => "float:right; margin: 0; text-align: right;"}
+    = link_to image_tag("/images/publishBtn.jpg",:onclick => 'alert("You are just few minutes away from having a beautiful site.\n Minimum Reequirements top publish your organizations: \n -5 Tabs \n -1 Quick Fact \n -10 Photos \n -Default Search Image and logo \n \n Please check whether your organization meets all these requirements!")',:style => "height:29px;"),:controller => :haml,:action => :publish,:id => @org.id
+/
+  End Navbar Div

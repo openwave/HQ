@@ -1,0 +1,4 @@
+- form_for([@gallery, @photo], :html => {:multipart => true}) do |f|
+  = f.error_messages
+  = render :partial => @photo, :locals => { :f => f }
+  = f.submit "Add"

@@ -1,0 +1,35 @@
+one:
+  id: 1
+  org_id: 1
+  title: Our Expertise
+  content: MyText 1
+
+two:
+  id: 2
+  org_id: 1
+  title: Our Team
+  content: MyText 2
+
+three:
+  id: 3
+  org_id: 1
+  title: Our Management
+  content: MyText 3
+  
+four:
+  id: 4
+  org_id: 2
+  title: Our Expertise
+  content: MyText 1
+
+five:
+  id: 5
+  org_id: 2
+  title: Our Team
+  content: MyText 2
+
+six:
+  id: 6
+  org_id: 2
+  title: Our Management
+  content: MyText 3

@@ -1,0 +1,55 @@
+%script{ :type => "text/javascript", :src => "/javascripts/slider.js" }
+- @highlights.each do |highlight|
+  -high = "high_"<<(highlight.id).to_s
+  %div{:id=>high}
+    heading
+    = text_area_tag :price,"#{highlight.title}" ,:style => "height: 20px; width: 350px; float:left;"
+    .grid_2{ :style => "float:left; width: 103px"}
+      =link_to_remote image_tag("/images/voteUp.jpg", :height => "30", :onclick => "transslide(#{highlight.id})"),:url=>{:controller=>'highlights',:action=>'voteup',:id=>highlight.id},:update=>''
+      =link_to_remote image_tag("/images/voteDown.jpg", :height => "30",:onclick => "transslide1(#{highlight.id})"),:url=>{:controller=>'highlights',:action=>'votedown',:id=>highlight.id},:update=>''
+      = link_to_remote image_tag("/images/removeWhite.jpg" ,:height => "30"),:url=>{:controller=>'highlights',:action=>'delete',:id=>highlight.id,:tab_id=>@tab.id},:update=>'searchWindow'
+    .disclaimerText
+      description
+      = text_area_tag :price,"#{highlight.content}",:style => "height: 40px; width: 450px;"
+%script{:type=>"text/javascript"}
+  function transslide(highid) {
+  var high='high_'+highid;
+  Obcur=jQuery("#"+high)
+  OPrev=jQuery("#"+high).prev()
+  OPrev.slideUp()
+  var temp;
+  temp = Obcur.html()
+  Obcur.html(OPrev.html())
+  OPrev.html(temp)
+  var sid;
+
+  sid= Obcur.attr("id")
+  Obcur.attr("id",OPrev.attr("id"));
+  OPrev.attr("id",sid);
+  OPrev.slideDown("slow")
+  Obcur.append();
+  OPrev.append();
+  }
+
+
+  function transslide1(highid) {
+  var high='high_'+highid;
+  if(jQuery("#"+high).next())
+  {
+  Obcur=jQuery("#"+high)
+  OPrev=jQuery("#"+high).next()
+  Obcur.slideUp()
+  var temp;
+  temp = Obcur.html()
+  Obcur.html(OPrev.html())
+  OPrev.html(temp)
+  var sid;
+  				
+  sid= Obcur.attr("id")
+  Obcur.attr("id",OPrev.attr("id"));
+  OPrev.attr("id",sid);
+  Obcur.slideDown("slow")
+  Obcur.append();
+  OPrev.append();
+  }
+  }  

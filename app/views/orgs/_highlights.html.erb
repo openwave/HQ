@@ -1,0 +1,8 @@
+<% unless @org.highlights.empty? %>
+  Highlights (Bullet)
+  <ul>
+  <% @org.highlights.each do |highlight| %>
+    <li><%= link_to highlight.title, org_highlight_path(@org, highlight) %>
+  <% end %>
+  </ul>
+<% end %>

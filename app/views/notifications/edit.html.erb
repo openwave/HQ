@@ -1,0 +1,36 @@
+<h1>Editing notification</h1>
+
+<% form_for(@notification) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :org_id %><br />
+    <%= f.text_field :org_id %>
+  </p>
+  <p>
+    <%= f.label :promotion %><br />
+    <%= f.check_box :promotion %>
+  </p>
+  <p>
+    <%= f.label :deal %><br />
+    <%= f.check_box :deal %>
+  </p>
+  <p>
+    <%= f.label :news %><br />
+    <%= f.check_box :news %>
+  </p>
+  <p>
+    <%= f.label :similar_org %><br />
+    <%= f.check_box :similar_org %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @notification %> |
+<%= link_to 'Back', notifications_path %>

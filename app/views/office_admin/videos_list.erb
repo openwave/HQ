@@ -1,0 +1,18 @@
+<center>
+<br>
+  <br>
+    <br><table cellpadding="20" cellspacing = "20">
+        <tr> <th align ="left"> Video
+        </th>
+             <th align ="right"> options  </th>
+        </tr>
+      <%  @videos.each do |@video| %>
+        <tr><td align ="left">
+        <%= @video.title %> </td><td align ="right">
+        <%= link_to 'play',:controller => :office_admin,:action => :show_video,:id => @video.id %> </td>
+        </tr>
+      <%end%>
+    </table>
+
+</center>
+

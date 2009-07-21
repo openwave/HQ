@@ -1,0 +1,26 @@
+.navbar{ :style => "margin-left: 10px;"}
+  %ul
+    .selected
+      
+          
+    
+      - @price_tabs.each do |t|
+        %li[t]
+          = link_to_remote t.tab_name,:url=>{:controller=>'prices',:action=>'list_prices',:id=>@org.id,:tab_id=>t.id,:main_tab=>@tab.id},:update=>'abs'
+          .blueArrow
+            %img.manage_btn{ :src => "/images/blueArrow.jpg", :alt => "Options", :style => "cursor:pointer;", :width => "25" }
+          .manageNavPriceDescription
+            .grid_2
+              %img.moveLeft{ :src => "/images/leftArrow.jpg", :height => "25" }
+              %img.moveRight{ :src => "/images/rightArrow.jpg", :height => "25" }
+              %img.deleteTab{ :src => "/images/removeBtnBlue.jpg", :height => "25" }
+              %br
+              move &nbsp;&nbsp;&nbsp; delete
+       
+   
+     
+    .grid_3{ :style => "text-align: right; width: 150px; float:right;"}
+      %a{ :href => "#", :style => "text-decoration: none; vertical-align: super;" }
+      %li{:style => "margin-left: -1px; margin-top: -2px;"}
+        = link_to_remote 'Add a New Tab' ,:url=>{:controller=>'prices',:action=>'add_tab',:id=>@org.id,:main_tab=>@tab.id},:update =>'title'
+      %img{ :src => "/images/addBtnGradient.jpg", :alt => "Add", :height => "25", :style => "float: left;", :onclick => "window.open('mylink.htm','_self')", :style => "cursor: pointer;" }

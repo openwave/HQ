@@ -1,0 +1,5 @@
+%h1 Flowing
+- form_for([@org, @flowing]) do |f|
+  = f.error_messages
+  = render :partial => @flowing, :locals => { :f => f }
+  = f.submit "Create"

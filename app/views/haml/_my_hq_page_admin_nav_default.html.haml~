@@ -1,0 +1,55 @@
+/
+  Navbar Div
+.grid_12{ :style => "background-image: url(/images/bgNav.jpg); background-repeat: no-repeat; margin-top: 4px;" }
+  .navbar
+    .grid_9
+      %ul#nav
+        .selected
+          %li
+            %a{ :href => "#" }
+              Profile
+        %li#userReviews
+          %a{ :href => "#" }
+            User Reviews
+          - @tabs.each do |tab|
+            
+            %li[tab]
+              = link_to_remote tab.title,:url=>{:controller=>'highlights',:action=>'myHQpage_admin_bulleted_lists'},:update=>'searchContent'
+              .blueArrow
+                %img.manage_btn{ :src => "/images/blueArrow.jpg", :alt => "Options", :style => "cursor:pointer;", :width => "25" }
+              .manageNav
+                .grid_2
+                  %img.moveLeft{ :src => "/images/leftArrow.jpg", :height => "25" }
+                  %img.moveRight{ :src => "/images/rightArrow.jpg", :height => "25" }
+                  %img.deleteTab{ :src => "/images/removeBtnBlue.jpg", :height => "25" }
+                  %br
+                  move &nbsp;&nbsp;&nbsp; delete
+          %li#Examp
+            %a{ :href => "#" }
+              Example
+            .blueArrow
+              %img.manage_btn{ :src => "/images/blueArrow.jpg", :alt => "Options", :style => "cursor:pointer;", :width => "25" }
+            .manageNav
+              .grid_2
+                %img.moveLeft{ :src => "/images/leftArrow.jpg", :height => "25" }
+                %img.moveRight{ :src => "/images/rightArrow.jpg", :height => "25" }
+                %img.deleteTab{ :src => "/images/removeBtnBlue.jpg", :height => "25" }
+                %br
+                move &nbsp;&nbsp;&nbsp; delete
+    %script{ :type => "text/javascript", :src => "/javascripts/addTab.js" }   
+    .grid_3{ :style => "text-align: right; width: 150px; float: right;"}
+      /= link_to 'Add a New Tab',id:"addTab", :href=>"#",:url => { :controller => 'haml',:action =>'addNewTab'}
+      =link_to_remote  "Add a New Tab",:update=>'viewer',:url => {:controller => :haml,:action => :addNewTab,:id => @org.id}
+.clear
+  \&nbsp;
+
+.grid_12
+  .grid_4{ :style => "padding-top: 4px; font-size: 16px; text-align:left;"}
+    My URL:
+    %a{ :href => "#" }
+      hqchannel.com/monkeybar
+  .grid_7{ :style => "float:right; margin: 0; text-align: right;"}
+    %a{ :href => "#" }
+      %img{ :src => "/images/publishBtn.jpg", :alt => "Publish Button" }
+/
+  End Navbar Div

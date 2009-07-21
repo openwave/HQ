@@ -1,0 +1,5 @@
+%h1 Contact
+- form_for(@contact) do |f| 
+  = f.error_messages
+  = render :partial => @contact, :locals => { :f => f }
+  = f.submit "Add"

@@ -1,0 +1,27 @@
+
+
+<% fields_for @photo do |f| %>
+<p>
+	<span style = "color:#1B75BC; font-size: 15px;">Picture </span>
+        <%= f.file_field :image,:style => "height: 25px; width:262px;" %>
+</p>
+<p>
+    <span style = "color:#1B75BC; font-size: 15px;">Caption</span>
+        <%= f.text_field :title,:style => "height: 15px; width:260px;" %>
+<%end%>
+</p>
+<p>
+    <span style = "color:#1B75BC; font-size: 15px; height: 15px; width : 260px;">Gallery</span><br>
+<%= select_tag "gallery_id", options_from_collection_for_select(@galleries, 'id', 'title') + options_for_select({'New Gallery' => "0"}) ,:onchange => "new_gallery(this.value);" ,:style => "margin: 2px; width: 260px; height: 20px;" %></td></tr>
+</p>
+<% if @galleries.empty? %>
+  <p id = gallery1 ><span style = "color:#1B75BC; font-size: 15px; height: 15px; width : 260px;">New Gallery</span><br>
+         <%= text_field_tag 'gallery_name',nil,:style => "height: 15px; width: 260px;" %></p>
+         <% else %>
+<p id = gallery1 class = "showDiv"><span style = "color:#1B75BC; font-size: 15px; height: 15px; width : 260px;">New Gallery</span><br>
+         <%= text_field_tag 'gallery_name',nil,:style => "height: 15px; width: 260px;" %> </p> <% end %>
+ <br>
+<p>
+ <%= image_submit_tag "/images/submit.jpg", :height => "30", :style => "margin-left: 300px; height: 29px;" %>
+
+</p>

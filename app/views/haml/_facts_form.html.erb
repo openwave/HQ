@@ -1,0 +1,134 @@
+<%=form_tag url_for(:controller => :haml,:action => 'save_facts',:id=>@org.id) %>
+
+<% if @facttts.empty? %>
+    <% @check = 1%>
+	<%= select_tag  "title1", options_for_select([ "Hours", "Serving","Insurance","Price","Address","Features"], :selected => "Hours"),:style => "width:160px" %>
+	<%= text_area :facts, :content1,:rows => 1,:cols => 14,:style => "width: 155px; height: 52px" %>
+	<br>
+	<%= select_tag  "title2", options_for_select(["Hours", "Serving","Insurance","Price","Address","Features","Remove Quick Fact","Add More Facts"], :selected => "Add More Facts", :disabled => "Add More Facts"),:onchange => "more_facts(this.value);",:style => "width:160px" %>
+	<div id = "more_facts" class = "showDiv">
+    	<%= render :partial => '/haml/more_facts' %>
+	</div>
+	<p>
+    <%else %>
+    
+   
+	    <% @check = 0%>
+
+    	<% if @fact_title_count == 3 %>
+
+	    <% @temp_title1 = @facttts[0].title %>
+	    <% @temp_title2 = @facttts[1].title %>
+	    <% @temp_title3 = @facttts[2].title %>
+
+        <% @content1 = @facttts[0].content %>
+        <% @content2 = @facttts[1].content %>
+        <% @content3 = @facttts[2].content %>
+
+	    <%= select_tag  "title1", options_for_select([ "Hours", "Serving","Insurance","Price","Address","Features"], @temp_title1),:style => "width:160px" %>
+	    <%= text_area :facts, :content1, :value => @content1, :rows => 1,:cols => 14,:style => "width: 155px; height: 52px" %>
+	    <br>
+	    <%= select_tag  "title2", options_for_select([ "Hours", "Serving","Insurance","Price","Address","Features","Remove Quick Fact"], @temp_title2),:onchange => "more_facts(this.value);",:style => "width:160px" %>
+     	<div id = "more_facts" class = "hideDiv">
+	    <%= text_area :facts, :content2, :value => @content2, :rows => 1,:cols => 14,:style => "width: 155px; height: 52px" %>
+	    <br>
+		    <% if @temp_title3 == "Hours" || @temp_title3 == "Serving" || @temp_title3 == "Insurance" || @temp_title3 == "Price" || @temp_title3 == "Address"  || @temp_title3 == "Features" %>
+	    
+			<div id = "custom_facts_dropdownelse" class = "hideDiv">
+		    <%= select_tag  "title3", options_for_select([ "Hours", "Serving","Insurance","Price","Address","Features","Custom","Remove Quick Fact"], @temp_title3),:onchange => "revert_more_elseif(this.value);", :style => "width:160px" %>
+			<div id ="custom_facts_dropdownelsein" class = "hideDiv">
+            <%= text_area :facts,:contentt3, :value => @content3,:rows => 1,:cols => 9,:style => "width: 155px; height: 52px" %>
+            </div>			
+            </div>			
+
+			<div id = "custom_facts_bothelse" class = "showDiv">
+	        <%= text_field :facts,:titlee3, :value => @temp_title3, :size => 9,:style => "width: 155px; padding-left: 0px; margin-left: 7px;" %>
+            <%= image_tag ("/images/removeWhite.jpg"), :width => "15", :style => "margin-right: -11px;", :onclick => "revert_more_ifelse();" %>
+			<%= text_area :facts, :contente3, :value => @content3, :rows => 1,:cols => 14,:style => "width: 155px; height: 52px" %>
+            </div>			
+		
+		    <%else %>
+		    
+			<div id = "custom_facts_bothelse" class = "hideDiv">
+	        <%= text_field :facts,:titlee3, :value => @temp_title3, :size => 9,:style => "width: 155px; padding-left: 0px; margin-left: 7px;" %>
+            <%= image_tag ("/images/removeWhite.jpg"), :width => "15", :style => "margin-right: -11px;", :onclick => "revert_more_ifelse();" %>
+			<%= text_area :facts, :contente3, :value => @content3, :rows => 1,:cols => 14,:style => "width: 155px; height: 52px" %>
+            </div>			
+
+			<div id = "custom_facts_dropdownelse" class = "showDiv">
+		    <%= select_tag  "title3", options_for_select([ "Hours", "Serving","Insurance","Price","Address","Features","Custom","Remove Quick Fact"], 'Custom'),:onchange => "revert_more_elseif(this.value);", :style => "width:160px" %>
+			<div id ="custom_facts_dropdownelsein" class = "hideDiv">
+            <%= text_area :facts,:contentt3, :value => @content3,:rows => 1,:cols => 9,:style => "width: 155px; height: 52px" %>
+            </div>			
+            </div>			
+		    <%end %>
+            </div>			
+	    <br>
+
+    	<%elsif @fact_title_count == 2 %>
+
+	    <% @temp_title1 = @facttts[0].title %>
+	    <% @temp_title2 = @facttts[1].title %>
+        <% @content1 = @facttts[0].content %>
+        <% @content2 = @facttts[1].content %>
+		
+	    <%= select_tag  "title1", options_for_select([ "Hours", "Serving","Insurance","Price","Address","Features"], @temp_title1),:style => "width:160px" %>
+    	<%= text_area :facts, :content1, :value => @content1, :rows => 1,:cols => 14,:style => "width: 155px; height: 52px" %>
+	    <br>
+	    <%= select_tag  "title2", options_for_select([ "Hours", "Serving","Insurance","Price","Address","Features","Remove Quick Fact"], @temp_title2),:onchange => "more_facts(this.value);",:style => "width:160px" %>
+     	<div id = "more_facts" class = "hideDiv">
+	    <%= text_area :facts, :content2, :value => @content2, :rows => 1,:cols => 14,:style => "width: 155px; height: 52px" %>
+        </div> 
+
+			<div id = "custom_facts_dropdownelse" class = "hideDiv">
+		    <%= select_tag  "title3", options_for_select([ "Hours", "Serving","Insurance","Price","Address","Features","Custom","Remove Quick Fact","Add More Facts"], :selected => "Add More Facts", :disabled => "Add More Facts"),:onchange => "revert_more_elseif(this.value);", :style => "width:160px" %>
+			<div id ="custom_facts_dropdownelsein" class = "showDiv">
+            <%= text_area :facts,:contentt3, :value => @content3,:rows => 1,:cols => 9,:style => "width: 155px; height: 52px" %>
+            </div>			
+            </div>			
+
+			<div id = "custom_facts_bothelse" class = "showDiv">
+	        <%= text_field :facts,:titlee3, :value => @temp_title3, :size => 9,:style => "width: 155px; padding-left: 0px; margin-left: 7px;" %>
+            <%= image_tag ("/images/removeWhite.jpg"), :width => "15", :style => "margin-right: -11px;", :onclick => "revert_more_ifelse();" %>
+			<%= text_area :facts, :contente3, :value => @content3, :rows => 1,:cols => 14,:style => "width: 155px; height: 52px" %>
+            </div>			
+
+	    <br>
+
+    	<%else %>
+
+        <% @content1 = @facttts[0].content %>
+	    <% @temp_title1 = @facttts[0].title %>
+	    <%= select_tag  "title1", options_for_select([ "Hours", "Serving","Insurance","Price","Address","Features"], @temp_title1),:style => "width:160px" %>
+	    <%= text_area :facts, :content1, :value => @content1, :rows => 1,:cols => 14,:style => "width: 155px; height: 52px" %>
+	    <br>
+
+			<div id = "custom_facts_drop" class = "hideDiv">
+		    <%= select_tag  "title2", options_for_select([ "Hours", "Serving","Insurance","Price","Address","Features","Remove Quick Fact","Add More Facts"], :selected => "Add More Facts", :disabled => "Add More Facts"),:onchange => "more_facts(this.value);", :style => "width:160px" %>
+			<div id ="more_facts" class = "showDiv">
+            <%= text_area :facts,:content2, :value => @content3,:rows => 1,:cols => 9,:style => "width: 155px; height: 52px" %>
+            </div>
+            </div>
+			
+			<div id = "custom_facts_dropdownelse" class = "showDiv">
+		    <%= select_tag  "title3", options_for_select([ "Hours", "Serving","Insurance","Price","Address","Features","Custom","Remove Quick Fact","Add More Facts"], :selected => "Add More Facts", :disabled => "Add More Facts"),:onchange => "revert_more_elseif(this.value);", :style => "width:160px" %>
+			<div id ="custom_facts_dropdownelsein" class = "showDiv">
+            <%= text_area :facts,:contentt3, :value => @content3,:rows => 1,:cols => 9,:style => "width: 155px; height: 52px" %>
+            </div>			
+            </div>			
+
+			<div id = "custom_facts_bothelse" class = "showDiv">
+	        <%= text_field :facts,:titlee3, :value => @temp_title3, :size => 9,:style => "width: 155px; padding-left: 0px; margin-left: 7px;" %>
+            <%= image_tag ("/images/removeWhite.jpg"), :width => "15", :style => "margin-right: -11px;", :onclick => "revert_more_ifelse();" %>
+			<%= text_area :facts, :contente3, :value => @content3, :rows => 1,:cols => 14,:style => "width: 155px; height: 52px" %>
+            </div>			
+
+
+	    <%end %>
+        <%end %>
+
+		<%=hidden_field_tag 'check',@check %>
+
+    <p>
+        <%= image_submit_tag "/images/submit.jpg", :height => "25",:style => "float:right;margin-top:5px;margin-right:11px" %>
+    </p>

@@ -1,0 +1,13 @@
+%div{ :style => "text-align: center;"}
+  Only one calendar may appear on your HQ page. Choose one that best suits your organization, or business.
+  %br
+  %br
+  %br
+  %br
+- form_for(@org, :html => {:multipart => true}) do |f|
+  = f.error_messages
+
+  = f.select :calendar, Org::CALENDAR_TYPES
+   
+  = submit_to_remote image_tag('/images/submit.jpg', :height => "25",:align=>'right'),'submit',:url=>{:controller=>'haml',:action=>'change_calendar'},:update=>'calendar'
+

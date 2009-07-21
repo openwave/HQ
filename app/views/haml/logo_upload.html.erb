@@ -1,0 +1,18 @@
+<div class="grid_8" style = "border: 3px solid #DEF2FA; width: 533px;margin-left: 9px; height: 307px; text-align: left; overflow: hidden;">
+ <br>
+  <br>
+<div class="grid_1" style = "text-align: right; float: right;">
+  <%=  link_to image_tag("/images/exitBtn.jpg", :height => "35", :style => "margin-top: -39px; padding-left: 0px; border-left-width: 0px; margin-right: -1px;"),:controller => :haml,:action => :close,:id =>@org.id %>
+</div>
+<% form_for :orgs,:url =>{:controller => :haml,:action => :save_logo_upload,:id =>@org.id}, :html => { :multipart => true } do |f| %>
+<table style ="margin-left:20px;" >
+      <tr><td><h1>1 Choose your Logo</h1></td> </tr>
+	<tr><td><font style="color:#1B75BC;">image :</font></td> </tr>
+     <tr><td><%= f.file_field :image%></td></tr><%end%>
+<tr><td> &nbsp </td></tr>
+<tr> 
+<%= image_submit_tag "/images/submit.jpg"   %>
+ </td>
+</tr>
+</table>
+</div>

@@ -1,0 +1,24 @@
+
+
+<div id="event" >
+<h1>Names</h1>
+<table >
+<tr>
+<% for event in @events %>
+<tr >
+  
+<td width="60%" >
+<span class="list-name" ><%= h(event.name) %></span><br />
+<%= h(event.design) %>
+<br>
+
+
+</td>
+<td class="list-actions" >
+<%= link_to 'Show', :action => 'show', :id => event %><br/>
+<% end %>
+</table>
+</div>
+
+<br />
+<%= link_to 'New event', :action => 'new' %>

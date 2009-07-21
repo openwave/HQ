@@ -1,0 +1,44 @@
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    Add Your Event
+%br
+%br
+.disclaimerText2
+  Event Title
+=  f.text_field :title, :style => "width: 500px;"
+.disclaimerText2
+  Date
+= f.datetime_select :starting_on, :style => "width: 500px;"
+.disclaimerText2
+  End Date
+= f.datetime_select :ending_on 
+.disclaimerText2
+  Description
+= f.text_area :description, :style => "width: 500px; height: 80px;"
+%br
+.disclaimerText2{ :style => "float: left; margin-right: 50px; padding-top: 6px;"}
+  Add Image
+%br
+%br
+= f.file_field :image, :style => "width: 350px; float: left; margin-right: 10px;"
+%a{ :href => "#"}
+%br
+%br
+.disclaimerText2
+  Age Req.
+= f.select :age_requirement, Event::AGE_TYPES, :style => "width: 500px;"
+.disclaimerText2
+  Street
+= f.text_field :street, :style => "width: 500px; height: 20px;"
+.disclaimerText2
+  City
+= f.text_field :locality, :style => "width: 500px; height: 20px;"
+.disclaimerText2
+  Zip
+= f.text_field :postal_code, :style => "width: 500px; height: 20px;"
+.disclaimerText2
+  State
+= f.text_field :region, :style => "width: 500px; height: 20px;"
+
+%br
+= image_submit_tag ("/images/submit.jpg", :height => "25",:style => "margin-top:15px;")

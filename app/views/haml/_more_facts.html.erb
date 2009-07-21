@@ -1,0 +1,26 @@
+<style>
+.whiteblank { 
+white-space: nowrap;
+}
+</style>
+
+
+<%= text_area :facts,:content2,:rows => 1,:cols => 9,:style => "width: 155px; height: 52px" %>
+<br>
+<div id = "custom_facts_dropdown">
+    <%= select_tag  "title3", options_for_select(["Hours", "Serving","Insurance","Price","Address","Features","Custom","Remove Quick Fact","Add More Facts"], :selected => "Add More Facts", :disabled => "Add More Facts"),:onchange => "more_facts1(this.value);",:style => "width:160px" %>
+    <div id = "custom_more_facts" class = "showDiv">
+        <%= text_area :facts,:contentt3,:rows => 1,:cols => 9,:style => "width: 155px; height: 52px" %>
+    </div>
+</div>
+<div id = "custom_facts_textfield" class = "showDiv">
+	
+<P class="whiteblank"> &nbsp <%= text_field :facts,:title3, :size => 9,:style => "width: 155px; padding-left: 0px; margin-left: 7px;" %>
+
+    <%= image_tag ("/images/removeWhite.jpg"), :width => "15", :onclick => "revert_more_fact();" %>
+    <div id = "custom_more_facts1">
+        <%= text_area :facts,:contente3,:rows => 1,:cols => 9,:style => "width: 155px; height: 52px" %>
+    </div>
+	</p>
+</div>
+<br>

@@ -1,0 +1,124 @@
+class DealsController < ApplicationController
+  before_filter :load_org, :except => [:index]
+  before_filter :require_user, :except => [:index, :show]
+  
+  def load_org
+    @org = Org.find(1)
+    
+  end
+
+  def index
+    @deals = Deal.search(
+     (params[:search] || ""),
+     :page => (params[:page] || 1),
+     :order => :title,
+     :order => params[:sort].to_sym,
+     :match_mode => :boolean
+    )
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @deals }
+    end
+  end
+
+  def show
+    @deal = Deal.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @deal }
+    end
+  end
+
+  def new
+    @deal = Deal.new
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @deal }
+    end
+  end
+
+  def edit
+    @deal = Deal.find(params[:id])
+  end
+
+  def create_original
+    @deal = Deal.new(params[:deal])
+    respond_to do |format|
+      if @deal.save
+        flash[:notice] = 'Deal was successfully created.'
+        format.html { redirect_to(@deal) }
+        format.xml  { render :xml => @deal, :status => :created, :location => @deal }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @deal.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def create
+    @deal = @org.deals.build(params[:deal])
+    @events=@org.events
+    @deals= @org.deals
+      if @deal.save
+        render :template =>'deals/manageHQCard'
+    end
+  end
+  
+def manageHQCard
+ @deal = @org.deals.build(params[:deal])
+ @deals= Deal.find(:all)
+ @events = Event.find(:all)
+  end
+  
+ def deal
+ render :template =>'deals/manageHQCard'
+ end
+ 
+  def update
+    @deal = Deal.find(params[:id])
+    respond_to do |format|
+      if @deal.update_attributes(params[:deal])
+        flash[:notice] = 'Deal was successfully updated.'
+        format.html { redirect_to(@org, @deal) }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @deal.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @deal = Deal.find(params[:id])
+    @deal.destroy
+   render :template =>'haml/myHQpage_admin'
+   
+  end
+
+  def sort
+    params[:deals].each_with_index do |id, index|
+      Deal.update_all(['position=?', index+1], ['id=?', id])
+    end
+    render :nothing => true
+  end
+  
+  def vote_up
+    @deals=Deal.find(:all)
+    @deal=Deal.find(params[:id])
+    @deal.rank = @deal.rank + 1
+    @deal.save
+    render :partial =>'/deals/manage_hq_card_example'
+  end
+  
+    def vote_down
+    @deals = Deal.find(:all)
+    @deal=Deal.find(params[:id])
+    @deal.rank = @deal.rank - 1
+    @deal.save
+    render :partial =>'/deals/manage_hq_card_example'
+  end
+
+    def manage_hq_card
+      render :partial =>'manage_hq_card'
+    end
+end

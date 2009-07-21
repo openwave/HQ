@@ -1,0 +1,9 @@
+<% unless @org.facts.empty? %>
+  Facts
+  <ul>
+  <% @org.facts.each do |fact| %>
+    <li><%= link_to fact.title, org_fact_path(@org, fact) %>
+      <%= fact.body %>
+  <% end %>
+  </ul>
+<% end %>

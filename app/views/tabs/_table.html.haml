@@ -1,0 +1,7 @@
+%table
+  %tr
+    %th Name
+  - @tabs.each do |tab|
+    %tr
+      %td
+        = link_to tab.name, tab

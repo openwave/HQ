@@ -1,0 +1,11 @@
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    Profile
+%br
+%br
+= render :partial => 'motion_scroll_bar'
+#searchWindow{ :style => "height: 430px; overflow: hidden;"}
+  #searchContent
+    .grid_7{ :style => "margin-left: 5px; width: 490px;"}
+      - @flowings.each do |flow|
+        =flow.content

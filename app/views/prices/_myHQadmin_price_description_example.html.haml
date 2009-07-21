@@ -1,0 +1,31 @@
+- @prices.each do |price|
+  -high = "high_"<<(price.id).to_s
+  %div{:class => "grid_7",:id=>high, :style => "margin-left: 5px; width: 490px; text-align: left;"}
+    .grid_5{ :style => "width: 360px; margin-right: 0;"}
+      
+      -if price.title?
+        .priceDescriptionTitle
+          = price.title    
+      .disclaimerText{ :style => "float: left;"}
+        item
+                          
+      .grid_4{ :style => "text-align: right; margin: 0; width: 330px;"}
+     
+      = text_area_tag :price,"#{price.item}" ,:style => "height:20px; width: 250px;"
+      %br
+      .disclaimerText
+        description
+      = text_area_tag :price,"#{price.description}" ,:style => "height:60px; width: 350px;"
+    .grid_2{ :style => "width: 105px; margin-left: 0;"}
+      .disclaimerText
+        price
+      = text_area_tag :price,"#{price.price}" ,:style => "height:20px; width: 95px; margin-bottom: 10px"
+      = link_to_remote image_tag("/images/voteUp.jpg", :height => "30", :onclick => "transslide(#{price.id})"),:url=>{:controller=>'prices',:action=>'voteup',:id=>price.id},:update=>''
+      = link_to_remote image_tag("/images/voteDown.jpg", :height => "30",:onclick => "transslide1(#{price.id})"),:url=>{:controller=>'prices',:action=>'votedown',:id=>price.id},:update=>''
+      = link_to_remote image_tag("/images/removeWhite.jpg",:height => "30"),:url=>{:controller=>'prices',:action=>'delete',:id=>price.id,:tab_id=>params[:tab_id],:org_id=>@org.id},:update=>'searchWindow'
+     
+
+
+
+
+

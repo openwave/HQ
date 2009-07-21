@@ -1,0 +1,26 @@
+.grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+  %h2
+    Menu
+%br
+%br
+.grid_7{ :style => "background-image: url(/images/bgNav.jpg); background-repeat: no-repeat; height: 25px; margin: 0;" }
+  .navbar{ :style => "margin-left: 10px;"}
+    %ul
+      .selected
+        %li
+          %a{ :href => "#" }
+            Jewelry
+      %li
+        %a{ :href => "#" }
+          Beads
+      %li
+        %a{ :href => "#" }
+          Apples
+      %li
+        %a{ :href => "#" }
+          Police Sirens
+= render :partial => 'haml/motion_scroll_bar'
+#searchWindow{ :style => "width: 495px; height: 430px; float: left;"}
+  #searchContent{ :style => "text-align: left; margin-left: 15px;"}
+    = render :partial => 'myHQpage_price_description_example',:locals=>{:main_tab=>@tab.id}
+    

@@ -1,0 +1,58 @@
+/
+  Navbar Div
+.grid_12{ :style => "background-image: url(/images/bgNav.jpg); background-repeat: no-repeat; margin-top: 4px;" }
+  .navbar
+    .grid_9
+      %ul
+        .selected
+          %li
+            %a{ :href => "#" }
+              Profile
+        %li
+          %a{ :href => "#" }
+            Highlights
+        %li
+          %a{ :href => "#" }
+            User Reviews
+        %li
+          %a{ :href => "#" }
+            Critics Reviews
+          .blueArrow
+            %img.manage_btn{ :src => "/images/blueArrow.jpg", :alt => "Options", :style => "cursor:pointer;", :width => "25" }
+          .manageNav
+            .grid_2
+              %img.moveLeft{ :src => "/images/leftArrow.jpg", :height => "25" }
+              %img.moveRight{ :src => "/images/rightArrow.jpg", :height => "25" }
+              %img.deleteTab{ :src => "/images/removeBtnBlue.jpg", :height => "25" }
+              %br
+              move &nbsp;&nbsp;&nbsp; delete
+        %li
+          %a{ :href => "#" }
+            Menu
+          .blueArrow
+            %img.manage_btn{ :src => "/images/blueArrow.jpg", :alt => "Options", :style => "cursor:pointer;", :width => "25" }
+          .manageNav
+            .grid_2
+              %img.moveLeft{ :src => "/images/leftArrow.jpg", :height => "25" }
+              %img.moveRight{ :src => "/images/rightArrow.jpg", :height => "25" }
+              %img.deleteTab{ :src => "/images/removeBtnBlue.jpg", :height => "25" }
+              %br
+              move &nbsp;&nbsp;&nbsp; delete
+            
+    .grid_3{ :style => "text-align: right; width: 150px; float: right;"}
+      %a{ :href => "#", :style => "text-decoration: none; vertical-align: super;" }
+      = link_to_redbox 'Add a Newgggg Tab' &nbsp;
+      %img{ :src => "/images/addBtnGradient.jpg", :alt => "Add", :height => "25", :style => "float: left;", :onclick => "window.open('mylink.htm','_self')", :style => "cursor: pointer;" }
+.clear
+  \&nbsp;
+
+.grid_12
+  .grid_4{ :style => "padding-top: 4px; font-size: 16px; text-align:left;"}
+    My URL:
+    %a{ :href => "#" }
+      hqchannel.com/monkeybar
+  .grid_7{ :style => "float:right; margin: 0; text-align: right;"}
+    %a{ :href => "#" }
+      %img{ :src => "/images/publishBtn.jpg", :alt => "Publish Button" }
+/
+  End Navbar Div

@@ -1,0 +1,8 @@
+%p
+  = f.label :title, "Name"
+  = f.select :title, Fact::FACT_TYPES, :prompt => "Select a type"
+
+%p
+  = f.label :street, "Content"
+  %br
+  = f.text_area :content, :cols => '55'

@@ -1,0 +1,10 @@
+
+<% for column in Event.content_columns %>
+<p>
+  <b><%= column.human_name %>:</b> <%=h @event.send(column.name) %>
+</p>
+<% end %>
+
+<%= render :partial => "rating", :locals => { :event => @event} %>
+
+<%= link_to 'Back', :action => 'index' %>

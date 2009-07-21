@@ -1,0 +1,5 @@
+%h1 Gallery
+- form_for([@org, @gallery]) do |f|
+  = f.error_messages
+  = render :partial => @gallery, :locals => { :f => f }
+  = f.submit "Create"

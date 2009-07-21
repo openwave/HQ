@@ -1,0 +1,27 @@
+- if current_user
+  %h3 My Notifications
+  %br
+  %br
+  %br
+  %table
+    %tr
+      %th
+        Org
+      %th
+        Promotion
+      %th 
+        Deal
+      %th
+        News
+    %tr
+      %th 
+    - current_user.notifications.each do |n|
+      %tr
+        %td
+          = n.org.title
+        %td
+          = n.promotion
+        %td
+          = n.deal
+        %td
+          = n.news

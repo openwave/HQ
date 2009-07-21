@@ -1,0 +1,12 @@
+prefix=
+exec_prefix=
+libdir=${pcfiledir}
+includedir=/d/dev/ffmpeg-0.5
+
+Name: libavfilter
+Description: FFmpeg video filtering library
+Version: 0.4.0
+Requires: libavutil = 49.15.0
+Conflicts:
+Libs: ${libdir}/libavfilter.a   -lz -lbz2 -lpthreadGC2 -lws2_32 -lm -lvfw32 -lfaac -lfaad -lmp3lame -lm -lspeex -ltheora -logg -lvorbisenc -lvorbis -logg -lx264 -lm -lxvidcore  -lws2_32 -lvfw32
+Cflags: -I${includedir}

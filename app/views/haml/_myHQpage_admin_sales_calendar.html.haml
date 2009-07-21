@@ -1,0 +1,52 @@
+.salesCalendar
+  .grid_4{ :style => "color:#FFFFFF; font-size:18px; font-weight:bold; text-align: right; padding-top: 10px; width: 250px;"}
+    #SalesCalendar
+      = f
+    %script{ :type => "text/javascript", :src => "/javascripts/prototype.js" }
+    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery-1.3.2.min.js" }
+ 
+    %script{ :type => "text/javascript", :src => "/javascripts/dw_event.js" }
+   
+   
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corner.js" }
+
+    %script{ :type => "text/javascript", :src => "/javascripts/manageNav.js" }
+   
+   
+   
+  #calender_update
+    - if calender_status == true
+      = link_to_remote image_tag("/images/addWhite.jpg",:width => "30",:style => "margin-left: 44px; margin-top: 6px;"),:update => 'calender_update',:url => {:controller => :haml,:action => :sales_show, :id => @org.id}           
+    - else 
+      = link_to_remote image_tag("/images/removeBtnGreen.jpg",:width => "30",:style => "margin-left: 44px; margin-top: 6px;"),:update => 'calender_update',:url => {:controller => :haml,:action => :sales_show, :id => @org.id}           
+
+  .grid_5
+    = link_to_remote  "Add Event", :url=>{:controller=>'events',:action=>'add_event',:id=>@org.id},:update=>'admin_left'
+  
+.grid_5{ :style => "border: 2px solid #BED639; margin: 0; height: 200px; width: 376px; text-align:left; padding: 0;"}
+  #motion_scrollbarSmall.grid_1{ :style => "margin-left: 0; margin-top: 0;"}
+    %img{ :src => "/images/motionScrollBarTopSmall.jpg", :class => "up", :width => "27", :height => "100", :alt => "", :usemap => "#uparoSmall"}
+    %img{ :src => "/images/motionScrollBarBottomSmall.jpg", :class=> "down", :width => "27", :height => "100", :alt => "", :usemap => "#dnaroSmall"}
+
+  :javascript
+    jQuery.noConflict()(document).ready(function(){
+    init_dw_CalendarScroll();
+    });
+
+  = render :partial => 'haml/motion_speed_controls'
+  #calendarWindow
+    #calendarContent
+      %ul
+        = render :partial => 'haml/sales_calendar_example',:locals => {:org => @org}
+       
+
+.grid_5{ :style => "margin: 0; background-image: url(/images/widgetFooter.jpg); height: 40px; width: 384px; background-repeat: no-repeat; text-align: center;"}
+  =link_to_remote "Change Calendar",:url=>{:controller=>'haml',:action =>'sales_calendar_change_calendar,:org_id => @org.id'},:update=>'calendarContent'
+  
+    
+
+            

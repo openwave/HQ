@@ -1,0 +1,29 @@
+<%= javascript_include_tag 'defaults' %>
+<%= javascript_include_tag 'swfobject' %>
+<p>
+  <b>Title:</b>
+  <%=h @video.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @video.content %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%=h @video.video_file_name %>
+</p>
+<script type="text/javascript" src="swfobject.js"></script>
+<div id="player">This text will be replaced</div>
+<script type="text/javascript">
+var so = new SWFObject('/player-viral.swf','mpl','470','320','9');
+so.addParam('allowscriptaccess','always');
+so.addParam('allowfullscreen','true');
+so.addVariable('image','<%= @video.video.url(:thumb) %>');
+so.addVariable('file', '<%= @video.video.url %>');
+so.write('player');
+</script>
+
+
+

@@ -1,0 +1,37 @@
+= @org.title
+%br
+%br
+
+= render :partial => 'tabs' 
+= render :partial => 'facts' 
+= render :partial => 'flowings' 
+= render :partial => 'highlights' 
+= render :partial => 'galleries' 
+= render :partial => 'deals' 
+= render :partial => 'events' 
+= render :partial => 'prices' 
+
+
+%a#click{ :href => "#" }
+  Show the map
+.box
+  #content1
+    = GMap.header  
+    = @map.to_html 
+    = @map.div(:width => 600, :height => 400)
+    %p
+      %a#close{ :href => "#" }
+        Close
+
+= link_to 'Flowing', new_org_flowing_path(@org) 
+= link_to 'Fact', new_org_fact_path(@org) 
+= link_to 'Tab', new_org_tab_path(@org) 
+= link_to 'Bullet', new_org_highlight_path(@org) 
+= link_to 'Gallery', new_org_gallery_path(@org)
+= link_to 'Deal', new_org_deal_path(@org) 
+= link_to 'Event', new_org_event_path(@org) 
+= link_to 'Notify', new_org_notification_path(@org) 
+= link_to 'Contact', new_org_contact_path(@org) 
+= link_to 'New price', new_org_price_path(@org)
+ 
+

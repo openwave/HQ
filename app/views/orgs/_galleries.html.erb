@@ -1,0 +1,8 @@
+<% unless @org.galleries.empty? %>
+  Galleries
+  <ul>
+  <% @org.galleries.each do |gallery| %>
+    <li><%= link_to gallery.title, org_gallery_path(@org, gallery) %>
+  <% end %>
+  </ul>
+<% end %>

@@ -1,0 +1,26 @@
+%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }  
+    %title
+      myHQpage
+    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
+    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery-1.3.2.min.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corner.js" }
+    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corners.inner_outer.js" }
+  %body
+    .container_12
+      .grid_12
+        .greenBorders
+          .title
+         	  .name
+           	  
+         %table {:style => "width:700;border: 1;align: right" }  
+	         %tr
+  	         %td  
+  	           = image_tag('/images/stars-big.gif', :style =>{width: 163px; height: 31px;padding-top: 9px},:alt =>'stars',:align => 'right')
+	
+        
+      

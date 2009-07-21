@@ -1,0 +1,19 @@
+- if !current_user 
+  = link_to "Sign Up", new_account_path 
+  = link_to "Log In", new_user_session_path 
+  = link_to "Forgot Password", :controller => 'password_resets', :action => 'new' 
+- else
+  = "Hello " + current_user.first_name + "!"
+  |
+  = link_to_unless_current "Home", root_path
+  |
+  
+  
+  = link_to "Logout", user_session_path, :method => :delete, :confirm => "Are you sure you want to logout?"
+  - if hq 
+    - if current_user.org == nil
+      |
+      = link_to "Create My Org",new_user_org_path(current_user)
+    - else
+      |
+      = link_to "Manage My Org" ,:controller => :haml,:action => :myHQpage_admin,:id => @user_org.id

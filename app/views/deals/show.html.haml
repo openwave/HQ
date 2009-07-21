@@ -1,0 +1,16 @@
+%p
+  - if @deal.photo.file? 
+    = image_tag @deal.photo.url(:small)
+  - else
+    No photo available!
+  
+%p
+  = @deal.title
+
+%p
+  = @deal.description
+  
+%p
+  = @deal.disclaimers_text_flat
+  
+= link_to 'Edit', edit_org_deal_path(@org, @deal) 
