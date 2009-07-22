@@ -20,3 +20,4 @@ production:
   database: hq_development
   username: root
   password: admin@my12
+
