@@ -16,7 +16,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql
+  adapter:  mysql
   database: hq_development
   username: root
   password: admin@my12
