@@ -28,28 +28,29 @@ set :migrate_env, ""
 set :rails_env, "production"
 set :rake,           "rake"
 set :password, "Quarter14"
-set :migrate_target, :current
+set :migrate_target, :latest
 
 namespace :deploy do
-   task :finishing_touches, :roles => :app do
-#     run "cp -pf #{deploy_to}/to_copy/environment.rb #{current_path}/config/environment.rb"
-#     run "cp -pf #{deploy_to}/to_copy/database.yml #{current_path}/config/database.yml"
-   end
    task :change_password do
-     run "cd #{current_path}; chmod 755 app config db lib public vendor script script/*"
-     run "sed -i 's:{PASSWORD}:admin@my12:g' #{current_path}/config/database.yml"
-     run "sed -i 's:admin:hqpass@my12:g' #{current_path}/config/database.yml"
+     run "cd #{current_release}; chmod 755 app config db lib public vendor script script/*"
+     run "sed -i 's:{PASSWORD}:admin@my12:g' #{current_release}/config/database.yml"
+     run "sed -i 's:admin:hqpass@my12:g' #{current_release}/config/database.yml"
    end
    task :restart do
-     run "cd #{current_path}; sudo mongrel_rails cluster::configure -e production -p 8000 -N 3 -c #{current_path}/ -l #{current_path}/log/mongrel.log  -P /tmp/pids/mongrel.pid -e development"
+     run "cd #{current_path}; sudo mongrel_rails cluster::configure -e production -p 8000 -N 3 -c #{current_path}/ -l #{current_path}/log/mongrel.log  -P /tmp/pids/mongrel.pid -e production"
     run "sudo rm -f /etc/mongrel_cluster/HQ.yml"
      run "sudo ln -fs #{current_path}/config/mongrel_cluster.yml /etc/mongrel_cluster/HQ.yml"
 #     set :mongrel_conf, "#{deploy_to}/current/config/mongrel_cluster.yml"
      run "sudo /etc/init.d/mongrel_cluster stop"
      run "sudo /etc/init.d/mongrel_cluster start"
    end
+
+   task :service do
+
+   end
+
+
 end
 
 after 'deploy:update_code', 'deploy:change_password'
 after 'deploy:change_password', 'deploy:migrate'
-after 'deploy:symlink', 'deploy:finishing_touches'
