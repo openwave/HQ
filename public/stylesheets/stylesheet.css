@@ -770,3 +770,34 @@ div.outerBlue { float: left; background: #DEF2FA; padding: 8px; width: 100%;}
 .box_mid{background:url(/images/box-mid.jpg) repeat-y; padding:0 4px;}
 .box_bot{background:url(/images/box-bot.jpg) no-repeat; height:12px;}
 #title{clear:both}
+	.uploadButton a, .clearButton a, .uploadButton_add a {
+		display:block;
+		width:100px;
+		height:40px;
+		text-decoration: none;
+		margin-left:5px;
+	}
+
+	.uploadButton a {
+		background: url("/images/add1.jpg") 0 0 no-repeat;
+	}
+
+	.clearButton a {
+		background: url("/images/clearListButton.png") 0 0 no-repeat;
+	}
+
+    .uploadButton a:visited, .clearButton a:visited {
+		background-position: 0 0;
+	}
+
+    .uploadButton a:hover, .clearButton a:hover {
+		background-position: 0 0px;
+	}
+
+    .uploadButton a:active, .clearButton a:active {
+		background-position: 0 -80px;
+	}
+ .uploadButton_add a {
+     background: url("/images/add.jpg") 0 0 no-repeat;
+
+ }
