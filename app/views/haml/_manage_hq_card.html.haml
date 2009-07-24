@@ -1,29 +1,3 @@
-!!! Strict
-%html{ "xml:lang" => "en", :lang => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
-  %head
-    %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }
-    %title
-      Local Search Made Wonderful
-    %link{ :href => "/stylesheets/stylesheet.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
-    %link{ :href => "/stylesheets/960/reset.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
-    %link{ :href => "/stylesheets/960/960.css", :rel => "stylesheet", :media => "all", :type => "text/css" }
-    %link{ :href => "/stylesheets/960/text.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
-    %script{ :type => "text/javascript", :src => "/javascripts/jquery-1.3.2.min.js" }
-    %script{ :type => "text/javascript", :src => "/javascripts/dw_activate.js" }
-    %script{ :type => "text/javascript", :src => "/javascripts/dw_event.js" }
-    %script{ :type => "text/javascript", :src => "/javascripts/dw_scroll.js" }
-    %script{ :type => "text/javascript", :src => "/javascripts/html_att_ev.js" }
-    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corner.js" }
-    %script{ :type => "text/javascript", :src => "/javascripts/jquery.corners.inner_outer.js" }
-    %script{ :type => "text/javascript", :src => "/javascripts/manageNav.js" }
-    %script{ :type => "text/javascript", :src => "/javascripts/move_up_down.js" }
-    =javascript_include_tag :defaults
-
-
-
-
-
-
 / bof LEFT SIDE
 .grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
   %h2
@@ -44,10 +18,10 @@
         Free
         %br
     
-        = radio_button("deal", "deal_type", "$", options = {:onclick => "Element.show('pDollar'); Element.hide('pPercent');"})  
+        = radio_button("deal", "deal_type", "$", options = {:id => 'deal_type_dollar', :onclick => "Element.show('pDollar'); Element.hide('pPercent');"})  
         \$ Off    
         %br   
-        = radio_button("deal", "deal_type", "%", options = {:onclick => "Element.show('pPercent'); Element.hide('pDollar');"})
+        = radio_button("deal", "deal_type", "%", options = {:id => 'deal_type_percentage', :onclick => "Element.show('pPercent'); Element.hide('pDollar');"})
         \% Off        
         %br
         = f.text_area :deal_value,{ :rows => "1", :cols => "3", :style => "height: 20px; width: 45px;"}
@@ -93,22 +67,27 @@
         \&nbsp; disclaimers:
       .disclaimerText
         - for disclaimer in Disclaimer.all 
-          = check_box_tag 'deal[disclaimer_ids][]', disclaimer.id, @deal.disclaimers.include?(disclaimer)
+          = check_box_tag 'deal[disclaimer_ids][]', disclaimer.id, @deal.disclaimers.include?(disclaimer),{:id=>"deal_disclaimer_#{disclaimer.id}"}
           = disclaimer.name
           %br
           = hidden_field_tag 'order[disclaimer_ids][]', ''
         .clear
       %br
       .grid_2{ :style => "float:left"}
-        = f.file_field :photo
-        - unless @deal.new_record? || !@deal.photo? 
-          = image_tag @deal.photo.url(:small), :alt => 'Photo', :title => 'Current photo'
+       
+        #fileProgress{ :style =>"border: black 1px solid; width:300px; height:40px;float:left"}
+          #fileName{ :style=>"text-align:center; margin:5px; font-size:15px; width:290px; height:25px; overflow:hidden"}
+          #progressBar{:style=>"width:300px;height:5px;background-color:#CCCCCC"}
+        #uploaderUI{ :style=>"width:100px;height:40px;margin-left:5px;float:left"}
+        .uploadButton_add{ :style=>"float:left"}
+          /= link_to '', nil,:class=>"rolloverButton", :href=>"#",  :onclick=>"upload(#{org.id},'',#{form_authenticity_token.inspect},1); return false;"
+          = submit_to_remote image_tag("/images/add.jpg"),"Add", :url=>{:controller=>'haml',:action=>'create_deal',:id=>org.id},:update=>'admin_left',:success=>"upload(#{org.id},'','',1); return false;",:complete =>'upload_file()'
       %br
       %br
       .grid_4{ :style => "float:left;align:right;"}
-        = submit_to_remote image_tag("/images/add.jpg"),"Add",:url=>{:controller=>'haml',:action=>'create_deal',:id => org.id},:update=>'admin_left'
+        /= submit_to_remote image_tag("/images/add.jpg"),"Add",:url=>{:controller=>'haml',:action=>'create_deal',:id => org.id},:update=>'admin_left',:success=>"upload('','','',1); return false;"
+        /= image_tag
     .clear
-
   .box_bot
 .clear
 

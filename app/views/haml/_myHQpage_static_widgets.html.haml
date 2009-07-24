@@ -32,6 +32,6 @@
   %br
 .myHQadminWidget
   %a{ :href => "#" }
-    = link_to_remote 'Manage My HQ Card Deals',:url=>{:controller=>'haml',:action=>'manageHQCard',:id => @org.id},:update=>'sea'
+    = link_to_remote 'Manage My HQ Card Deals',:url=>{:controller=>'haml',:action=>'manageHQCard',:id => @org.id},:complete =>'upload_file()',:update=>'sea'
   
 
