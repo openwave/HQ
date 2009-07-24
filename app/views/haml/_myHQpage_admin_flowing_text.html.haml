@@ -1,14 +1,14 @@
 %script{:type=>"text/javascript"}
   function a() {
-  document.getElementById('profile_content').style.backgroundColor ="#FFFFFF";
-  if (document.getElementById('profile_content').value == "Use this profile to write about your background, what makes you unique, your position in the market place, and what you want people to imagine when they see your company for the first time.")
+  document.getElementById('flowing_content').style.backgroundColor ="#FFFFFF";
+  if (document.getElementById('flowing_content').value == "Use this profile to write about your background, what makes you unique, your position in the market place, and what you want people to imagine when they see your company for the first time.")
   {
-  document.getElementById('profile_content').value= "";
+  document.getElementById('flowing_content').value= "";
   }
   }
   function a1() {
-  document.getElementById('profile_content').style.backgroundColor ="#FFFFFF";
-  document.getElementById('profile_content').value= "Use this profile to write about your background, what makes you unique, your position in the market place, and what you want people to imagine when they see your company for the first time.";
+  document.getElementById('flowing_content').style.backgroundColor ="#FFFFFF";
+  document.getElementById('flowing_content').value= "Use this profile to write about your background, what makes you unique, your position in the market place, and what you want people to imagine when they see your company for the first time.";
   }
 
 .grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
@@ -19,6 +19,9 @@
 = render :partial => 'haml/motion_scroll_bar'
 #searchWindow{ :style => "height: 430px; overflow: hidden;"}
   #searchContent
-    - form_for :profile,:url=>{:controller => :haml, :action => 'create_profile',:id => @org.id} do |f|
-      = render :partial => 'haml/profile_form',:locals => {:f => f}
-      = image_submit_tag "/images/submit.jpg", :height => "30", :style => "margin-right: 36px;" 
+    - form_for :flowing,:url=>{:controller => :haml, :action => 'save_facts',:id => @org.id} do |f|
+      - if @org.flowing == nil
+        = f.text_area :content,:size => "63x18",:value => 'Use this profile to write about your background, what makes you unique, your position in the market place, and what you want people to imagine when they see your company for the first time.',:onclick => "a();"
+      - else
+        = f.text_area :content,:size => "63x18",:value => @org.flowing.content,:onclick => "a();"
+      = f.submit

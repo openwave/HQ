@@ -7,5 +7,5 @@
 #searchWindow{ :style => "height: 430px; overflow: hidden;"}
   #searchContent
     .grid_7{ :style => "margin-left: 5px; width: 490px;"}
-      - @flowings.each do |flow|
-        =flow.content
+      -unless @org.flowing == nil
+        = @org.flowing.content
