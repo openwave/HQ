@@ -9,7 +9,7 @@ class Org < ActiveRecord::Base
   belongs_to :user
   acts_as_geocodable
   acts_as_rated
-  has_many :flowings
+  has_one :flowing
   has_many :facts
   has_many :prices
   has_many :tabs
