@@ -3,7 +3,7 @@ class HamlController < ApplicationController
    require 'rubygems'
    require 'RMagick'
    include Magick
-    before_filter :require_user,:except =>[:myHQpage_Event,:myHQpage,:submit_review,:userReviews,:report_form,:submit_report_form,:review_rank,:myHQpage_notification,:submit_notifications,:map,:myHQpage_Event,:show_video,:show_photo,:calendar_voteup,:calendar_votedown,:choose_tab,:list_price_items,:myHQpage_Write_a_Review]
+    before_filter :require_user,:except =>[:myHQpage_Event,:myHQpage,:submit_review,:userReviews,:report_form,:submit_report_form,:review_rank,:myHQpage_notification,:submit_notifications,:map,:update_deal_image,:myHQpage_Event,:show_video,:show_photo,:calendar_voteup,:calendar_votedown,:choose_tab,:list_price_items,:myHQpage_Write_a_Review]
    $map = 0
     
     $flag=0
@@ -29,6 +29,7 @@ def publish
            end
            if p >= 1
              @org.publish = true
+             @org.save
              redirect_to :action => 'myHQpage',:id => @org.id
               end
             end
@@ -45,7 +46,7 @@ def publish
 
   def myHQpage_Event
  @org= Org.find(params[:org_id])
- @flowings = @org.flowings
+ @flowing = @org.flowing
  @event = Event.find(params[:id])
  @events = @org.events
  render :partial =>'/haml/myHQpage_image_viewer'
@@ -58,7 +59,7 @@ end
       @reviews = @org.reviews.find(:all,:order => 'rank DESC')
       p @reviews
     end
- @flowings = @org.flowings
+ 
  @events = @org.events
  @deals = @org.deals
   @tabs = @org.tabs
@@ -85,16 +86,14 @@ end
     elsif @default_video
     @video = Video.find(@default_video.id)
     @org = Org.find(@default_video.org_id)
-    else
-      
-     
+    else      
     end
   
   end
 
   def submit_review
     @org = Org.find(params[:id])
-    @flowings = @org.flowings
+    @flowing = @org.flowing
     @events = @org.events
     @deals = @org.deals
      @tabs = @org.tabs
@@ -185,7 +184,7 @@ end
   
   def contact_mail
     @org = Org.find(params[:id])
-    @flowings = @org.flowings
+    @flowing = @org.flowing
     @events = @org.events
     @deals = @org.deals
      @tabs = @org.tabs
@@ -223,7 +222,7 @@ def submit_notifications
     def map
     @org = Org.find(params[:id])
     @facts = @org.facts
-    @flowings = @org.flowings
+    @flowing = @org.flowing
     @events = @org.events
     @deals = @org.deals
      @tabs = @org.tabs
@@ -294,7 +293,7 @@ def org_update
   
 def myHQpage_Event
   @org=Org.find(params[:org_id])
-  @flowings = Flowing.find(:all)
+  @flowing = @org.flowing
  @event = Event.find(params[:id])
 @events=@org.events
  render :template =>'/haml/myHQpage_Event'
@@ -374,10 +373,11 @@ end
 @tabs = @org.tabs
     @events=@org.events
     if @org.profile.nil?
+     
       @profile = Profile.new
       @profile.content = params[:profile][:content]
       @profile.org_id = params[:id]
-      @profile.save!
+      @profile.save
     else
       @profile = @org.profile
       @profile.update_attributes(params[:profile])
@@ -393,7 +393,14 @@ end
   end
   
     def save_facts
-    @facts_all = Fact.find_all_by_org_id(params[:id])
+     @org = Org.find(params[:id])
+     if @org.flowing == nil
+       @org_flow = ' '
+     else
+       @org_flow = @org.flowing.content
+     end
+      if (params[:flowing][:content] == nil) || (params[:flowing][:content] == @org_flow) || (params[:flowing][:content] == 'Use this profile to write about your background, what makes you unique, your position in the market place, and what you want people to imagine when they see your company for the first time.')
+      @facts_all = Fact.find_all_by_org_id(params[:id])
     Fact.delete(@facts_all)
     @org = Org.find(params[:id])
     @tabs = @org.tabs
@@ -472,6 +479,28 @@ end
       end
     end
     redirect_to :action => :myHQpage_admin, :id =>@org.id
+      else
+           
+        p params[:flowing][:content]
+        p params[:id]
+        @org = Org.find(params[:id])
+   
+      if @org.flowing.nil?
+       p 'pppppppppppppppppppppppppppp222222222222222222222222222222222222'
+      @flowing = Flowing.new
+      @flowing.content = params[:flowing][:content]
+      @flowing.org_id = params[:id]
+      @flowing.save!
+      else
+       
+        @flowing = @org.flowing
+      @flowing.content = params[:flowing][:content]
+      @flowing.save!
+    end
+   
+    
+   redirect_to :action =>'myHQpage_admin',:id => @org.id
+      end 
   end
 
   def show_video
@@ -581,9 +610,10 @@ end
   end
 
   def sales_calendar_change_calendar
+   
    @org=Org.find(params[:org_id])
-@tabs = @org.tabs
-    render :partial =>'sales_calendar_change_calendar'
+   @tabs = @org.tabs
+    render :partial =>'haml/sales_calendar_change_calendar',:locals => {:calender_status=>@org.calender_status}
   end
   
   def change_logo
@@ -706,7 +736,7 @@ end
     @tabs = @org.tabs
     @photo.update_attributes params[:orgs]
    # @org.image = File.new(@org.image.path)
-    #@org.upload_to_s3
+   @photo.upload_to_s3
    redirect_to :action =>'apply_changes',:id => @org.id
   end
 def apply_changes
@@ -820,6 +850,7 @@ def addNewTab
     @org = Org.find(params[:id])
    @events = @org.events
     @tabs = @org.tabs
+    if params[:tab][:title].length <= 5
     @tab = Tab.new
     if @org.tab_count == 0 or @org.tab_count < 6
     @tab.content = params[:content]
@@ -830,14 +861,17 @@ def addNewTab
     @org.save
     end
     redirect_to :action =>'myHQpage_admin',:id => @org.id
-  end
+    else
+      redirect_to :action => 'myHQpage_admin',:id =>@org.id,:flag => 5
+    end
+    end
 
 def change_calendar
   @org = Org.find(params[:org_id])
 @tabs = @org.tabs
 @events=@org.events
    if @org.update_attributes(params[:org])
-     render :partial =>'haml/myHQpage_admin_sales_calendar',:locals => { :f => "#{@org.calendar}"}
+     render :partial =>'haml/myHQpage_admin_sales_calendar',:locals => { :f => "#{@org.calendar}",:calender_status=>@org.calender_status}
    end
 end
 
@@ -937,15 +971,13 @@ def calendar_votedown
     @org = Org.find(params[:org_id])
     @events=@org.events
     @event=Event.find(params[:id])
-     puts "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#{@event.inspect}"
-    if session[:event_votes].empty?
+        if session[:event_votes].empty?
     @event.rank = @event.rank - 1
     session[:event_votes] =params[:id]
     @event.save
     else
      session[:event_votes].each do  |vote|
-     puts " *********************************VOTE ************************************* #{vote}"
-    if vote != params[:id]
+        if vote != params[:id]
     @event.rank = @event.rank - 1
     session[:event_votes] =params[:id]
     @event.save
@@ -958,12 +990,12 @@ end
 def choose_tab
 
   @org=Org.find(params[:org_id])
-  @highlights=@org.highlights
-  @flowings=@org.flowings
+  @highlights=Highlight.find(:all,:conditions =>["tabid=?",params[:id]])
+  @flowing=@org.flowing
   @events=@org.events
   @deals=@org.deals
-  @price_tabs=@org.price_tabs
-  @prices=@org.prices
+  @price_tabs=PriceTab.find(:all,:conditions=>["main_tab=?",params[:id]])
+  @prices=Price.find(:all,:conditions =>["tab_id=?",params[:id]])
   @tab=Tab.find(params[:id])
    @facts=@org.facts
   if @tab.content == 'bullet'
@@ -1009,16 +1041,28 @@ def manage_hq_card
     end
   end
   
+
  def create_deal
    @org=Org.find(params[:id])
-      @deal = @org.deals.build(params[:deal])
-     @events=@org.events
-     @deals= @org.deals
-    @deal.save
-        render :template =>'haml/manageHQCard'
-
-
+   @deal=@org.deals.build(params[:deal])
+   @events=@org.events
+   @deals=@org.deals
+   @deal.save
+   render :template =>'haml/manageHQCard'
  end
+
+ def update_deal_image
+   
+   @org=Org.find(params[:orgid])
+   @deals=@org.deals
+   @events=@org.events
+   @deal=Deal.find(:last)
+   @deal.photo=params[:photo]
+   
+   @deal.save
+render :template =>'haml/manageHQCard'
+ end
+
  
   def delete_deal
     @org=Org.find(params[:org_id])
