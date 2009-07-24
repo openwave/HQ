@@ -6,7 +6,8 @@ class WelcomeController < ApplicationController
     @orgs = Org.find(:all)
     if params[:business] == 'true'
     $business = 1
-    
+    @orgs = Org.find(:all,:conditions => ["publish = 1"]).paginate :page => params[:page]
+
     end
     if current_user
     @user_org = Org.find_by_user_id(current_user.id)
