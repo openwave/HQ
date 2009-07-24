@@ -1,7 +1,7 @@
 class PricesController < ApplicationController
   #before_filter :load_org
 
- 
+
 
   def index
     @prices = @org.prices
@@ -11,7 +11,7 @@ class PricesController < ApplicationController
     end
   end
 
- 
+
 def create_price
   @org=Org.find(params[:id])
     @price = Price.new
@@ -22,29 +22,28 @@ def create_price
     @price.org_id = @org.id
     @tab=Tab.find(params[:main_tab])
     @price.main_tab= @tab.id
+    puts "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSss#{params[:item]}"
      puts "sssssssssssssssssssssssssssssssss#{params[:tab_type]}"
      puts "sssssssssssssssssssssssssssssssss#{params[:tab_id]}"
      puts "SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSss#{params[:main_tab]}"
-  
+
       if params[:tab_type] == 'tab_1'
         @price.tab_id = 1
-        @price.save 
+        @price.save
          prices = Price.find(:all,:conditions => [ "tab_id= ?" ,1])
         @prices = Price.find(:all,:conditions => [ "tab_id= ?" , 1])
-      
-      else  
+
+      else
          @price.tab_id= params[:tab_id]
-         @price.save 
+         @price.save
          prices = Price.find(:all,:conditions => [ "tab_id= ?" , params[:tab_id]])
         @prices = Price.find(:all,:conditions => [ "tab_id= ?" , params[:tab_id]])
       end
-    if params[:photo]  
+    if params[:photo]
    @price.photo = params[:photo]
     end
-    @price.save 
-   
-
-     @events=@org.events
+     @price.save
+      @events=@org.events
       @price_tabs = @org.price_tabs
       render :partial => '/prices/myHQadmin_price_description_example',:locals => {:prices => prices}
 end
@@ -53,7 +52,7 @@ def add_title
 @org=Org.find(params[:id])
 @tab=Tab.find(params[:main_tab])
 render :partial =>'myHQpage_admin_price_description_add_title',:locals => {
-    :item=>params[:item],:description=>params[:description],:price=>params[:price],:id=>@org.id,:tab_id=>params[:tab_id],:main_tab=>@tab.id,:edt=>false}
+    :item=>params[:item],:description=>params[:description],:price=>params[:price],:id=>@org.id,:tab_id=>params[:tab_id],:main_tab=>@tab.id,:edt=>true}
 end
 
 def new_title
@@ -72,8 +71,8 @@ def new_title
        @price.tab_id = 1
        @price.save
         @prices = Price.find(:all,:conditions => [ "tab_id= ?" , 1])
-       
-      else  
+
+      else
          @price.tab_id= params[:tab_id]
          @price.save
            @prices = Price.find(:all,:conditions => [ "tab_id= ?" , params[:tab_id]])
@@ -86,19 +85,29 @@ def new_title
 end
 
 def add_image
+  @org=Org.find(params[:id])
+  @tab=Tab.find(params[:main_tab])
   render :partial =>'add_image',:locals => {
-    :item=>params[:item],:description=>params[:description],:price=>params[:price],:tab_id=>params[:tab_id],:edt=>false}
+    :item=>params[:item],:description=>params[:description],:price=>params[:price],:main_tab=>@tab.id,:id=>@org.id,:tab_id=>params[:tab_id],:edt=>false}
 end
 
 def new_image
-   @price = Price.new
-   @price_tabs=@org.price_tabs
+  @org=Org.find(params[:org_id])
+  puts "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+   @price = Price.find(:last)
+  
+   #@price_tabs=@org.price_tabs
     puts"d#{params[:tab_id]}"
-    puts"#{params[:photo]}"
+    puts "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP#{params[:photo]}"
   # @price.photo = params[:price][:photo]
     @price.photo = params[:photo]
+    @price.tab_id=params[:tab_id]
+    @price.org_id=params[:org_id]
+    @price.main_tab=params[:main_tab]
+    @price.description=params[:description]
+    @price.price=params[:price]
     # @prices=Price.find(:all,:conditions => [ "tab_id = ?" , tab_id])
-   
+    @price.item=params[:item]
     @prices=@org.prices
    @price.save
   prices = Price.find(:all)
@@ -118,7 +127,7 @@ end
   def edit
     @price = Price.find(params[:id])
   end
-  
+
   def myHQpage_price_description
     puts "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD#{params[:id]}"
     @org=Org.find(params[:id])
@@ -129,16 +138,16 @@ end
     @price=Price.new
 
     end
-    
+
   def price_description
     @org=Org.find(params[:id])
       @tab=Tab.find(params[:main_tab])
       @price_tabs = PriceTab.find(:all,:conditions =>["main_tab=?",params[:main_tab]])
-      @prices = Price.find(:all,:conditions => [ "tab_id= ?" , 1])
+      @prices = Price.find(:all,:conditions => [ "tab_id= ? AND main_tab=?", 1,params[:main_tab]])
       render :template => 'prices/myHQpage_price_description',:locals=>{:main_tab=>@tab.id,:id=>@org.id}
   end
- 
-  
+
+
   def update
     @price = Price.find(params[:id])
     respond_to do |format|
@@ -157,43 +166,42 @@ end
     @org=Org.find(params[:org_id])
     @price = Price.find(params[:id])
       @price.destroy
-  
       if params[:tab_id]  == 1 || ''
         @prices = Price.find(:all,:conditions => [ "tab_id= ?" , 1])
-   else  
+   else
         @prices = Price.find(:all,:conditions => [ "tab_id= ?" , params[:tab_id]])
     end
-  
+ 
     render :partial =>'prices/myHQadmin_price_description_example',:locals=>{:tab_id=>@price.tab_id}
   end
-  
-  
+
+
   def myHQpage_pricedescription
   @org=Org.find(params[:id])
   @prices = @org.prices
   @events=@org.events
   end
-  
+
   def close
    # @org=Org.find(params[:id])
       render :text =>" "
   end
-  
+
   def add_tab
     @org= Org.find(params[:id])
     puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#{params[:main_tab]}"
     @tab=Tab.find(params[:main_tab])
     render :partial => 'prices/myHQpage_admin_price_description_new_tab' ,:locals=>{:main_tab=>@tab.id}
   end
-  
+
 def myHQpage_price_description
   @price_tabs = @org.price_tabs
   @prices=@org.prices
   @events=@org.events
  # @price_tab=PriceTab.find(1)
-  
+
 end
-  
+
   def create_tab
      @org = Org.find(params[:id])
      @price_tab = PriceTab.new
@@ -201,16 +209,14 @@ end
      @price_tab.main_tab=params[:main_tab]
      @price_tab.org_id = @org.id
      @price_tab.save
-   
      @price_tabs = PriceTab.find(:all,:conditions =>["main_tab=?",params[:main_tab]])
-    
      @tab=Tab.find(params[:main_tab])
      @prices=@org.prices
      @events=@org.events
      #render :partial =>'prices/add_tab_prices' ,:locals=>{:main_tab=>@tab.id}
      render :partial =>'prices/add_tab_prices'
   end
-  
+
   def list_prices
     @org=Org.find(params[:id])
     @price_tabs = @org.price_tabs
@@ -219,22 +225,22 @@ end
     @prices = Price.find(:all,:conditions => [ "tab_id = ?" , params[:tab_id]])
     render :partial =>'prices/list_prices',:locals => {:edt => true,:main_tab=>@tab.id}
   end
-    
+
   def voteup
     render :text =>''
     @price=Price.find(params[:id])
     @price.position= @price.position + 1
     @price.save
   end
-  
+
     def votedown
     render :text =>''
-    
+
     @price=Price.find(params[:id])
     @price.position= @price.position - 1
     @price.save
   end
-  
-  
+
+
 
 end
