@@ -18,9 +18,8 @@
 %br
 .businessSearchResultText
   %p
-    = for flow in org.flowings
-      = link_to flow.content.first(100),:controller => :haml,:action => :myHQpage,:id => @org.id
-	          
+    -unless @org.flowing == nil
+      = @org.flowing.content.first(100)
        
 	   
           
