@@ -35,8 +35,11 @@ class UserSessionsController < ApplicationController
     
 
     current_user_session.destroy
+    current_user = nil
+    cookies.delete :password
     #flash[:notice] = "Logout successful!"
-    redirect_back_or_default root_url
+    #redirect_back_or_default root_url
+    redirect_to :controller => :welcome,:action => :index
   end
     
 end
