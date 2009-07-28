@@ -49,8 +49,17 @@ class HamlController < ApplicationController
     @flowing = @org.flowing
     @event = Event.find(params[:id])
     @events = @org.events
-    render :partial =>'/haml/myHQpage_image_viewer'
+    render :partial =>'/haml/myHQpage_Event'
   end
+  
+    def myHQpage_admin_Event
+    @org= Org.find(params[:org_id])
+    @flowing = @org.flowing
+    @event = Event.find(params[:id])
+    @events = @org.events
+    render :partial =>'/haml/myHQpage_admin_Event'
+  end
+  
   
   def myHQpage
     @org= Org.find(params[:id])
@@ -1021,7 +1030,7 @@ class HamlController < ApplicationController
   def manageHQCard
     
     @org=Org.find(params[:id])
-    @deal = @org.deals.build(params[:deal])
+    @deal = Deal.new
     @deals= @org.deals
     @events =@org.events
   end

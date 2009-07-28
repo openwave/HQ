@@ -9,7 +9,7 @@
     .grid_4{ :style => "margin: 0;"}
       = truncate(event.description ,200)
     .grid_2{ :style => "float:left; margin: 0; padding-top: 30px"}
-      = link_to_remote "Read More",:url=>{:controller=>'haml',:action=>'myHQpage_Event',:org_id => @org.id,:id=>event.id},:update=>'sea'
+      = link_to_remote "Read More",:url=>{:controller=>'haml',:action=>'myHQpage_admin_Event',:org_id => @org.id,:id=>event.id},:update=>'sea'
     .grid_2{ :style => "margin: 0; text-align: right; float:right;"}
       .grid_1{ :style => "font-size: 10px; color: #ccc; padding-top: 6px; text-align: center; width: 37px; float: right;"}
         USERS LIKE THIS

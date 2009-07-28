@@ -1,10 +1,14 @@
 -@deals.each do |deal|
   .myHQpage_HQCard_result
     .grid_2{ :style => "width:105px; float: left;"}
-      .innerGrey
-        .deal{ :style => "font-size: 45px;"}
-          = deal.deal_type
-          = deal.deal_value
+      .deal{ :style => "font-size: 45px;"}
+        .box_wrp
+          .box_top_small
+          .box_mid_small
+        
+            = deal.deal_type
+            = deal.deal_value
+          .box_bot_small  
     %h3{ :style => "margin-bottom: 0;"}
       = deal.title
     .blueText

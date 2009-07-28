@@ -767,8 +767,11 @@ div.outerBlue { float: left; background: #DEF2FA; padding: 8px; width: 100%;}
 /*************corners**************/
 .box_wrp{padding:0 0 5px 0; width:520px;}
 .box_top{background:url(/images/box-top.jpg) no-repeat; height:12px;}
+.box_top_small{background:url(/images/small-box-top.jpg) no-repeat; height:11px; width:115px;}
 .box_mid{background:url(/images/box-mid.jpg) repeat-y; padding:0 4px;}
+.box_mid_small{background:url(/images/small-box-bg.jpg) repeat-y; padding:0 4px; }
 .box_bot{background:url(/images/box-bot.jpg) no-repeat; height:12px;}
+.box_bot_small{background:url(/images/small-box-bot.jpg) no-repeat; height:11px; width:115px;}
 #title{clear:both}
 	.uploadButton a, .clearButton a, .uploadButton_add a {
 		display:block;
