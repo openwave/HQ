@@ -8,7 +8,7 @@ so.addParam('allowscriptaccess','always');
 so.addParam('allowfullscreen','true');
 so.addParam('wmode','transparent');
 so.addVariable('image','<%= @video.video.url(:thumb) %>');
-so.addVariable('file', '<%= @video.video.url.gsub(/\?.*/,'') %>&skin=/bekle.swf&frontcolor=CCFFFF&controlbar=over&autostart=true&icons=false');
+so.addParam('flashvars', '&file=http://s3.amazonaws.com/hq_project_development_bucket/videos/videos/<%= @video.id%>/original.flv&skin=/bekle.swf&frontcolor=CCFFFF&controlbar=over&autostart=true&icons=false');
 so.addVariable("width","545");
 so.addVariable("frontcolor","0xFFFFFF");
 so.addVariable("height","306");
