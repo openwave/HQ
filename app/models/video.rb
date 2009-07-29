@@ -37,6 +37,16 @@ class Video < ActiveRecord::Base
     end
   end
 
+def upload_to_s3
+   #has_attached_file :image,:styles => {:thumb   => "107x60#",:full    => "545x307>" },:storage => :s3,:s3_credentials => "#{RAILS_ROOT}/config/s3.yml", :path => "orgs/:attachment/:id/:style.:extension",  :bucket => 'hq_project_development_bucket'
+    puts "************************************************* UPLOAD_TO_S3 called *******************************"
+   AWS::S3::Base.establish_connection!(:access_key_id => '1MEBBKABEPBMZ4GZCSR2',:secret_access_key => 'oTw5OjSKjiYpLbKZSjFVrtP7nbnbWdQq714t4ybS')
+   puts "************************************************* AFTER AWS::S3 called *******************************"
+  AWS::S3::S3Object.store('original.flv',open('./public/system/videos/' + id.to_s + '/original/' + id.to_s + '.flv'),'hq_project_development_bucket/videos/videos/' + self.id.to_s + '/', :access => :public_read)
+    puts "************************************************* AFTER S3::store called *******************************"
+end
+
+
   protected
 
   # This method creates the ffmpeg command that we'll be using

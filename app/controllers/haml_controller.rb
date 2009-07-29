@@ -349,7 +349,8 @@ class HamlController < ApplicationController
     @org.video_count += 1
     @org.save
     @video.convert
-    
+    @video.upload_to_s3
+  
     redirect_to :action =>'user_video_thumb_selection',:id => @org.id,:video_id =>@video.id
     
   end
@@ -651,7 +652,6 @@ class HamlController < ApplicationController
     @tabs = @org.tabs
     @events=@org.events
     puts "***************************************FLAG-0*********************** #{$flag}"
-    $flag=1
     puts "***************************************FLAG-1*********************** #{$flag}"
     redirect_to :action =>'myHQpage_admin',:id => @org.id,:flag => 1
     # render :action =>'myHQpage_admin'

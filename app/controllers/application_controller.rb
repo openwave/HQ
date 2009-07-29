@@ -3,8 +3,17 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
   helper :all # include all helpers, all the time
   protect_from_forgery :except=>[:new_image,:create_deal,:update_deal_image]# See ActionController::RequestForgeryProtection for details
+before_filter :set_flag
 
   private
+
+def set_flag
+ $map = 0
+ $flag=0
+ $search=1
+ $review =0
+end
+  
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
     @current_user_session = UserSession.find
