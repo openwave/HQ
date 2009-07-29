@@ -24,13 +24,16 @@
   -high = "high_"<<(deal.id).to_s
   %div{:class => "grid_7",:id=>high,  :style => "margin: 0; text-align: left;"}
 
-    .grid_2{ :style => "width: 100px; height: " }
+    .grid_2{ :style => "width:105px; float: left;"}
       .innerGrey
         .deal2
-          
+          .box_wrp
+            .box_top_small
+            .box_mid_small
                    
-          =  deal.deal_value
-          =  deal.deal_type 
+              =  deal.deal_value
+              =  deal.deal_type 
+            .box_bot_small{ :style => "width:115px;"}
               
          
     .grid_3{ :style => "margin: 0;"}
@@ -45,7 +48,7 @@
         %br
         
         
-    .grid_2{ :style =>"text-align:right;"}
+    .grid_2{ :style => "float:left; margin: 0; padding-top: 5px; padding-left: 15px;"}
       %img{ :src => "/images/cardRank.jpg", :height => "40" }         
       .cardRankNum{ :style => "display: inline;"}
         = deal.rank

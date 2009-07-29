@@ -19,7 +19,7 @@
         Sort By:
 .grid_12
   .searchLeftSide
-    #searchWindow
+    #searchWindow{:style=>"height:557px;"}
       #searchContent
         = render :partial => 'haml/card_search_example'
     .grid_4{ :style => "float:right; text-align:right; margin-top: 10px; margin-bottom: 10px;"}    
@@ -29,7 +29,7 @@
     /BOF RIGHT SIDE
   .searchRightSide
     .inner{:style => "text-align:left;"}
-      .sortOptions
+      .sortOptions{:style=>"margin-top:10px;"}
         %ul
           %li.sortSelected
             = link_to ("card ranking",:controller => :deals,:action=> :index,:search => params[:search],:sort => :rank)
