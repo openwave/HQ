@@ -12,6 +12,7 @@ def set_flag
  $flag=0
  $search=1
  $review =0
+ $business = 0
 end
   
   def current_user_session
