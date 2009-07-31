@@ -14,7 +14,7 @@
         %br
         %h6{ :style => "margin-top: 6px; margin-bottom: 5px;" }
           \&nbsp; deal:
-        = radio_button("deal", "deal_type", "free")
+        = radio_button("deal", "deal_type", "Free")
         Free
         %br
     
@@ -66,28 +66,30 @@
       %h6{ :style => "margin-top: 6px; margin-bottom: 5px;" }
         \&nbsp; disclaimers:
       .disclaimerText
-        - for disclaimer in Disclaimer.all 
-          = check_box_tag 'deal[disclaimer_ids][]', disclaimer.id, @deal.disclaimers.include?(disclaimer),{:id=>"deal_disclaimer_#{disclaimer.id}"}
-          = disclaimer.name
-          %br
-          = hidden_field_tag 'order[disclaimer_ids][]', ''
-        .clear
-      %br
-      .grid_2{ :style => "float:left"}
+        .grid_3{:style=>"margin-left:0px; margin-right:0px; height:50px; border:1px solid red;"}
+          - for disclaimer in Disclaimer.all 
+            = check_box_tag 'deal[disclaimer_ids][]', disclaimer.id, @deal.disclaimers.include?(disclaimer),{:id=>"deal_disclaimer_#{disclaimer.id}"}
+            = disclaimer.name
+            %br
+           
+          .clear
+        %br
+        %br
+    .grid_2{ :style => "float:left"}
        
-        #fileProgress{ :style =>"border: black 1px solid; width:300px; height:40px;float:left"}
-          #fileName{ :style=>"text-align:center; margin:5px; font-size:15px; width:290px; height:25px; overflow:hidden"}
-          #progressBar{:style=>"width:300px;height:5px;background-color:#CCCCCC"}
-        #uploaderUI{ :style=>"width:100px;height:40px;margin-left:5px;float:left"}
-        .uploadButton_add{ :style=>"float:left"}
-          /= link_to '', nil,:class=>"rolloverButton", :href=>"#",  :onclick=>"upload(#{org.id},'',#{form_authenticity_token.inspect},1); return false;"
-          = submit_to_remote image_tag("/images/add.jpg"),"Add", :url=>{:controller=>'haml',:action=>'create_deal',:id=>org.id},:update=>'admin_left',:success=>"upload(#{org.id},'','',1); return false;",:complete =>'upload_file()'
-      %br
-      %br
+      #fileProgress{ :style =>"border: black 1px solid; width:300px; height:40px;float:left"}
+        #fileName{ :style=>"text-align:center; margin:5px; font-size:15px; width:290px; height:25px; overflow:hidden"}
+        
+      #uploaderUI{ :style=>"width:100px;height:40px;margin-left:5px;float:left"}
+      .uploadButton_add{ :style=>"float:left"}
+        /= link_to '', nil,:class=>"rolloverButton", :href=>"#",  :onclick=>"upload(#{org.id},'',#{form_authenticity_token.inspect},1); return false;"
+        = submit_to_remote image_tag("/images/add.jpg"),"Add", :url=>{:controller=>'haml',:action=>'create_deal',:id=>org.id},:update=>'admin_left',:success=>"upload(#{org.id},'','',1); return false;",:complete =>'upload_file()'
+    %br
+    %br
       .grid_4{ :style => "float:left;align:right;"}
         /= submit_to_remote image_tag("/images/add.jpg"),"Add",:url=>{:controller=>'haml',:action=>'create_deal',:id => org.id},:update=>'admin_left',:success=>"upload('','','',1); return false;"
         /= image_tag
-    .clear
+      .clear
   .box_bot
 .clear
 
@@ -96,7 +98,7 @@
 = render :partial => 'motion_scroll_bar'
 
 #searchWindow{ :style => "width: 495px"}
-  #searchContent         
+  #searchContent
     = render :partial => 'haml/manage_hq_card_example',:locals => {:org => org}
     
 .clear
