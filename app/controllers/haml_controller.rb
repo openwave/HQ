@@ -57,7 +57,7 @@ class HamlController < ApplicationController
     @flowing = @org.flowing
     @event = Event.find(params[:id])
     @events = @org.events
-    render :partial =>'/haml/myHQpage_admin_Event'
+    render :template =>'/haml/myHQpage_admin_Event'
   end
   
   
