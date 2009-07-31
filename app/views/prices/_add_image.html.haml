@@ -12,6 +12,6 @@
           = submit_to_remote "Add","Add",:url=>{:controller=>'prices',:action=>'create_price',:item=>params[:item],:id=>@org.id,:description=>params[:description],:price=>params[:price],:tab_id=>params[:tab_id],:main_tab=>@tab.id},:update=>'searchContent',:success=>"upload(#{@org.id},#{@tab.id},#{form_authenticity_token.inspect},0); return false;" ,:style=>"width:121px;height:29px;margin-left:5px;float:left",:href=>"#"    
         .grid_1{ :style => "margin-left: 0px; float: right; text-align: right;"}
           = link_to_remote image_tag('/images/exitBtn.jpg',:height=>'40'),:url => {:controller => 'prices',:action => 'close'},:update=>'title'
-    .box_bot   
+  .box_bot   
  
 
