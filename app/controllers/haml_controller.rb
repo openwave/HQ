@@ -308,7 +308,13 @@ class HamlController < ApplicationController
     render :template =>'/haml/myHQpage_Event'
   end
   
-  
+   def myHQpage_admin_Event
+    @org=Org.find(params[:org_id])
+    @flowing = @org.flowing
+    @event = Event.find(params[:id])
+    @events=@org.events
+    render :template =>'/haml/myHQpage_admin_Event'
+  end
   
   def save_photos
     @org = Org.find(params[:id])
