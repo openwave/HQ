@@ -52,12 +52,12 @@ class HamlController < ApplicationController
     render :partial =>'/haml/myHQpage_Event'
   end
   
-    def myHQpage_admin_Event
+   def myHQpage_admin_Event
     @org= Org.find(params[:org_id])
     @flowing = @org.flowing
     @event = Event.find(params[:id])
     @events = @org.events
-    render :template =>'/haml/myHQpage_admin_Event'
+    render :template => '/haml/myHQpage_admin_Event'
   end
   
   
@@ -1030,6 +1030,8 @@ class HamlController < ApplicationController
   
   
   def manage_hq_card
+    @disclaimers= Disclaimer.find(1,2,3,4)
+    @disclaimers1= Disclaimer.find(5,6,7)
     render :partial =>'manage_hq_card'
   end
   
@@ -1043,7 +1045,7 @@ class HamlController < ApplicationController
     @disclaimers1= Disclaimer.find(5,6,7)
   end
   def create_events
-    p '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@santhosh'
+   
     p params[:org_id]
     @org = Org.find(params[:org_id])
     @facttts = Fact.find_all_by_org_id(params[:id])
