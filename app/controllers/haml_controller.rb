@@ -1039,6 +1039,8 @@ class HamlController < ApplicationController
     @deal = Deal.new
     @deals= @org.deals
     @events =@org.events
+     @disclaimers= Disclaimer.find(1,2,3,4)
+    @disclaimers1= Disclaimer.find(5,6,7)
   end
   def create_events
     p '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@santhosh'
