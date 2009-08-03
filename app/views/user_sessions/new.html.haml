@@ -26,11 +26,15 @@
       - form_for @user_session, :url => user_session_path do |f|
         - if @usr
           - unless @usr.errors.empty?
-            %ul
+            %h2
             - @usr.errors.each do |attr, msg|
-              %li
-                %h2
-                  = attr+" "+msg
+              %h2
+                - if attr == "email"
+                  %h2
+                    = "Email" +" "+msg
+                - elsif attr == "password"
+                  %h2
+                    = "Password" +" "+msg
   
         = render :partial => "form", :object => f
         %br
