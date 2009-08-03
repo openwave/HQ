@@ -67,12 +67,17 @@
         \&nbsp; disclaimers:
       .disclaimerText
         .grid_3{:style=>"margin-left:0px; margin-right:0px;"}
-          - for disclaimer in Disclaimer.all 
+          - @disclaimers.each do |disclaimer|
             = check_box_tag 'deal[disclaimer_ids][]', disclaimer.id, @deal.disclaimers.include?(disclaimer),{:id=>"deal_disclaimer_#{disclaimer.id}"}
             = disclaimer.name
             %br
-           
-          .clear
+        .grid_3
+          - @disclaimers1.each do |disclaimer|
+            = check_box_tag 'deal[disclaimer_ids][]', disclaimer.id, @deal.disclaimers.include?(disclaimer),{:id=>"deal_disclaimer_#{disclaimer.id}"}
+            = disclaimer.name 
+          
+            %br
+          .clear   
         %br
         %br
     .grid_2{ :style => "float:left"}
