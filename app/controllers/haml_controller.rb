@@ -1064,6 +1064,8 @@ class HamlController < ApplicationController
     @events=@org.events
     @deals=@org.deals
     @deal.save
+     @disclaimers= Disclaimer.find(1,2,3,4)
+    @disclaimers1= Disclaimer.find(5,6,7)
     render :template =>'haml/manageHQCard'
   end
   
