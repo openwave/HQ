@@ -1,0 +1,29 @@
+
+.grid_7{:style =>"float:left; width: 538px; height: 500px; text-align: left;"}
+  .grid_7{ :style => "border-bottom: 2px solid #BED538; margin: 0;"}
+    %h2
+      = @event.title 
+  %br
+  %br
+  .disclaimerText2
+    = @event.starting_on.to_s + ' ' + '-' + ' ' + @event.ending_on.to_s
+  = @event.description
+  %br
+  %br
+  .disclaimerText2
+    Age Req.
+  =@event.age_requirement
+  %br
+  %br
+  .disclaimerText2
+    Address
+  = @event.street
+  %br
+  = @event.locality+','+@event.region + ' ' + '-' + ' ' + @event.postal_code
+  %br
+  %br
+  .grid_5{ :style => "margin-left: 0;"}
+    .inner
+      %img{ :src => "/images/mapitPlaceHolder.jpg", :width => "355"}
+          
+    
