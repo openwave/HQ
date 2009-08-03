@@ -2,6 +2,7 @@
 - @highlights.each do |highlight|
   -high = "high_"<<(highlight.id).to_s
   %div{:id=>high}
+  .disclaimerText
     heading
     = text_area_tag :price,"#{highlight.title}" ,:style => "height: 20px; width: 350px; float:left;"
     .grid_2{ :style => "float:left; width: 103px"}
