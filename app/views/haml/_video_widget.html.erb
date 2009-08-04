@@ -19,7 +19,8 @@
         <%=  link_to_remote(image_tag("/system/videos/#{@video.id}/original/#{@video.id}.jpg", :height => "60",:width => "70"),:update =>"viewer",:url => {:controller => "haml",:action => "show_video",:org_id => @org.id,:id => @video.id}) %>
 	
 		
-	    <div id = <%= "video_"+ (@video.id).to_s %>  class = "quickview_rollover" style="float: left; width: 62px; text-align: center; padding-top: 8px;font-size:10px; height: 33px; margin-top: 39px;">
+	    <div id = <%= "video_"+ (@video.id).to_s %>  class="img_divover">
+
 	    	<%= link_to_remote "makedefault",:update => "thumbs1",:url => {:controller => :haml,:action => :make_default_video,:id => org.id,:video_id => @video.id} %>
 
 			<%= link_to_remote "delete",:update => "thumbs1",:url => {:controller => :haml,:action => :video_delete,:id => org.id,:video_id => @video.id}	 %>
