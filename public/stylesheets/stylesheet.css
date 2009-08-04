@@ -54,6 +54,9 @@
        -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
+.img_divover{position:absolute; top:0; left:0; background: url(/images/make-default-over.png) no-repeat; width:70px; height:60px; font-size:11px; padding:25px 0 0 0; text-align:center;display:none;}
+.img_divover a{color:#000000; text-decoration:underline;}
+.img_divover a:hover{color:#000000; text-decoration:underline;}
 
 
 /* ************* REBURBISHED MAIN NAV ************* */
@@ -297,9 +300,9 @@
 	text-align: left;
 }
 .frame:hover{
-    opacity: .5;
+   /* opacity: .5;
    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
-	filter: alpha(opacity=50);				
+	filter: alpha(opacity=50);				 */
 
 
 }
