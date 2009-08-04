@@ -1,15 +1,4 @@
-%div{ :style => "margin: 0 auto; width: 700px; text-align:left;"}
-  .grid_4
-    %br
-      = @user.first_name
-      = @user.last_name
+%center
+  %font{ :color => 'red',:size => '40'}
+    You dont have privilege to access this page!
 
-    %br
-      = @user.email
-
-    %br
-      = render :partial => '/users/orgs'  
-    %br
-      = link_to 'Create New Org', new_user_org_path(current_user)
-    
-      = render :partial => 'notifications'  
