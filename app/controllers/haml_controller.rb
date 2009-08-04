@@ -4,6 +4,9 @@ class HamlController < ApplicationController
   require 'RMagick'
   include Magick
   before_filter :require_user,:except =>[:myHQpage_Event,:myHQpage,:submit_review,:userReviews,:report_form,:submit_report_form,:review_rank,:myHQpage_notification,:submit_notifications,:map,:update_deal_image,:myHQpage_Event,:show_video,:show_photo,:calendar_voteup,:calendar_votedown,:choose_tab,:list_price_items,:myHQpage_Write_a_Review]
+
+before_filter :secure_logged_in ,:only => :myHQpage_admin
+
   $map = 0
   
   $flag=0
@@ -1151,3 +1154,18 @@ class HamlController < ApplicationController
     
   end
 end
+
+private
+def secure_logged_in
+      
+     @org=current_user.org
+     if !(@org.id.to_i == params[:id].to_i)
+         
+       redirect_to new_user_session_path
+      # @user_session = UserSession.new
+      #redirect_to :controller => :user_sessions ,:action => :new
+        
+
+   end
+
+
