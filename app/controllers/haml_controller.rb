@@ -1153,7 +1153,6 @@ before_filter :secure_logged_in ,:only => :myHQpage_admin
     render :partial =>'/haml/hq_card_search_vote'
     
   end
-end
 
 private
 def secure_logged_in
@@ -1167,5 +1166,9 @@ def secure_logged_in
         
 
    end
+
+
+
+end
 
 
