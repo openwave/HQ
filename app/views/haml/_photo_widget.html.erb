@@ -18,7 +18,7 @@
 		<% if @photo == @gallery.photos.first %>
        <%=  link_to_remote(image_tag(@photo.image.url, :height => "60",:width => "70"),:update =>"viewer",:url => {:controller => "haml",:action => "show_photo",:id => @org.id,:gallery_id => @gallery.id}) %>
 		<%end%>
-	    <div id = <%= @gallery.id %>  class = "quickview_rollover" style="float: left; width: 62px; text-align: left;font-size:10px;padding-top: 8px; height: 33px; margin-top: 39px;">
+	    <div id = <%= @gallery.id %>  class="img_divover">
 	    	<%= link_to_remote "makedefault",:update => "thumbs",:url => {:controller => :haml,:action => :make_default,:id => org.id,:gallery_id => @gallery.id},:class => 'rollover_font' %>
 	
 			<%= link_to_remote "delete",:update => "thumbs",:url => {:controller => :haml,:action => :gallery_delete,:id => org.id,:gallery_id => @gallery.id},:class => 'rollover_font'	 %>
