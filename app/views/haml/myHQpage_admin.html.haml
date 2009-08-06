@@ -102,7 +102,7 @@
           = render :partial => 'haml/myHQpage_admin_sales_calendar',:locals=>{:f=>"Sales Calendar",:id=>@org.id,:calender_status=>@org.calender_status}
         :javascript
           function transslide(highid) {
-         var high='high_'+highid;
+              var high='high_'+highid;
               var vCurrentId    =   jQuery("#"+high).attr('id');
               var vPid          =   jQuery("#"+high).prev().attr('id');
               var vNid          =   jQuery("#"+high).next().attr('id');
