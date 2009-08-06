@@ -1,3 +1,8 @@
+%link{ :href => "/stylesheets/vtip.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+%script{ :type => "text/javascript", :src => "/javascripts/vtip.js" }
+
+
+
 - @deals.each do |deal|  
 
   .searchResult
@@ -40,8 +45,9 @@
           = link_to_remote image_tag("/images/voteUp.jpg"),:url=>{:controller=>'haml',:action=>'hqcard_search_deal_voteup',:id=>deal.id},:update=>'hqCardSearchContent_deal_' + deal.id.to_s
           = link_to_remote image_tag("/images/voteDown.jpg"),:url=>{:controller=>'haml',:action=>'hqcard_search_deal_votedown',:id=>deal.id},:update=>'hqCardSearchContent_deal_' + deal.id.to_s
         - else
-          = link_to image_tag('/images/voteUp.jpg'),{:controller =>'user_sessions',:action =>'new'},{:title =>'Login required to perform this action'}
-          = link_to image_tag('/images/voteDown.jpg'),{:controller =>'user_sessions',:action =>'new'},{:title =>'Login required to perform this action'}
+          =link_to image_tag('/images/voteUp.jpg') ,{:controller =>'user_sessions',:action =>'new'},:href=>"#",:title=>"You should be logged in to perform this action",:class=>"vtip"
+        
+          =link_to image_tag('/images/voteDown.jpg') ,{:controller =>'user_sessions',:action =>'new'},:href=>"#",:title=>"You should be logged in to perform this action",:class=>"vtip"
         %img{ :src => "/images/cardRank.jpg", :height => "40" }
           .cardRankNum{ :style => "display: inline;"}
             = deal.rank
