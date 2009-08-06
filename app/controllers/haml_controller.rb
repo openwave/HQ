@@ -152,14 +152,19 @@ class HamlController < ApplicationController
       @review = Review.find(params[:id])
       if session[:review_votes].empty?
         @review.rank = @review.rank + 1
-        session[:review_votes]=params[:id]
+        session[:review_votes].push(params[:id])
       else
+         flag =0
         session[:review_votes].each do |vote|
-          if vote != params[:id]
-            @review.rank = @review.rank + 1
-            session[:review_votes]=params[:id]
+          if vote.eql?(params[:id])
+            flag = 1
+            
           end
         end
+          if flag != 1
+          @review.rank = @review.rank + 1
+            session[:review_votes].push(params[:id])
+          end
       end
     else
       @review = Review.find(params[:id])
@@ -168,13 +173,18 @@ class HamlController < ApplicationController
       else
         if session[:review_votes].empty?
           @review.rank = @review.rank - 1
-          session[:review_votes]=params[:id]
+          session[:review_votes].push(params[:id])
         else
+          flag = 0
           session[:review_votes].each do |vote|
-            if vote != params[:id]
-              @review.rank = @review.rank - 1
-              session[:review_votes]=params[:id]
+            
+            if vote.eql?(params[:id])
+              flag=1
             end
+          end
+          if flag != 1
+          @review.rank = @review.rank - 1
+          session[:review_votes].push(params[:id])
           end
         end
       end
@@ -184,7 +194,7 @@ class HamlController < ApplicationController
     @reviews = @org.reviews.find(:all,:order => 'rank DESC')
     render :partial => '/haml/myHQpage_user_reviews'
   end
-  
+
   def myHQpage_contact
     @org = Org.find(params[:id])
     @facts = @org.facts
@@ -912,23 +922,27 @@ class HamlController < ApplicationController
     end
     
   end
-  def deal_voteup
+    def deal_voteup
     
     @org = Org.find(params[:org_id])
     @deals=@org.deals
     @deal=Deal.find(params[:id])
     if session[:deal_votes].empty?
       @deal.rank = @deal.rank + 1
-      session[:deal_votes] =params[:id]
+      session[:deal_votes].push(params[:id])
       @deal.save
     else
+      flag=0
       session[:deal_votes].each do |vote|
-        if vote != params[:id]
-          @deal.rank=@deal.rank + 1
-          session[:deal_votes] =params[:id]
-          @deal.save
+        if vote.eql?(params[:id])
+          flag=1
         end
       end
+         if flag != 1
+         @deal.rank=@deal.rank + 1
+          session[:deal_votes].push(params[:id])
+          @deal.save
+         end
     end
     
     render :partial =>'/haml/myHQpage_HQCard_example'
@@ -942,44 +956,57 @@ class HamlController < ApplicationController
     @deal=Deal.find(params[:id])
     if session[:deal_votes].empty?
       @deal.rank = @deal.rank - 1
-      session[:deal_votes] =params[:id]
+      session[:deal_votes].push(params[:id])
       @deal.save
     else
+      flag=0
       session[:deal_votes].each do |vote|
-        if vote != params[:id]
-          @deal.rank=@deal.rank - 1
-          session[:deal_votes] =params[:id]
-          @deal.save
+        if vote.eql?(params[:id])
+          flag=1
         end
+      end
+      if flag != 1
+      @deal.rank=@deal.rank - 1
+      session[:deal_votes].push(params[:id])
+      @deal.save
       end
     end
     render :partial =>'/haml/myHQpage_HQCard_example'
     
   end
+
   
-  def calendar_voteup
+def calendar_voteup
     
     @org = Org.find(params[:org_id])
     @events=@org.events
     @event=Event.find(params[:id])
-    puts "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#{session[:event_votes]}"
+    puts "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#{session[:event_votes].type}"
     if session[:event_votes].empty?
       @event.rank = @event.rank + 1
-      session[:event_votes] =params[:id]
+      session[:event_votes].push(params[:id])
+       #puts "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww--11111#{session[:event_votes].type}"
       @event.save
     else
-      puts " *********************************Session Else *************************************"
+      #puts " *********************************Session Else *************************************"
+      flag=0
       session[:event_votes].each do  |vote|
-        puts " *********************************VOTE ************************************* #{vote}"
-        if vote != params[:id]
-          @event.rank = @event.rank + 1
-          session[:event_votes] =params[:id]
+        #puts " ********************************* Session loop************************************* #{vote}"
+        if vote.eql?(params[:id])
+          #puts " *********************************VOTE ************************************* #{vote}"
+          flag =1
+          break
+          end
+      end
+      if flag != 1
+        @event.rank = @event.rank + 1
+          session[:event_votes].push(params[:id])
           @event.save
-        end
       end
     end
     render :partial =>'/haml/myHQpage_sales_calendar_example'
   end
+
   
   def calendar_votedown
     @org = Org.find(params[:org_id])
@@ -987,15 +1014,21 @@ class HamlController < ApplicationController
     @event=Event.find(params[:id])
     if session[:event_votes].empty?
       @event.rank = @event.rank - 1
-      session[:event_votes] =params[:id]
+      session[:event_votes].push(params[:id])
       @event.save
     else
+      flag=0
       session[:event_votes].each do  |vote|
-        if vote != params[:id]
-          @event.rank = @event.rank - 1
-          session[:event_votes] =params[:id]
-          @event.save
+      if vote.eql?(params[:id])
+        flag =1
+          break
+         
         end
+      end
+      if flag !=1
+       @event.rank = @event.rank - 1
+        session[:event_votes].push(params[:id])
+        @event.save
       end
     end
     render :partial =>'/haml/myHQpage_sales_calendar_example'
@@ -1114,20 +1147,25 @@ class HamlController < ApplicationController
     @deal.save
     render :partial =>'/haml/manage_hq_card_example'
   end
+  
   def hqcard_search_deal_voteup
     @deal=Deal.find(params[:id])
     if session[:deal_votes].empty?
       @deal.rank = @deal.rank + 1
-      session[:deal_votes] =params[:id]
+      session[:deal_votes].push(params[:id])
       @deal.save
     else
+      flag=0
       session[:deal_votes].each do |vote|
-        if vote != params[:id]
-          @deal.rank=@deal.rank + 1
-          session[:deal_votes] =params[:id]
-          @deal.save
+        if vote.eql?(params[:id])
+          flag =1
         end
-      end
+      end 
+          if flag != 1
+          @deal.rank=@deal.rank + 1
+          session[:deal_votes].push(params[:id])
+          @deal.save
+          end
     end
     render :partial =>'/haml/hq_card_search_vote'
     
@@ -1138,20 +1176,25 @@ class HamlController < ApplicationController
     @deal=Deal.find(params[:id])
     if session[:deal_votes].empty?
       @deal.rank = @deal.rank - 1
-      session[:deal_votes] =params[:id]
+      session[:deal_votes].push(params[:id])
       @deal.save
     else
+      flag = 0
       session[:deal_votes].each do |vote|
-        if vote != params[:id]
-          @deal.rank=@deal.rank - 1
-          session[:deal_votes] =params[:id]
-          @deal.save
+        if vote.eql?(params[:id])
+          flag =1
         end
+      end
+      if flag != 1
+         @deal.rank=@deal.rank - 1
+          session[:deal_votes].push(params[:id])
+          @deal.save
       end
     end
     render :partial =>'/haml/hq_card_search_vote'
     
   end
+
 
 
 
