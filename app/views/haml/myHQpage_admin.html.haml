@@ -102,45 +102,57 @@
           = render :partial => 'haml/myHQpage_admin_sales_calendar',:locals=>{:f=>"Sales Calendar",:id=>@org.id,:calender_status=>@org.calender_status}
         :javascript
           function transslide(highid) {
-          var high='high_'+highid;
-          Obcur=jQuery("#"+high)
-          
-          OPrev=jQuery("#"+high).prev()
-          OPrev.slideUp()
-          var temp;
-          temp = Obcur.html()
-          Obcur.html(OPrev.html())
-          OPrev.html(temp)
-          var sid;
+         var high='high_'+highid;
+              var vCurrentId    =   jQuery("#"+high).attr('id');
+              var vPid          =   jQuery("#"+high).prev().attr('id');
+              var vNid          =   jQuery("#"+high).next().attr('id');
+             
+              
+              if(vPid != undefined)
+              {
+                  Obcur=jQuery("#"+high)
+                  OPrev=jQuery("#"+high).prev()
+                  OPrev.slideUp()
+                  var temp;
+                  temp = Obcur.html()
+                  Obcur.html(OPrev.html())
+                  OPrev.html(temp)
+                  var sid;
 
-          sid= Obcur.attr("id")
-          Obcur.attr("id",OPrev.attr("id"));
-          OPrev.attr("id",sid);
-          OPrev.slideDown("slow")
-          Obcur.append();
-          OPrev.append();
-          }
+                  sid= Obcur.attr("id")
+                  Obcur.attr("id",OPrev.attr("id"));
+                  OPrev.attr("id",sid);
+                  OPrev.slideDown("slow")
+                  Obcur.append();
+                  OPrev.append();
+              }
+           
+           }
 
           function transslide1(highid) {
-          var high='high_'+highid;
-          if(jQuery("#"+high).next())
-          { 
-          Obcur=jQuery("#"+high)
-          OPrev=jQuery("#"+high).next()
-          Obcur.slideUp()
-          var temp;
-          temp = Obcur.html()
-          Obcur.html(OPrev.html())
-          OPrev.html(temp)
-          var sid;
-  				
-          sid= Obcur.attr("id")
-          Obcur.attr("id",OPrev.attr("id"));
-          OPrev.attr("id",sid);
-          Obcur.slideDown("slow")
-          Obcur.append();
-          OPrev.append();
-          }
+              var high='high_'+highid;
+              var vNid          =   jQuery("#"+high).next().attr('id')
+              var vCurrentId    =   jQuery("#"+high).attr('id');
+             
+              if(vNid != undefined)
+              {
+                 
+                  Obcur=jQuery("#"+high)
+                  OPrev=jQuery("#"+high).next()
+                  Obcur.slideUp()
+                  var temp;
+                  temp = Obcur.html()
+                  Obcur.html(OPrev.html())
+                  OPrev.html(temp)
+                  var sid;
+
+                  sid= Obcur.attr("id")
+                  Obcur.attr("id",OPrev.attr("id"));
+                  OPrev.attr("id",sid);
+                  Obcur.slideDown("slow")
+                  Obcur.append();
+                  OPrev.append();
+              }
           }
 
       / Footer      
