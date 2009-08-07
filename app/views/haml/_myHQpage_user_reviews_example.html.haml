@@ -1,4 +1,5 @@
-/  Begin Example muthafucka yah!
+%link{ :href => "/stylesheets/vtip.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+%script{ :type => "text/javascript", :src => "/javascripts/vtip.js" }
 
 #userReviewResult
   .grid_7{ :style => "height: 50px;"}
@@ -9,8 +10,9 @@
           = link_to_remote image_tag("/images/voteUp.jpg"),:update => 'left',:url => {:controller => :haml,:action => :review_rank,:id => review.id,:vote_type => 'up'}
           = link_to_remote image_tag("/images/voteDown.jpg"),:update => 'left',:url => {:controller => :haml,:action => :review_rank,:id => review.id,:vote_type => 'down'}
         - else
-          = link_to image_tag("/images/voteUp.jpg"),{:controller => "user_sessions",:action => 'new'},{:title =>'Login required to perform this action'}
-          = link_to image_tag("/images/voteDown.jpg"),{:controller =>"user_sessions",:action => 'new'},{:title => 'Login required to perform this action'}
+          =link_to image_tag('/images/voteUp.jpg') ,{:controller =>'user_sessions',:action =>'new'},:title=>"You should be logged in to perform this action",:class=>"vtip"
+          =link_to image_tag('/images/voteDown.jpg') ,{:controller =>'user_sessions',:action =>'new'},:title=>"You should be logged in to perform this action",:class=>"vtip"
+          
     .grid_2{ :style => "margin: -8px 0 0 0; text-align: right; float:left; width: 90px;"}
       .grid_1{ :style => "font-size: 10px; color: #ccc; padding-top: 6px; text-align: center; width: 37px; float: right;"}
         USERS LIKE THIS
