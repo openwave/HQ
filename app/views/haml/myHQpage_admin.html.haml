@@ -111,6 +111,7 @@
               if(vPid != undefined)
               {
                   Obcur=jQuery("#"+high)
+
                   OPrev=jQuery("#"+high).prev()
                   OPrev.slideUp()
                   var temp;
@@ -127,7 +128,10 @@
                   OPrev.append();
               }
            
-           }
+          }
+
+           
+           
 
           function transslide1(highid) {
               var high='high_'+highid;
@@ -136,7 +140,8 @@
              
               if(vNid != undefined)
               {
-                 
+                  
+
                   Obcur=jQuery("#"+high)
                   OPrev=jQuery("#"+high).next()
                   Obcur.slideUp()
