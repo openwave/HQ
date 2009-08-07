@@ -20,6 +20,6 @@
         =link_to_remote image_tag( "/images/voteUp.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),:url=>{:controller=>'haml',:action=>'calendar_voteup',:id=>event.id,:org_id=>@org.id},:update=>'calendarContent'
         =link_to_remote image_tag( "/images/voteDown.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),:url=>{:controller=>'haml',:action=>'calendar_votedown',:id=>event.id,:org_id=>@org.id},:update=>'calendarContent'
       - else
-        = link_to image_tag( "/images/voteUp.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),{:controller=>'user_sessions',:action=>'new'},{:title => "Login required to perform this action"}
-        = link_to  image_tag( "/images/voteDown.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),{:controller=>'user_sessions',:action=>'new'},{:title => "Login required to perform this action"}
+        =link_to image_tag('/images/voteUp.jpg') ,{:controller =>'user_sessions',:action =>'new'},:href=>"#",:title=>"You should be logged in to perform this action",:class=>"vtip"
+        =link_to image_tag('/images/voteDown.jpg') ,{:controller =>'user_sessions',:action =>'new'},:href=>"#",:title=>"You should be logged in to perform this action",:class=>"vtip"
       
