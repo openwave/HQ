@@ -1,3 +1,6 @@
+%link{ :href => "/stylesheets/vtip.css", :rel => "stylesheet" , :media => "all", :type => "text/css"}
+%script{ :type => "text/javascript", :src => "/javascripts/vtip.js" }
+
 -@deals.each do |deal|
   .myHQpage_HQCard_result
     .grid_2{ :style => "width:105px; float: left;"}
@@ -27,7 +30,7 @@
         = link_to_remote image_tag( "/images/voteUp.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),:url=>{:controller=>'haml',:action=>'deal_voteup',:vote_status=>deal.vote_status,:id=>deal.id,:org_id=>@org.id},:update=>'hqCardContent'
         = link_to_remote image_tag( "/images/voteDown.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),:url=>{:controller=>'haml',:action=>'deal_votedown',:vote_status=>deal.vote_status,:id=>deal.id,:org_id=>@org.id},:update=>'hqCardContent'
       - else
-        = link_to image_tag( "/images/voteUp.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),{:controller=>'haml',:action=>'deal_voteup'},{:title =>'Login required to perform this action'}
-        = link_to image_tag( "/images/voteDown.jpg", :style => "float: right; padding-top: 10px; margin-right: 5px;"),{:controller=>'haml',:action=>'deal_votedown'},{:title =>'Login required to perform this action'}
+        =link_to image_tag('/images/voteUp.jpg') ,{:controller =>'user_sessions',:action =>'new'},:title=>"You should be logged in to perform this action",:class=>"vtip"
+        =link_to image_tag('/images/voteDown.jpg') ,{:controller =>'user_sessions',:action =>'new'},:title=>"You should be logged in to perform this action",:class=>"vtip"
 
 
