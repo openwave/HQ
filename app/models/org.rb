@@ -32,7 +32,7 @@ has_many :price_tabs
 #   validates_attachment_size :image, :greater_than => 4.kilobytes, :message => "minimum size is 4kB"
   # using typical SLR camera aspect ratio of 2:3 (I.e. 4" x 6")
   #:styles => { :original => "700x466", :cover => "150x100!", :thumb => "68x50!" },
-  
+  validates_uniqueness_of :title,:message=>'Already exists'
   
   STATES = [[ "New Jersey", "NJ" ]]
 
