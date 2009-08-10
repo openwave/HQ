@@ -16,4 +16,4 @@
       = link_to "Create My Org",new_user_org_path(current_user)
     - else
       |
-      = link_to "Manage My Org" ,:controller => :haml,:action => :myHQpage_admin,:id => @user_org.id
+      = link_to "Manage My Org" ,org_path(:id => @user_org.id,:title=> @user_org.title)
