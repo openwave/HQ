@@ -48,6 +48,7 @@ ActionController::Routing::Routes.draw do |map|
   # map.new_contacts 'org/:id/contacts/new', :controller => 'contacts', :action=>'new'
   
   # Install the default routes as the lowest priority.
+    map.org ':title/:id' , :controller => 'haml',:action => 'myHQpage_admin'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
 end
