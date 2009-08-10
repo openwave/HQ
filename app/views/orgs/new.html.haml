@@ -6,10 +6,7 @@
     .inner   
       %br
       - form_for([current_user, @org]) do |f|
-        - @orgg.errors.each do |attr, msg|
-          %h2
-            - if attr == "title"
-              = "Organisation" +" "+msg
+        
         = render :partial => @org, :locals => { :f => f }
         %div{ :style => "width: 265px; text-align: right;"}
         = image_submit_tag('/images/submit.jpg', :height => "25")
