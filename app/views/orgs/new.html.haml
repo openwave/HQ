@@ -1,10 +1,15 @@
-%div{ :style => "margin: 0 auto; width: 700px; text-align:left;"}
-  .grid_4
-    %h3
-      Create an HQ Page
-    %br
-    - form_for([current_user, @org]) do |f|
-      = f.error_messages
-      = render :partial => @org, :locals => { :f => f }
-      %div{ :style => "width: 265px; text-align: right;"}
-      = image_submit_tag('/images/submit.jpg', :height => "25")
+%div{ :style => "margin: 0 auto; width: 700px;"}
+  %h1
+    Create an HQ Page
+  %br
+  .grid_4{:style => "float:left; text-align: left;"}
+    .inner   
+      %br
+      - form_for([current_user, @org]) do |f|
+        - @orgg.errors.each do |attr, msg|
+          %h2
+            - if attr == "title"
+              = "Organisation" +" "+msg
+        = render :partial => @org, :locals => { :f => f }
+        %div{ :style => "width: 265px; text-align: right;"}
+        = image_submit_tag('/images/submit.jpg', :height => "25")
