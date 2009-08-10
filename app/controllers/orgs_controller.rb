@@ -1,7 +1,6 @@
 class OrgsController < ApplicationController
   include Geokit::Geocoders
-layout 'search',:only => [:index,:new,:create]
-
+  layout 'search',:only => [:index,:new,:create]
   before_filter :require_user, :only => [:edit, :update]
   before_filter :require_allowable_user, :only => [:edit, :update, :delete]
   
@@ -85,13 +84,14 @@ layout 'search',:only => [:index,:new,:create]
   end
   
   def create
-   
     @org = Org.new(params[:org])
     @org.user_id = current_user.id
-     @orgg=Org.new
-         unless @org.valid?
-               @org.errors.each {|k,v| @orgg.errors.add(k, v) }
-         end
+    # @orgg=Org.new
+         
+         #unless @org.valid?
+           
+          #     @org.errors.each {|k,v| @orgg.errors.add(k, v) }
+         #end
       if @org.save
         redirect_to :controller => :haml,:action => :myHQpage_admin,:id => @org.id 
        # format.xml  { render :xml => @org, :status => :created, :location => @org }
