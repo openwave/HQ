@@ -1,6 +1,7 @@
 class OrgsController < ApplicationController
   include Geokit::Geocoders
-  layout 'search',:only => [:index,:new,:create]
+layout 'search',:only => [:index,:new,:create]
+
   before_filter :require_user, :only => [:edit, :update]
   before_filter :require_allowable_user, :only => [:edit, :update, :delete]
   
@@ -84,6 +85,7 @@ class OrgsController < ApplicationController
   end
   
   def create
+   
     @org = Org.new(params[:org])
     @org.user_id = current_user.id
      @orgg=Org.new
