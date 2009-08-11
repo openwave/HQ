@@ -16,6 +16,7 @@ class EventsController < ApplicationController
 
 
 def add_event
+  puts "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq#{params[:id]}"
   @org = Org.find(params[:id])
   @event = @org.events.build(params[:event])
   render :partial =>'new'
