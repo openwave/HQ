@@ -83,15 +83,13 @@ class OrgsController < ApplicationController
     @org = Org.find(params[:id])
   end
   
-  def create
+ def create
     @org = Org.new(params[:org])
     @org.user_id = current_user.id
-    # @orgg=Org.new
-         
-         #unless @org.valid?
-           
-          #     @org.errors.each {|k,v| @orgg.errors.add(k, v) }
-         #end
+     @orgg=Org.new()
+         unless @org.valid?
+               @org.errors.each {|k,v| @orgg.errors.add(k, v) }
+         end
       if @org.save
         redirect_to :controller => :haml,:action => :myHQpage_admin,:id => @org.id 
        # format.xml  { render :xml => @org, :status => :created, :location => @org }
