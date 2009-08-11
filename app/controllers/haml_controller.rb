@@ -281,8 +281,7 @@ class HamlController < ApplicationController
     if @org.facts.empty?
       @fact = Fact.new
     end
-    
-    
+       
   end
   
   def myHQadmin_org_info
@@ -652,10 +651,19 @@ class HamlController < ApplicationController
     @org = Org.find(params[:id])
     @tabs = @org.tabs
     @events=@org.events
+    if params[:orgs]
     if @org.update_attributes(params[:orgs])
-      puts " ****************************************** UPDATE ATTRI IN SAVE_LOGO_UPLOAD***********************"
+      
       @org.logo = 1
       @org.save
+    else
+      redirect_to  :action => 'myHQpage_admin' ,:id => @org.id
+      return
+    end
+    else
+  
+  redirect_to  :action => 'myHQpage_admin' ,:id => @org.id
+      return
     end
     # image=Image.read("/home/openwave/flower.png").first
     # face=image.crop!(270,55,194,194)
@@ -663,7 +671,7 @@ class HamlController < ApplicationController
     #  render :template => '/haml/myHQpage_admin'
     redirect_to  :action => 'change_logo_image_crop' ,:id => @org.id
   end
-  
+
   def change_logo_image_crop
     @org= Org.find(params[:id])
     
