@@ -1,8 +1,25 @@
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/element/element-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/dragdrop/dragdrop-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/resize/resize-min.js"></script>
-<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/imagecropper/imagecropper-min.js"></script>
+<script type="text/javascript" src="/javascripts/cropper/prototype.js"></script>
+<script type="text/javascript" src="/javascripts/cropper/scriptaculous.js"></script>
+<script type="text/javascript" src="/javascripts/cropper/builder.js"></script>
+<script type="text/javascript" src="/javascripts/cropper/dragdrop.js"></script>
+<script type="text/javascript" src="/javascripts/cropper/cropper.js"></script>
+<script type="text/javascript" language="JavaScript">
+function onEndCrop( coords, dimensions ) {
+  $('orgs_x1' ).value = coords.x1;
+  $('orgs_y1' ).value = coords.y1;
+  $('orgs_width' ).value = dimensions.width;
+  $('orgs_height' ).value = dimensions.height;
+}
+
+Event.observe( window, 'load', function() {
+  new Cropper.Img('cropimage', {
+    minWidth: 50,
+    minHeight: 50,
+    displayOnInit: true,
+    onEndCrop: onEndCrop
+  } );
+} );
+</script>
 <% form_for :orgs, :url => {:controller => 'haml',:action => 'update_logo_upload',:id =>@org.id} do |f| %>
 <div id="viewer" class="grid_7" style="margin-left: 0px;">
 <div class="grid_8" style = "border: 3px solid #DEF2FA; width: 533px; height: 307px; text-align: left; overflow: hidden;">
@@ -15,8 +32,8 @@
 <table style ="margin-left:20px; margin-top: 20px" align="center">
        <tr><td><font style="color:#1B75BC;"><h1>2 click and drag to crop your image</h1></font></td> </tr>
        <!-- % str="http://hq_project_development_bucket.s3.amazonaws.com/orgs/images/#{@org.id}/original.jpg?AWSAccessKeyId=1MEBBKABEPBMZ4GZCSR2&Expires=1248157147&Signature=UFnyozOXDccsGVU4MOVy7u8pQcE%3D" %> -->
-     <tr><td><%= image_tag @org.image.url.gsub(/\?.*/,'') , :id => 'yui_img',:height =>"200",:width=>"280"%> </td> </tr>
-<script type="text/javascript">
+     <tr><td><%= image_tag @org.image.url , :id => 'cropimage'%> </td> </tr>
+ <!-- <script type="text/javascript">
 (function() {
     var Dom = YAHOO.util.Dom,
         Event = YAHOO.util.Event,
@@ -24,28 +41,32 @@
 
     Event.onDOMReady(function() {
             results = Dom.get('results');
-            var crop = new YAHOO.widget.ImageCropper('yui_img', {
-                initialXY: [20, 20],
-                keyTick: 5,
-                shiftKeyTick: 50
-            });
+           // var crop= new YAHOO.widget.ImageCropper('yui_img', {initialXY: [100,100], initHeight: (Dom.get('yui_img').height/3), initWidth: (Dom.get('yui_img').width/3)});
+ //var crop = new YAHOO.widget.ImageCropper('yui_img', {initialXY: [0,0],keyTick: 5,shiftKeyTick: 50});
+ var crop = new YAHOO.widget.ImageCropper('yui_img', {
+        initialXY: [10,10],
+	        
+	        keyTick: 5,
+	        shiftKeyTick: 50
+	    });
+           
             crop.on('moveEvent', function() {
 
                 var region = crop.getCropCoords();
-                // alert(region.top);
+              //  alert(region.top);
                 // alert(region.left);
-                // alert(region.height);
-                // alert(region.width);
-              document.getElementById( 'orgs_x1' ).value = region.top;
+                 //alert(region.height);
+                 //alert(region.width);
+              
+               // results.firstChild.style.top = '-' + region.top + 'px';
+
+              // results.firstChild.style.left = '-' + region.left + 'px';
+              //  results.style.height = region.height + 'px';
+              //  results.style.width = region.width + 'px';
+               document.getElementById( 'orgs_x1' ).value = region.top;
               document.getElementById( 'orgs_y1' ).value = region.left;
-              document.getElementById( 'orgs_width' ).value = region.height;
-              document.getElementById( 'orgs_height' ).value = region.width;
-              //  results.firstChild.style.top = '-' + region.top + 'px';
-
-               // results.firstChild.style.left = '-' + region.left + 'px';
-               // results.style.height = region.height + 'px';
-               // results.style.width = region.width + 'px';
-
+              document.getElementById( 'orgs_height' ).value = region.height;
+              document.getElementById( 'orgs_width' ).value = region.width;
 
                 //Dom.get('orgs_x1').innerHTML = region.top;
                 //Dom.get('orgs_y1').innerHTML = region.left;
@@ -57,7 +78,8 @@
     });
 })();
     //var crop = new YAHOO.widget.ImageCropper('yui_img');
-</script>
+</script> -->
+
 
     <tr><td><%= hidden_field_tag "orgs","x1" ,:id =>"orgs_x1"  %></td></tr>
 
@@ -83,3 +105,4 @@
 
 </div>
 </div>
+
