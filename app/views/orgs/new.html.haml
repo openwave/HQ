@@ -1,19 +1,19 @@
- %div{ :style => "margin: 0 auto; width: 700px;"}
-  %h1
-    Create an HQ Page
-  %br
-  .grid_4{:style => "float:left; text-align: left;"}
-    .inner   
-      %br
-      - form_for([current_user, @org]) do |f|
-        - if @orgg
-          - unless @orgg.errors.empty?
+%div{ :style => "margin: 0 auto; width: 700px;"}
+%h1
+  Create an HQ Page
+%br
+.grid_4{:style => "float:left; text-align: left;"}
+  .inner   
+    %br
+    - form_for([current_user, @org]) do |f|
+      - if @orgg
+        - unless @orgg.errors.empty?
+          %h2
+          - @orgg.errors.each do |attr, msg|
             %h2
-            - @orgg.errors.each do |attr, msg|
-              %h2
-                - if attr == "title"
-                  = "Organisation" +" "+msg
-        = render :partial => @org, :locals => { :f => f }
-        %div{ :style => "width: 265px; text-align: right;"}
-        = image_submit_tag('/images/submit.jpg', :height => "25")
+              - if attr == "title"
+                = "Organisation" +" "+msg
+      = render :partial => @org, :locals => { :f => f }
+      %div{ :style => "width: 265px; text-align: right;"}
+      = image_submit_tag('/images/submit.jpg', :height => "25")
   
