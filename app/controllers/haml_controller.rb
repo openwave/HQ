@@ -1090,7 +1090,7 @@ def calendar_voteup
   def create_events
    
     p params[:org_id]
-    @org = Org.find(params[:org_id])
+    @org = Org.find(params[:id])
     @facttts = Fact.find_all_by_org_id(params[:id])
     @event = @org.events.build(params[:event])
     @events=@org.events
