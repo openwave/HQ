@@ -635,7 +635,7 @@ class HamlController < ApplicationController
   
   def sales_calendar_change_calendar
     
-    @org=Org.find(params[:org_id])
+    @org=Org.find(params[:id])
     @tabs = @org.tabs
     render :partial =>'haml/sales_calendar_change_calendar',:locals => {:calender_status=>@org.calender_status}
   end
