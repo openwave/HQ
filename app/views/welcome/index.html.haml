@@ -73,34 +73,7 @@
     %img{ :src => "/images/dropShadow.jpg", :width => "700", :alt => ""}
 
   %div{ :style => "margin: 0 auto; width: 960px; text-align: left;"}
-    .grid_3{ :style => "text-align: left; margin-top: 46px; float: left; margin-left: 0; margin-right: 15px; width: 250px;"}
-      #w1{:onmouseover => "showphoto1('/images/w1b.jpg')", :onmouseout => "showphoto1('/images/w1.jpg')"}
-        %img{ :src => "/images/w1.jpg", :width => "250", :alt => ""} 
-      #w2{:onmouseover => "showphoto2('/images/w2b.jpg')", :onmouseout => "showphoto2('/images/w2.jpg')"}
-        %img{ :src => "/images/w2.jpg", :width => "260", :alt => ""} 
-      #w3{:onmouseover => "showphoto3('/images/w3b.jpg')", :onmouseout => "showphoto3('/images/w3.jpg')"}
-        %img{ :src => "/images/w3.jpg", :width => "250", :alt => ""} 
-      #div{ :style => "width: 250px; height: 30px; text-align: right; padding-top: 5px;"}
-        =link_to "Advertising Opportunities"
-
-    .grid_5{ :style => "text-align: left; margin-left:1px; margin-right: 0px; float: left;"}
-
-      %div
-
-          
-      = render :partial=>'video_girl'
-      #w4{:onmouseover => "showphoto4('/images/w4b.jpg')", :onmouseout => "showphoto4('/images/w4.jpg')"}
-        %img{ :src => "/images/w4.jpg", :width => "418", :alt => "",  :style => "margin-bottom: 5px;"}
-      #w5{:onmouseover => "showphoto5('/images/w5b.jpg')", :onmouseout => "showphoto5('/images/w5.jpg')"}
-        %img{ :src => "/images/w5.jpg", :width => "418", :alt => ""} 
-
-        
-    .grid_2{ :style => "text-align: left; margin-top: 35px; text-align: right; float: left; margin-right: 0px; margin-left: 45px; width: 195px;"}
-      #w7{:style => "margin-bottom: 5px;height: 440px;", :onmouseover => "showphoto7('/images/w7b.jpg')", :onmouseout => "showphoto7('/images/w7.jpg')"}  
-        %img{ :src => "/images/w7.jpg", :width => "195", :alt => ""} 
-      #w8{:onmouseover => "showphoto8('/images/w8b.jpg')", :onmouseout => "showphoto8('/images/w8.jpg')"}
-        %img{ :src => "/images/w8.jpg", :width => "184", :alt => "",  :style => "margin-right: 8px;"}
-    #w6{:style => "width: 882px;height: 127px;",:onmouseover => "showphoto6('/images/w6b.jpg')", :onmouseout => "showphoto6('/images/w6.jpg')"}     
-      %img{ :src => "/images/w6.jpg", :width => "617", :alt => "", :style => "margin-top:-4px;"}
-
-        
+    = render :partial =>"haml/image_mouseover" 
+   
+   
+     
