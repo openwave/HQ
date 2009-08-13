@@ -13,7 +13,8 @@ class Photo < ActiveRecord::Base
   validates_length_of :title, :within => 5..128, :allow_nil => true, :allow_blank => true
 
   # Paperclip
-  has_attached_file :image,:styles => {:thumb   => "107x60#",:full    => "545x307>" },:storage => :s3,:s3_credentials => "#{RAILS_ROOT}/config/s3.yml",:path => "photos/:attachment/:id/:style.:extension",:bucket => 'hq_project_development_bucket'
+  #has_attached_file :image,:styles => {:thumb   => "107x60#",:full    => "545x307>" },:storage => :s3,:s3_credentials => "#{RAILS_ROOT}/config/s3.yml",:path => "photos/:attachment/:id/:style.:extension",:bucket => 'hq_project_development_bucket'
+  has_attached_file :image,:styles => {:original => "280x200>" },:default_style => :original,:storage => :s3,:s3_credentials => "#{RAILS_ROOT}/config/s3.yml",:path => "photos/:attachment/:id/:style.:extension",:bucket => 'hq_project_development_bucket'
   #has_attached_file :image
   # using typical SLR camera aspect ratio of 2:3 (I.e. 4" x 6")
   #:styles => { :original => "700x466", :cover => "150x100!", :thumb => "68x50!" },
@@ -22,7 +23,6 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/gif', 'image/png', 'image/pjpeg', 'image/x-png']
   
 def update_attributes(att)
-
   # Should we crop?
   if !att[:x1].nil?
   scaled_img = Magick::ImageList.new(self.image.url)
@@ -32,8 +32,8 @@ def update_attributes(att)
   #orig_img = Magick::ImageList.new(self.image.path(:original))
   scale = orig_img.columns.to_f / scaled_img.columns
 
-  args = [ att[:x1], att[:y1], att[:width], att[:height] ]
- args = args.collect { |a| a.to_i * scale }
+   args = [ att[:x1], att[:y1], att[:width], att[:height] ]
+   args = args.collect { |a| a.to_i * scale }
 
  orig_img.crop!(*args)
   puts "********************************************* PATH -URL********************************** #{self.image.url}"
